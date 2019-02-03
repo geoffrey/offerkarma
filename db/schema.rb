@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_054204) do
+ActiveRecord::Schema.define(version: 2019_02_03_073028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 2019_02_03_054204) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["offer_id"], name: "index_comments_on_offer_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -64,7 +66,21 @@ ActiveRecord::Schema.define(version: 2019_02_03_054204) do
     t.decimal "yoe"
     t.string "location"
     t.string "type"
+    t.bigint "user_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "first_name"
+    t.text "last_name"
+    t.text "username"
+    t.text "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "current_company_id"
+    t.index ["current_company_id"], name: "index_users_on_current_company_id"
+    t.index ["email"], name: "index_users_on_email"
   end
 
   create_table "votes", force: :cascade do |t|
@@ -72,7 +88,9 @@ ActiveRecord::Schema.define(version: 2019_02_03_054204) do
     t.integer "vote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["offer_id"], name: "index_votes_on_offer_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "comments", "offers"
