@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  compparator:
+    build: .
+    command: ./bin/web
+    env_file:
+      - .env.development
+    ports:
+      - "9999:8080"
+    volumes:
+      - .:/home/app
+    depends_on:
+      - postgres-vacuum
+
+  postgres-vacuum:
+    image: postgres:9.6.4
