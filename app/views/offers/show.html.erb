@@ -60,6 +60,13 @@
 			<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
 		</div>
 	</div>
+
+	<% if @offer.notes %>
+		<div class="mt-3 text-center lead mb-3">Notes</div>
+		<div class="mt-1 border bg-light p-2 text-align-justity">
+			<%= @offer.notes %>
+		</div>
+	<% end %>
 </div>
 
 <hr />
