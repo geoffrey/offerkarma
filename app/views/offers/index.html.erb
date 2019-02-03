@@ -1,0 +1,9 @@
+Last offers posted:
+
+<ul class="featured-offer-list list-group">
+<% @offers.each do |offer| %>
+	<li class="featured-offer-list-item list-group-item">
+		<%= render partial: "offer_list_item", locals: { offer: offer } %>
+	</li>
+<% end %>
+</ul>

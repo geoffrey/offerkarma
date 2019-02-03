@@ -1,0 +1,29 @@
+<div class="offer-list-item">
+	<div class="d-flex flex-row">
+		<div class="mr-2">
+			<b><%= offer.company.name %></b>
+			<img src="<%= offer.company.logo_url %>">
+		</div>
+
+		<% if offer.base_salary %>
+			<div>
+				Base <b><%= number_to_currency offer.base_salary, precision: 0 %></b>
+			</div>
+		<% end %>
+
+		<% if offer.signon_bonus %>
+			<div>
+				Signon bonus <b><%= number_to_currency offer.signon_bonus, precision: 0 %></b>
+			</div>
+		<% end %>
+
+		<div>
+			<span class="fa fa-comments text-muted"></span> <%= pluralize offer.comments.count, "comment" %>
+		</div>	
+
+		<div>
+			<span class="far fa-thumbs-up"></span> <span class="small"><%= offer.votes.up.count %></span>
+			<span class="far fa-thumbs-down"></span> <span class="error small"><%= offer.votes.down.count %></span>
+		</div>
+	</div>
+</div>

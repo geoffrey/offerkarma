@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  logo_url: MyString
+  public: false
+  current_valuation: MyString
+  last_funding_round: MyString
+
+two:
+  name: MyString
+  logo_url: MyString
+  public: false
+  current_valuation: MyString
+  last_funding_round: MyString
