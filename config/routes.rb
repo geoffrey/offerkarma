@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "companies/:id/offers",     to: "offers#create"
   
   get  "offers",                   to: "offers#index"
+  get  "offers/new",               to: "offers#new"
   get  "offers/:id",               to: "offers#show", as: "offer"
   post "offers/:id/votes",         to: "offers#votes"
-  get  "offers/new",               to: "offers#new"
 end
