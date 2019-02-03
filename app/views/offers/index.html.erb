@@ -8,12 +8,13 @@
 		</div>
 	</div>
 </div>
+
 <div class="container">
-	<div class="lead mb-3">Offers recently added</div>
+	<div class="lead mb-3 text-center">Offers recently added</div>
 
 	<ul class="featured-offer-list list-group">
 		<% @offers.each do |offer| %>
-			<a href="<%= offer_path offer.id %>" class="list-group-item list-group-item-action">
+			<a href="<%= offer_path offer.id %>" class="border rounded list-group-item-action mb-3">
 				<%= render partial: "offer_list_item", locals: { offer: offer } %>
 			</a>
 		<% end %>

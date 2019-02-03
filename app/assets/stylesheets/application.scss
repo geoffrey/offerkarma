@@ -1,3 +1,7 @@
 @import "bootstrap";
 @import "companies";
 @import "offers";
+
+@-ms-viewport{
+  width: device-width;
+}

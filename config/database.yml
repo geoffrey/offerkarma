@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: compparator_production
-  username: compparator
-  password: <%= ENV['COMPPARATOR_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
