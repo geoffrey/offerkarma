@@ -18,7 +18,7 @@
 
 <script type="text/javascript">
 
-  $('#company').autoComplete({
+  $('#company').autocomplete({
     minChars: 1,
     source: function(term, response){
       $.getJSON('https://autocomplete.clearbit.com/v1/companies/suggest', { query: term }, function(data){ response(data); });
