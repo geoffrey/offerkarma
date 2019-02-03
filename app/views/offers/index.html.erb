@@ -1,9 +1,21 @@
-Last offers posted:
+<div class="text-center homepage-header mb-3 p-4 bg-dark">
+	<div class="mb-3 text-white">
+		<div class="mb-3">
+			Add your offer and get feedback today!
+		</div>
+		<div>
+			<a class="btn btn-primary" href="/offers/new">Add an offer now</a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="lead mb-3">Offers recently added</div>
 
-<ul class="featured-offer-list list-group">
-<% @offers.each do |offer| %>
-	<li class="featured-offer-list-item list-group-item">
-		<%= render partial: "offer_list_item", locals: { offer: offer } %>
-	</li>
-<% end %>
-</ul>
+	<ul class="featured-offer-list list-group">
+		<% @offers.each do |offer| %>
+			<a href="<%= offer_path offer.id %>" class="list-group-item list-group-item-action">
+				<%= render partial: "offer_list_item", locals: { offer: offer } %>
+			</a>
+		<% end %>
+	</ul>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_051021) do
+ActiveRecord::Schema.define(version: 2019_02_03_054204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_051021) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "logo_url"
+    t.string "url"
     t.boolean "public"
     t.string "current_valuation"
     t.string "last_funding_round"

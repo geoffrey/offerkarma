@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1
   def show
+    @offers = @company.offers
   end
 
   private
@@ -18,6 +19,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :logo_url, :public, :current_valuation, :last_funding_round)
+      params.require(:company).permit(:name, :url, :public, :current_valuation, :last_funding_round)
     end
 end

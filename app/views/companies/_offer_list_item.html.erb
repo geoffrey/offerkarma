@@ -1,14 +1,5 @@
 <div class="offer-list-item">
 	<div class="d-flex flex-row">
-		<div class="mr-2">
-			<div class="text-center mb-3">
-				<b><%= offer.company.name %></b>
-			</div>
-			<div class="w-50">
-				<img class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
-			</div>
-		</div>
-
 		<% if offer.base_salary %>
 			<div>
 				Base <b><%= number_to_currency offer.base_salary, precision: 0 %></b>

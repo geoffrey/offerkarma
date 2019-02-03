@@ -1,0 +1,16 @@
+<div class="text-center company-header mb-3 p-4 bg-dark">
+	<div class="mb-3">
+		<img class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
+	</div>
+	<h2 class="text-white"><%= @company.name %></h2>
+</div>
+<div class="container">
+	<div>
+		Last offers for <%= @company.name %>
+		<ul class="company-offer-list list-group">
+			<% @offers.each do |offer| %>
+				<%= render partial: "offer_list_item", locals: { offer: offer } %>
+			<% end %>
+		</ul>
+	</div>
+</div>

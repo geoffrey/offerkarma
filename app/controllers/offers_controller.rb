@@ -47,12 +47,18 @@ class OffersController < ApplicationController
 
   # POST /offers/:id/votes
   def vote
+    @vote = @offer.votes.new(vote_params)
+    @vote.save
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
       @offer = Offer.find(params[:id])
+    end
+
+    def vote_params
+      params.require(:vote).permit(:vote)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
