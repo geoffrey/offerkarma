@@ -1,3 +1,6 @@
 #!/bin/sh
 
-exec bundle exec rails s
+# Run all migrations on boot
+rake db:migrate
+
+exec bundle exec rails s -p $PORT -b 0.0.0.0

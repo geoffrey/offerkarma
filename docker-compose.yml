@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
   compparator:
@@ -7,11 +7,15 @@ services:
     env_file:
       - .env.development
     ports:
-      - "9999:8080"
+      - "9000:3000"
     volumes:
-      - .:/home/app
+      - type: bind
+        source: "."
+        target: "/home/app"
+        volume:
+          nocopy: true
     depends_on:
-      - postgres-vacuum
+      - postgres
 
-  postgres-vacuum:
+  postgres:
     image: postgres:9.6.4
