@@ -1,1 +1,69 @@
-<%= @offer.company.name %>
+<div class="text-center company-header p-4 bg-<%= @offer.job_offer_type_class %>">
+	<h2 class="text-white"><%= @offer.company.name %></h2>
+	
+	<div class="mb-3">
+		<img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @offer.company.url %>">
+	</div>
+
+	<div class="text-white font-weight-light">
+		<h4><%= @offer.position %></h4> 
+		<h5><%= @offer.yoe ? @offer.yoe.to_i : "?" %> YOE</h5>
+	</div>
+	
+	<div class="text-white font-weight-light">
+		<%= @offer.accepted? ? "accepted" : "pending" %><%= @offer.type %> offer
+	</div>
+
+	<div class="small text-light font-weight-light">
+		<%= time_ago_in_words @offer.created_at %> ago
+	</div>
+</div>
+
+<div class="container text-center border-bottom p-2">
+	<span class="mr-4">
+		<span class="far fa-eye"></span> <span class="small"><%= @offer.views %></span>
+	</span>
+			
+	<span class="mr-2">
+		<span class="far fa-thumbs-up"></span> <span class="small"><%= @offer.votes.up.count %></span>
+	</span>
+
+	<span class="mr-4">
+		<span class="far fa-thumbs-down"></span> <span class="error small"><%= @offer.votes.down.count %></span>
+	</span>
+
+	<span>
+		<span class="fa fa-comments"></span> <%= @offer.comments.count %>
+	</span>
+</div>
+
+<div class="container mt-3">
+	<div class="text-center lead mb-3">Compensation breakdown</div>
+	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
+		<div>Total Compensation</div>
+		<div class="lead font-weight-bold"><%= number_to_human @offer.tc %> / year</div>
+	</div>
+
+	<div class="d-flex flex-row">
+		<div class="text-center bg-success text-white rounded p-2 mr-2">
+			<div>Base <span class="fa fa-bill"></span></div>
+			<div class="lead font-weight-bold"><%= number_to_human @offer.base_salary %> / year</div>
+		</div>		
+		
+		<div class="text-center bg-success text-white rounded p-2 mr-2">
+			<div>Signon Bonus <span class="fa fa-bill"></span></div>
+			<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
+		</div>		
+
+		<div class="text-center bg-success text-white rounded p-2">
+			<div>Stocks <span class="fa fa-bill"></span></div>
+			<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
+		</div>
+	</div>
+</div>
+
+<hr />
+
+<div class="container">
+	<div class="text-center lead"><%= @offer.comments.count %> Comments</div>		
+</div>

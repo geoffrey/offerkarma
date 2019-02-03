@@ -3,6 +3,11 @@ class Offer < ApplicationRecord
   has_many :votes
   has_many :comments
 
+  def job_offer_type_class
+  	return "success" if accepted
+  	return "warning" if type == "oral"
+  	"info"
+  end
   def views
   	rand(800)
   end

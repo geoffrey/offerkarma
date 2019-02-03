@@ -1,16 +1,19 @@
 <div class="text-center homepage-header mb-3 p-4 bg-dark">
 	<div class="mb-3 text-white">
-		<div class="mb-3">
-			Add your offer and get feedback today!
+		<div class="mb-3 lead">
+			Need feedback on a job offer?
 		</div>
-		<div>
-			<a class="btn btn-primary" href="/offers/new">Add an offer now</a>
+		<div class="mb-4">
+			<a class="btn btn-success" href="/offers/new">Submit offer compensation</a>
+		</div>
+		<div class="small font-weight-light">
+			<span class="text-dark bg-white p-1 font-weight-bold"><span class="text-danger">Comp</span>parator</span> anonymous community can let you know if your potential total compensation has room for negociations and coach you to get a better one.
 		</div>
 	</div>
 </div>
 
 <div class="container">
-	<div class="lead mb-3 text-center">Offers recently added</div>
+	<div class="lead mb-3 text-center">Offers waiting for some feedback</div>
 
 	<ul class="featured-offer-list list-group">
 		<% @offers.each do |offer| %>

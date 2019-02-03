@@ -1,37 +1,29 @@
 <div class="">
 	<div class="p-3 d-flex flex-row">
-		<div class="mr-2">
-			<div class="text-center mb-1">
+		<div class="mr-3">
+			<div class="small text-center mb-1">
 				<b><%= offer.company.name %></b>
 			</div>
-			<div class="w-50">
-				<img class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
+
+			<div>
+				<img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
 			</div>
 		</div>
 
 		<div>
 			<div class="mb-3">
-				<div class="border rounded p-2">
-					<b><%= number_to_currency offer.tc, precision: 0 %>/year</b> TC
-				</div>
+				<b><%= offer.position %></b> - <b><%= offer.yoe ? offer.yoe.to_i : "?" %></b> YOE
+			</div>
 
-				<% if offer.base_salary %>
-					<div>
-						<b><%= number_to_currency offer.base_salary, precision: 0 %></b> base
-					</div>
-				<% end %>
-
-				<% if offer.signon_bonus %>
-					<div>
-						Signon bonus <b><%= number_to_currency offer.signon_bonus, precision: 0 %></b>
-					</div>
-				<% end %>	
+			<div>
+				<span class="text-white bg-primary rounded p-2">
+					TC: <b><%= number_to_human offer.tc %> / year</b>
+				</span>
 			</div>
 		</div>
-	
 	</div>
 
-	<div class="border-top text-center p-2">
+	<div class="border-top text-center text-muted small p-2 ps-1">
 		<span class="mr-4">
 			<span class="far fa-eye"></span> <span class="small"><%= offer.views %></span>
 		</span>
@@ -48,5 +40,4 @@
 			<span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
 		</span>
 	</div>	
-			
 </div>

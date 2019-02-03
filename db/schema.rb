@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2019_02_03_073028) do
     t.decimal "yoe"
     t.string "location"
     t.string "type"
-    t.bigint "user_id"
     t.string "position"
+    t.bigint "user_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
