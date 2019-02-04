@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Compparator</title>
+    <title>reffo - offer feedback community</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,13 +10,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
 
   <body>
     <header class="border-bottom">
       <div class="container">
-        <nav class="pl-0 pr-0 navbar sticky-top navbar-light bg-white">
+        <nav class="pl-0 pr-0 navbar navbar-light bg-white">
           <a class="navbar-brand" href="/"><span class="text-danger font-weight-bold">reffo</span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +48,11 @@
         </nav>
       </div>
     </header>
+
     <%= yield %>
+
+    <footer class="border-top p-3 mt-3">
+      <div class="text-center text-muted">Logos provided by <a href="https://clearbit.com" target="_blank">Clearbit</a></div>
+    </footer>
   </body>
 </html>
