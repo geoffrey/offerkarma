@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_073028) do
+ActiveRecord::Schema.define(version: 2019_02_04_180001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_073028) do
 
   create_table "offers", force: :cascade do |t|
     t.bigint "company_id"
-    t.boolean "public"
     t.boolean "comments_enabled"
     t.boolean "votes_enabled"
     t.integer "base_salary"
@@ -60,14 +59,15 @@ ActiveRecord::Schema.define(version: 2019_02_03_073028) do
     t.text "notes"
     t.integer "bonus_per_year_amount"
     t.integer "bonus_per_year_percent"
-    t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "yoe"
     t.string "location"
-    t.string "type"
+    t.string "offer_type"
     t.string "position"
     t.bigint "user_id"
+    t.string "status"
+    t.string "scope"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end

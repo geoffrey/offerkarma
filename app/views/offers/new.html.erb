@@ -13,7 +13,7 @@
 <div class="container mt-3">
 	
 	<div class="progress mb-4">
-	  <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+	  <div class="progress-bar bg-danger" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
 	</div>
 
 	<div class="clearfix">
@@ -21,18 +21,23 @@
 		  <div class="form-group">
 		  	<div class="ui-widget">
 		  		<label for="company">Company name</label>
-			    <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="e.g. Google" autofocus/>
+			    <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autofocus/>
 			  </div>
 			</div>
-			
+				
+		  <div class="form-group">
+		  	  <label for="location">Location</label>
+			   <input name="location" type="text" class="form-control" id="location" aria-describedby="location" placeholder="San Francisco"/>
+			</div>	
+
 		  <div class="form-group">
 		  	  <label for="position">Job position</label>
-			   <input name="position" type="text" class="form-control" id="position" aria-describedby="position" placeholder="e.g. Software Engineer"/>
+			   <input name="position" type="text" class="form-control" id="position" aria-describedby="position" placeholder="Software Engineer"/>
 			</div>	
 
 		  <div class="form-group">
 		  	<label for="yoe">Years of experience (yoe)</label>
-			  <input name="yoe" type="number" class="form-control" id="yoe" aria-describedby="position" placeholder="e.g. 2"/>
+			  <input name="yoe" type="number" class="form-control" id="yoe" aria-describedby="position" placeholder="2"/>
 			</div>
 
 		  <button type="submit" class="btn btn-primary float-right">Next</button>
