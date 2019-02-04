@@ -1,5 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :company
+  belongs_to :user
+
   has_many :votes
   has_many :comments
 
@@ -8,6 +10,7 @@ class Offer < ApplicationRecord
   	return "warning" if type == "oral"
   	"info"
   end
+
   def views
   	rand(800)
   end
