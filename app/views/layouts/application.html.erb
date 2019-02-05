@@ -25,25 +25,29 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">              
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">My offers</a>
+                <a class="btn btn-danger" href="/offers/new">Submit an offer</a>
               </li>
 
-              <li class="nav-item">
-                <a class="btn btn-success" href="/offers/new">Submit an offer</a>
-              </li>
+              <% unless current_user %>
+                 <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Account</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">My offers</a>
+                </li>     
+                <li class="nav-item">
+                  <%= link_to "Log out", logout_path, method: :delete, class: "nav-link text-danger" %>
+                </li>                
+              <% end %>
+ 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+         
           </div>
         </nav>
       </div>

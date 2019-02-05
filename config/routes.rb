@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   
 	root to: "offers#index"
 
-  get  "login",                    to: "users#login"
-  post "login",                    to: "users#post_login"
-	get  "signup",                   to: "users#signup"
-	post "signup",                   to: "users#create"
+  get    "login",                    to: "users#login"
+  post   "login",                    to: "users#post_login"
+	get    "signup",                   to: "users#signup"
+  post   "signup",                   to: "users#create"
+	delete "logout",                   to: "users#logout"
 
   get  "companies/:id",            to: "companies#show"
   get  "companies/:id/offers/new", to: "offers#new"
