@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  before_action :redirect_to_login_if_needed, only: [:show]
   before_action :set_offer, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /offers
