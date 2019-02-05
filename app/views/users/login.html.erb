@@ -5,7 +5,7 @@
 		</div>
 		
 		<div class="small font-weight-light">
-			Login to manage your offers and provide feedback.
+			Login to manage your offers and get or provide feedback.
 		</div>
 	</div>
 </div>
@@ -18,12 +18,12 @@
 	<%= form_for :user, url: login_path do |f| %>
 		<div class="form-group">
     	<%= f.label :email %>
-    	<%= f.email_field :email, class: "form-control", placeholder: "bob@apple.com" %>
+    	<%= f.email_field :email, class: "form-control", placeholder: "bob@apple.com", required: "true" %>
     </div>
 
     <div class="form-group">
     	<%= f.label :password %>
-    	<%= f.password_field :password, class: "form-control", placeholder: "••••••" %>
+    	<%= f.password_field :password, class: "form-control", required: "true", pattern: ".{6,}" %>
     	 <small>
 	  		<a href="/login">Forgot password</a>
 	  	</small>
@@ -35,7 +35,7 @@
 
   <div class="mt-2 text-center">
   	<div>
-  		New? <a href="/signup">Signup here</a>
+  		<a href="/signup">Or create an account</a>
   	</div>
   </div>
 </div>
