@@ -6,8 +6,8 @@ class Offer < ApplicationRecord
   has_many :comments
 
   def job_offer_type_class
-  	return "success" if accepted
-  	return "warning" if type == "oral"
+    return "success" if status == :accepted
+  	return "danger" if status == :rejected
   	"info"
   end
 
