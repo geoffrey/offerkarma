@@ -1,24 +1,39 @@
 <div class="text-center homepage-header mb-3 p-4 bg-dark">
-	<div class="mb-3 text-white">
-		<div class="mb-3 lead">
-			Unleash offer feedback
+	<div class="text-white">
+		<div class="lead">
+			Welcome back
 		</div>
 		
 		<div class="small font-weight-light">
-			Creating a <span class="text-dark bg-white p-1 font-weight-bold"><span class="text-danger">reffo</span></span> account will allow you to see, vote and comment on existing offers.
+			Login to manage your offers and provide feedback.
 		</div>
 	</div>
 </div>
 
-<div class="container mt-4 mb-4 clearfix">
-	<form>
-	  <div class="form-group">
-	  	<div class="ui-widget">
-		    <input type="text" class="form-control" id="email" aria-describedby="" placeholder="Work email address" autofocus/>
-		    <small id="emailHelp" class="form-text text-muted">Using your work email will unlock offers from your company. Don't worry it is anonymous.</small>
+<div class="container mt-4 mb-4 clearfix center-box-max-width border p-4 rounded">
+	<form action="/login" method="POST">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-		  </div>
-		 </div>
-	  <button type="submit" class="btn btn-primary float-right">Next</button>
+	  <div class="form-group">
+  		<label for="email">Email</label>
+	    <input name="email" type="email" class="form-control" id="email" aria-describedby="" placeholder="bob@apple.com"/>
+		</div>
+		
+	  <div class="form-group">
+  		<label for="password">Password</label>
+	    <input name="password" type="password" class="form-control" id="password" aria-describedby="" placeholder="••••••"/>
+	    <small>
+	  		<a href="/password">Forgot password</a>
+	  	</small>
+		</div>
+
+	  <button type="submit" class="btn btn-block btn-danger">Login</button>
+
+	  <div class="mt-2">
+	  	<div>
+	  		New? <a href="/signup">Signup here</a>
+	  	</div>
+	  
+	  </div>
 	</form>
 </div>

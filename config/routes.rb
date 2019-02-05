@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   
 	root to: "offers#index"
 
-	get  "login",                    to: "users#login"
-	post "login",                    to: "users#post_login"
+  get  "login",                    to: "users#login"
+  post "login",                    to: "users#post_login"
+	get  "signup",                   to: "users#signup"
+	post "signup",                   to: "users#create"
 
   get  "companies/:id",            to: "companies#show"
   get  "companies/:id/offers/new", to: "offers#new"
