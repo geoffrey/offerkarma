@@ -1,24 +1,33 @@
-<div class="offer-list-item">
-	<div class="d-flex flex-row">
-		<% if offer.base_salary %>
-			<div>
-				Base <b><%= number_to_currency offer.base_salary, precision: 0 %></b>
-			</div>
-		<% end %>
-
-		<% if offer.signon_bonus %>
-			<div>
-				Signon bonus <b><%= number_to_currency offer.signon_bonus, precision: 0 %></b>
-			</div>
-		<% end %>
-
+<div>
+	<div class="p-3 d-flex flex-row">
 		<div>
-			<span class="fa fa-comments text-muted"></span> <%= pluralize offer.comments.count, "comment" %>
-		</div>	
+			<div class="mb-3">
+				<b><%= offer.position %></b> - <b><%= offer.yoe ? offer.yoe.to_i : "?" %></b> YOE
+			</div>
 
-		<div>
-			<span class="far fa-thumbs-up"></span> <span class="small"><%= offer.votes.up.count %></span>
-			<span class="far fa-thumbs-down"></span> <span class="error small"><%= offer.votes.down.count %></span>
+			<div>
+				<span class="text-white bg-primary rounded p-2">
+					TC: <b><%= number_to_human offer.tc %> / year</b>
+				</span>
+			</div>
 		</div>
 	</div>
+
+	<div class="border-top text-center text-muted small p-2 ps-1">
+		<span class="mr-4">
+			<span class="far fa-eye"></span> <span class="small"><%= offer.views %></span>
+		</span>
+				
+		<span class="mr-2">
+			<span class="far fa-thumbs-up"></span> <span class="small"><%= offer.votes.up.count %></span>
+		</span>
+
+		<span class="mr-4">
+			<span class="far fa-thumbs-down"></span> <span class="error small"><%= offer.votes.down.count %></span>
+		</span>
+
+		<span>
+			<span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
+		</span>
+	</div>	
 </div>

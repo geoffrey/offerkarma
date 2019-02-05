@@ -1,13 +1,13 @@
 <div class="text-center company-header p-4 bg-<%= @offer.job_offer_type_class %>">
-	<h3 class="text-white"><%= @offer.company.name %></h3>
+	<h5 class="text-white font-weight-light"><%= @offer.company.name %></h5>
 	
 	<div class="mb-3">
 		<img width="60px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @offer.company.url %>">
 	</div>
 
 	<div class="text-white font-weight-light">
-		<h4><%= @offer.position %></h4> 
-		<h5><%= @offer.yoe ? @offer.yoe.to_i : "?" %> YOE</h5>
+		<h5><%= @offer.position %></h5> 
+		<h6><%= @offer.yoe ? @offer.yoe.to_i : "?" %> YOE</h6>
 	</div>
 	
 	<div class="text-white font-weight-light">
@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="small text-light font-weight-light">
-		<%= time_ago_in_words @offer.created_at %> ago
+		added <%= time_ago_in_words @offer.created_at %> ago
 	</div>
 </div>
 
@@ -38,8 +38,8 @@
 </div>
 
 <div class="container mt-3">
-	<div class="text-center lead mb-3">Compensation breakdown</div>
-	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
+<!-- 	<div class="text-center lead mb-3">Compensation breakdown</div>
+ -->	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
 		<div>Total Compensation</div>
 		<div class="lead font-weight-bold"><%= number_to_human @offer.tc %> / year</div>
 	</div>

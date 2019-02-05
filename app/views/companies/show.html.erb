@@ -1,16 +1,42 @@
-<div class="text-center company-header mb-3 p-4 bg-dark">
+<div class="text-center company-header p-4 bg-dark">
+	<h5 class="text-white font-weight-light"><%= @company.name %></h5>
+	
 	<div class="mb-3">
-		<img class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
+		<img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
 	</div>
-	<h2 class="text-white"><%= @company.name %></h2>
 </div>
-<div class="container">
-	<div>
-		Last offers for <%= @company.name %>
-		<ul class="company-offer-list list-group">
-			<% @offers.each do |offer| %>
-				<%= render partial: "offer_list_item", locals: { offer: offer } %>
-			<% end %>
-		</ul>
+
+<div class="text-center border-bottom p-2">
+	<div class="container">
+		<span class="mr-4">
+			<span class="far fa-file-alt"></span> <span class="small"><%= @company.offers.count %></span>
+		</span>
+				
+		<span class="mr-2">
+			<span class="far fa-thumbs-up"></span> <span class="small"><%= @company.offers.count %></span>
+		</span>
+
+		<span class="mr-4">
+			<span class="far fa-thumbs-down"></span> <span class="error small"><%= @company.offers.count %></span>
+		</span>
+
+		<span>
+			<span class="fa fa-comments"></span> <%= @company.offers.count %>
+		</span>
+	</div>
+</div>
+
+<div class="container mt-3">
+	<div class="lead mb-3 text-center">Last offers from <%= @company.name %></div>
+	<div class="row">		
+		<% @offers.each do |offer| %>
+			<div class="col-lg-4 col-md-6 col-12 p-2">
+				<div class="border rounded list-group-item-action">
+					<a href="<%= offer_path offer.id %>" class="list-group-item-action">
+						<%= render partial: "offer_list_item", locals: { offer: offer } %>
+					</a>
+				</div>
+			</div>
+		<% end %>
 	</div>
 </div>
