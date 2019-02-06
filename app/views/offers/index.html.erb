@@ -10,7 +10,7 @@
 </div>
 
 <div class="bg-light text-center border-bottom p-4">
-	<div class="container">
+	<div class="container p-0">
 		<div class="mb-3 lead font-weight-light">
 			<span class="font-weight-bold text-danger">reffo</span> is an anonymous community that empower employees by providing <span class="font-weight-bold text-danger">offer</span> feedback and education.
 		</div>
@@ -39,10 +39,10 @@
 </div>
 
 <div class="text-center p-3 border-bottom">
-	<div class="container">
+	<div class="container p-0">
 		<div class="row">
 			<% Company.all.sample(6).each do |company| %>
-				<div class="col-4 col-md-3 col-lg-2 p-3">
+				<div class="col-4 col-xl-2 p-3">
 					<a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.url %>" alt="<%= company.name %>"></a>
 				</div>
 			<% end %>
@@ -51,7 +51,7 @@
 </div>
 
 <div class="bg-light p-3 border-bottom">
-	<div class="container">
+	<div class="container p-0">
 		<div class="lead mb-3 text-center">Offers waiting for some feedback</div>
 
 		<div class="row">
