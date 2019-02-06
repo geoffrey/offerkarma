@@ -18,7 +18,7 @@
   <body>
     <header class="border-bottom">
       <div class="container">
-        <nav class="pl-0 pr-0 navbar navbar-light navbar-expand-md my-2 my-lg-0 bg-white">
+        <nav class="pl-0 pr-0 navbar navbar-light <%= current_user ? 'navbar-expand-sm' : 'navbar-expand' %>  my-2 my-lg-0 bg-white">
           <a class="navbar-brand" href="/"><span class="text-danger font-weight-bold">reffo ↵</span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
             <ul class="navbar-nav ml-auto">              
               <% unless current_user %>
                  <li class="nav-item">
-                  <a class="btn btn-sm btn-outline-danger" href="/login">Sign-in</a>
+                  <a class="btn btn-sm btn-danger" href="/login">Sign-in</a>
                 </li>
               <% else %>
                 <li class="nav-item">
