@@ -14,7 +14,7 @@ ActiveAdmin.register Offer do
 		:type,
 		:signon_bonus,
 		:status,
-		:user,
+		:user_id,
 		:votes_enabled,
 		:yoe
 end

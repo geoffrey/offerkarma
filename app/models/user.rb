@@ -2,7 +2,6 @@ class User < ApplicationRecord
 	has_secure_password
 
   before_save { email.downcase! }  
-  before_create :set_current_company_id
 
   validates :password, length: { minimum: 6 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -12,6 +11,14 @@ class User < ApplicationRecord
   has_many :offers
   has_many :comments
   has_many :votes
+
+  def name
+    id
+  end
+
+  def current_company
+    @current_company ||= Company.find(current_company_id)
+  end
 
   private 
 
