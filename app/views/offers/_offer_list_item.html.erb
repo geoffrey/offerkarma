@@ -12,12 +12,12 @@
 
 		<div>
 			<div class="mb-3">
-				<b><%= offer.position %></b> - <b><%= offer.yoe ? offer.yoe.to_i : "?" %></b> YOE
+				<b><%= offer.position %></b> (<%= offer.level %>) - <b><%= offer.yoe ? offer.yoe.to_i : "?" %></b> YOE
 			</div>
 
 			<div>
 				<span class="text-white bg-success rounded p-2">
-					<span class="fa fa-money-bill"></span> <b><%= number_to_human offer.tc %> / year</b>
+					<span class="fa fa-money-bill mr-2"></span> <b>$<%= number_to_human offer.tc %> / year</b>
 				</span>
 			</div>
 		</div>
