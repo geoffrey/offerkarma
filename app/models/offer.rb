@@ -5,6 +5,8 @@ class Offer < ApplicationRecord
   has_many :votes
   has_many :comments
 
+  validates :status, inclusion: { in: %w(pending accepted rejected) }
+
   def job_offer_type_class
     return "success" if status == :accepted
   	return "danger" if status == :rejected

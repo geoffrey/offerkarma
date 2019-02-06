@@ -19,57 +19,59 @@
 	</div>
 </div>
 
-<div class="container text-center border-bottom p-2">
-	<span class="mr-4">
-		<span class="far fa-eye"></span> <span class="small"><%= @offer.views %></span>
-	</span>
+<div class="text-center border-bottom p-2">
+	<div class="container">
+		<span class="mr-4">
+			<span class="far fa-eye"></span> <span class="small"><%= @offer.views %></span>
+		</span>
+				
+		<span class="mr-2">
+			<span class="far fa-thumbs-up"></span> <span class="small"><%= @offer.votes.up.count %></span>
+		</span>
+
+		<span class="mr-4">
+			<span class="far fa-thumbs-down"></span> <span class="error small"><%= @offer.votes.down.count %></span>
+		</span>
+
+		<span>
+			<span class="fa fa-comments"></span> <%= @offer.comments.count %>
+		</span>
+	</div>
+</div>
+
+<div class="border-bottom p-4">
+	<div class="container center-box-max-width">
+	<!-- 	<div class="text-center lead mb-3">Compensation breakdown</div>
+	 -->	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
+			<div>Total Compensation</div>
+			<div class="lead font-weight-bold"><%= number_to_human @offer.tc %> / year</div>
+		</div>
+
+		<div class="d-flex flex-row">
+			<div class="text-center bg-success text-white rounded p-2 mr-2">
+				<div>Base <span class="fa fa-money-bill"></span></div>
+				<div class="lead font-weight-bold"><%= number_to_human @offer.base_salary %> / year</div>
+			</div>		
 			
-	<span class="mr-2">
-		<span class="far fa-thumbs-up"></span> <span class="small"><%= @offer.votes.up.count %></span>
-	</span>
+			<div class="text-center bg-success text-white rounded p-2 mr-2">
+				<div>Signon Bonus <span class="fa fa-money-bill"></span></div>
+				<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
+			</div>		
 
-	<span class="mr-4">
-		<span class="far fa-thumbs-down"></span> <span class="error small"><%= @offer.votes.down.count %></span>
-	</span>
-
-	<span>
-		<span class="fa fa-comments"></span> <%= @offer.comments.count %>
-	</span>
-</div>
-
-<div class="container mt-3">
-<!-- 	<div class="text-center lead mb-3">Compensation breakdown</div>
- -->	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
-		<div>Total Compensation</div>
-		<div class="lead font-weight-bold"><%= number_to_human @offer.tc %> / year</div>
-	</div>
-
-	<div class="d-flex flex-row">
-		<div class="text-center bg-success text-white rounded p-2 mr-2">
-			<div>Base <span class="fa fa-bill"></span></div>
-			<div class="lead font-weight-bold"><%= number_to_human @offer.base_salary %> / year</div>
-		</div>		
-		
-		<div class="text-center bg-success text-white rounded p-2 mr-2">
-			<div>Signon Bonus <span class="fa fa-bill"></span></div>
-			<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
-		</div>		
-
-		<div class="text-center bg-success text-white rounded p-2">
-			<div>Stocks <span class="fa fa-bill"></span></div>
-			<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
+			<div class="text-center bg-info text-white rounded p-2">
+				<div>Stocks <span class="fa fa-chart-line"></span></div>
+				<div class="lead font-weight-bold"><%= number_to_human @offer.signon_bonus.to_i %></div>
+			</div>
 		</div>
+
+		<% if @offer.notes %>
+			<div class="mt-3 text-center lead mb-3">Notes</div>
+			<div class="mt-1 border bg-light p-2 text-align-justity">
+				<%= @offer.notes %>
+			</div>
+		<% end %>
 	</div>
-
-	<% if @offer.notes %>
-		<div class="mt-3 text-center lead mb-3">Notes</div>
-		<div class="mt-1 border bg-light p-2 text-align-justity">
-			<%= @offer.notes %>
-		</div>
-	<% end %>
 </div>
-
-<hr />
 
 <div class="container">
 	<div class="text-center lead"><%= @offer.comments.count %> Comments</div>		
