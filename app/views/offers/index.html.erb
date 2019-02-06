@@ -9,26 +9,40 @@
 	</div>
 </div>
 
-<div class="container text-center p-3">
-	<div class="mb-3 lead font-weight-light">
-		<span class="font-weight-bold text-danger">reffo</span> is an anonymous community that empower employees by providing <span class="font-weight-bold text-danger">offer</span> feedback and education.
-	</div>
+<div class="bg-light text-center border-bottom p-3 mb-3">
+	<div class="container">
+		<div class="mb-3 lead font-weight-light">
+			<span class="font-weight-bold text-danger">reffo</span> is an anonymous community that empower employees by providing <span class="font-weight-bold text-danger">offer</span> feedback and education.
+		</div>
 
-	<div class="row">
-		<div class="col-md-4 p-3">
-			<h6><span class="fa fa-money-bill"></span> Compensation evaluation</h6>
-			<p class="text-muted">We will let you know if you got low-balled or if your offer is fair.</p>
-		</div>
-		<div class="col-md-4 p-3">
-			<h6><span class="fa fa-chart-line"></span> Stocks education</h6>
-			<p class="text-muted">We will tell you everything you should ask about stocks before signing.</p>
-		</div>
-		<div class="col-md-4 p-3">
-			<h6><span class="fa fa-handshake"></span> Negotiation tips</h6>
-			<p class="text-muted">We will give you tips on how you can go about asking for more compensation.</p>
+		<div class="row mb-3">
+			<div class="col-md-4 p-4">
+				<h6><span class="fa fa-money-bill"></span> Compensation evaluation</h6>
+				<p class="text-muted">We will let you know if you got low-balled or if your offer is fair.</p>
+			</div>
+			<div class="col-md-4 p-4">
+				<h6><span class="fa fa-chart-line"></span> Stocks education</h6>
+				<p class="text-muted">We will tell you everything you should ask about stocks before signing.</p>
+			</div>
+			<div class="col-md-4 p-4">
+				<h6><span class="fa fa-handshake"></span> Negotiation tips</h6>
+				<p class="text-muted">We will give you tips on how you can go about asking for more compensation.</p>
+			</div>
 		</div>
 	</div>
 </div>
+
+<div class="text-center mb-3 container">
+	<div class="row">
+		<% Company.all.sample(6).each do |company| %>
+			<div class="col-4 col-md-3 col-lg-2 p-3">
+				<a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.url %>" alt="<%= company.name %>"></a>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<hr/>
 
 <div class="container">
 	<div class="lead mb-3 text-center">Offers waiting for some feedback</div>
