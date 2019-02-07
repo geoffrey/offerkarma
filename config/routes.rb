@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get  "offers",                   to: "offers#index"
   get  "offers/new",               to: "offers#new"
   get  "offers/:id",               to: "offers#show", as: "offer"
-  post "offers/:id/votes",         to: "offers#votes"
+  post "offers/:id/votes",         to: "offers#vote", as: "offer_votes"
+  post "offers/:id/comments",      to: "offers#comment", as: "offer_comments"
 end

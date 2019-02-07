@@ -74,8 +74,33 @@
 	</div>
 </div>
 
-<div class="p-4">
-	<div class="container">
-		<div class="text-center lead"><%= @offer.comments.count %> Comments</div>		
+<div class="p-4 border-bottom">
+	<div class="center-box-max-width">
+		<div class="text-center lead mb-3"><%= @offer.comments.count %> Comments</div>		
+
+		<div class="mb-4">	
+			<% @offer.comments.each do |comment| %>
+				<div class="bg-light p-3 rounded border mb-2">
+					<div class="small">
+						<%= comment.user.id %> - <%= time_ago_in_words comment.created_at %> ago
+					</div>
+					<div>
+						<%= comment.text %>	
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<div>
+			<div class="lead mb-3 text-center">
+				Post a new comment
+			</div>
+			<%= form_for :comment, url: offer_comments_path do |f| %>
+				<div class="form-group">
+		      <%= f.text_area :text, class: "form-control", placeholder: "This offer looks great, congrats!", required: "true" %>
+		    </div>
+		    <%= f.submit "Comment", class: "btn btn-block btn-danger" %>
+			<% end %>
+		</div>
 	</div>
 </div>

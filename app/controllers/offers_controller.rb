@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :redirect_to_login_if_needed, only: [:show]
-  before_action :set_offer, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy, :vote, :comment]
 
   # GET /offers
   def index
@@ -49,7 +49,17 @@ class OffersController < ApplicationController
   # POST /offers/:id/votes
   def vote
     @vote = @offer.votes.new(vote_params)
-    @vote.save
+    @vote.user = current_user
+    @vote.save!
+    redirect_to offer_path @offer
+  end
+
+  # POST /offers/:id/comments
+  def comment
+    @comment = @offer.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save!
+    redirect_to offer_path @offer
   end
 
   private
@@ -60,6 +70,10 @@ class OffersController < ApplicationController
 
     def vote_params
       params.require(:vote).permit(:vote)
+    end  
+
+    def comment_params
+      params.require(:comment).permit(:text)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
