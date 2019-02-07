@@ -1,4 +1,6 @@
 class UsersController < ApplicationController	
+  before_action :redirect_if_logged_in, only: [:login, :post_login, :signup, :create]
+
   def login
   end
 
