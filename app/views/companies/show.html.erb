@@ -1,8 +1,12 @@
 <div class="text-center company-header p-4 bg-dark">
 	<h5 class="text-white font-weight-light"><%= @company.name %></h5>
 	
-	<div class="mb-3">
+	<div class="mb-2">
 		<img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
+	</div>
+
+	<div>
+		<a href="//<%= @company.url %>" target="_blank" class="text-white"><%= @company.url %></a>
 	</div>
 </div>
 
@@ -26,17 +30,18 @@
 	</div>
 </div>
 
-<div class="container mt-3">
-	<div class="lead mb-3 text-center">Last offers from <%= @company.name %></div>
-	<div class="row">		
-		<% @offers.each do |offer| %>
-			<div class="col-lg-4 col-md-6 col-12 p-2">
-				<div class="border rounded list-group-item-action">
-					<a href="<%= offer_path offer.id %>" class="list-group-item-action">
-						<%= render partial: "offer_list_item", locals: { offer: offer } %>
-					</a>
+<div class="bg-light p-3 border-bottom">
+	<div class="container p-0">
+		<div class="row">
+			<% @offers.each do |offer| %>
+				<div class="col-lg-4 col-md-6 col-12 p-2">
+					<div class="border rounded list-group-item-action">
+						<a href="<%= offer_path offer.id %>" class="list-group-item-action">
+							<%= render partial: "/offers/offer_list_item", locals: { offer: offer } %>
+						</a>
+					</div>
 				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
