@@ -1,11 +1,9 @@
 <div class="text-center homepage-header p-4 bg-dark">
-	<div class="">
-		<div class="mb-3 lead">
-			<span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
-		</div>
-		<div>
-			<a class="btn btn-lg btn-danger" href="/offers/new">Add an offer</a>
-		</div>
+	<div class="mb-3 lead">
+		<span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
+	</div>
+	<div>
+		<a class="btn btn-lg btn-danger" href="/offers/new">Add an offer</a>
 	</div>
 </div>
 
@@ -26,19 +24,19 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-4 p-2 pl-3 pr-3">
+			<div class="col-md-4 pb-3 pl-3 pr-3">
 				<div class="bg-white p-3">
 					<h6><span class="fa fa-money-bill text-success mr-2"></span> Compensation evaluation</h6>
 					<span class="text-muted font-weight-light">We will let you know if you got low-balled or if your offer is fair.</span>
 				</div>
 			</div>
-			<div class="col-md-4 p-2 pl-3 pr-3">
+			<div class="col-md-4 pb-3 pl-3 pr-3">
 				<div class="bg-white p-3">
 					<h6><span class="fa fa-chart-line text-danger mr-2"></span> Stocks education</h6>
 					<span class="text-muted font-weight-light">We will tell you everything you should ask about stocks before signing.</span>
 				</div>
 			</div>
-			<div class="col-md-4 p-2 pl-3 pr-3">
+			<div class="col-md-4 pl-3 pr-3">
 				<div class="bg-white p-3">
 					<h6><span class="fa fa-handshake text-info mr-2"></span> Negotiation tips</h6>
 					<span class="text-muted font-weight-light">We will give you tips on how you can ask for more compensation.</span> 
@@ -50,6 +48,8 @@
 
 <div class="text-center p-3 border-bottom">
 	<div class="container p-0">
+		<div class="mb-3 text-center">Access recent offers from these companies</div>
+
 		<div class="row">
 			<% Company.all.sample(6).each do |company| %>
 				<div class="col-4 col-xl-2 p-3">
@@ -62,7 +62,7 @@
 
 <div class="bg-light p-3 border-bottom">
 	<div class="container p-0">
-		<div class="lead mb-3 text-center">Offers waiting for some feedback</div>
+		<div class="mb-3 text-center">Create offers, receive & give feedback</div>
 
 		<div class="row">
 			<% @offers.each do |offer| %>
