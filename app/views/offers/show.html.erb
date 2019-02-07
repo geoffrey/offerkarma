@@ -67,16 +67,17 @@
 				</div>
 			</div>
 		</div>
-
-		<% if @offer.notes.present? %>
-			<div class="text-center lead ">Notes</div>
-			<div class="mt-1 bg-white p-3 text-align-justity">
-				<%= @offer.notes %>
-			</div>
-		<% end %>
 	</div>
 </div>
 
+<% if @offer.notes.present? %>
+	<div class="border-bottom bg-light p-3">
+		<div class="mt-1 bg-white p-3 text-align-justity">
+			<%= @offer.notes %>
+		</div>
+	</div>
+<% end %>
+		
 <div class="p-3 border-bottom">
 	<div class="center-box-max-width">
 		<div>
@@ -94,7 +95,7 @@
 
 <div class="p-3 border-bottom">
 	<div class="center-box-max-width">
-		<div class="text-center lead mb-3"><%= @offer.comments.count %> Comments</div>		
+		<div class="text-center mb-3"><%= @offer.comments.count %> Comments</div>		
 
 		<div class="mb-4">	
 			<% @offer.comments.each do |comment| %>
