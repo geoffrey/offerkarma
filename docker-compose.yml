@@ -1,7 +1,7 @@
 version: "3.2"
 
 services:
-  compparator:
+  reffo:
     build: .
     command: ./bin/web
     env_file:

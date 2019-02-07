@@ -8,4 +8,4 @@ build:
 	docker-compose build
 
 shell:
-	docker-compose run --rm compparator bash
+	docker-compose run --rm reffo bash
