@@ -23,24 +23,35 @@
 		</div>
 	</div>
 
-	<div class="border-top text-center text-muted small p-2 ps-1">
-		<span>
-			<%= offer.status %>
-		</span>
-		<span class="mr-3">
-			<span class="far fa-eye"></span> <span class="small"><%= offer.views %></span>
-		</span>
-				
-		<span class="mr-3">
-			<span class="far fa-thumbs-up"></span> <span class="small"><%= offer.votes.up.count %></span>
-		</span>
+	<div class="border-top text-muted small p-2 pr-3 pl-3">
 
-		<span class="mr-3">
-			<span class="far fa-thumbs-down"></span> <span class="error small"><%= offer.votes.down.count %></span>
-		</span>
+		<div class="small d-flex justify-content-between">
+			<div class="font-weight-bold align-self-center text-uppercase text-<%= offer.status_class %>">
+				<%= offer.status %>
+			</div>
 
-		<span>
-			<span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
-		</span>
+			<div>
+				<span class="mr-3">
+					<span class="far fa-eye"></span> <%= offer.views %>
+				</span>
+						
+				<span class="mr-3">
+					<span class="far fa-thumbs-up"></span> <%= offer.votes.up.count %>
+				</span>
+
+				<span class="mr-3">
+					<span class="far fa-thumbs-down"></span> <%= offer.votes.down.count %>
+				</span>
+
+				<span>
+					<span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
+				</span>
+			</div>
+
+			<div>
+				<%= time_ago_in_words offer.created_at %> ago
+			</div>
+		</div>
+		
 	</div>	
 </div>

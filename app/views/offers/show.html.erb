@@ -1,4 +1,4 @@
-<div class="text-center company-header p-4 bg-<%= @offer.job_offer_type_class %>">
+<div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
 	<h5 class="text-white font-weight-light"><%= @offer.company.name %></h5>
 	
 	<div class="mb-3">
@@ -6,12 +6,12 @@
 	</div>
 
 	<div class="text-white font-weight-light">
-		<h5><%= @offer.position %></h5> 
+		<h5><%= @offer.position %> <%= @offer.level %></h5> 
 		<h6><%= @offer.yoe ? @offer.yoe.to_i : "?" %> YOE</h6>
 	</div>
 	
-	<div class="text-white font-weight-light">
-		<%= @offer.status %> offer
+	<div class="mt-4 small text-white font-weight-bold text-uppercase">
+		<%= @offer.status %>
 	</div>
 
 	<div class="small text-light font-weight-light">
