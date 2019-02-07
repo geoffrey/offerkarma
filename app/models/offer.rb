@@ -8,6 +8,7 @@ class Offer < ApplicationRecord
   before_create :set_default_values
 
   validates :status, inclusion: { in: %w(pending accepted rejected) }
+  validates_presence_of :position
 
   def status_class
     return "success" if status == "accepted"

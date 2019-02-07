@@ -1,18 +1,14 @@
 <div>
 	<div class="p-3 d-flex flex-row">
-		<div class="mr-3">
-			<div class="small text-center mb-1">
-				<b><%= offer.company.name %></b>
-			</div>
-
+		<div class="mr-4 align-self-center ">
 			<div>
-				<img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
+				<img width="60px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
 			</div>
 		</div>
 
 		<div>
-			<div class="mb-3">
-				<b><%= offer.position %></b> (<%= offer.level %>) - <b><%= offer.yoe ? offer.yoe.to_i : "?" %></b> YOE
+			<div class="mb-2">
+				<b><%= offer.position %></b> <small><%= offer.level %> <%= offer.yoe ? "#{offer.yoe.to_i} YOE" : "" %></small>
 			</div>
 
 			<div>
