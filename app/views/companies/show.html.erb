@@ -1,5 +1,5 @@
 <div class="text-center company-header p-4 bg-dark">
-	<h5 class="text-white font-weight-light"><%= @company.name %></h5>
+	<h2 class="text-white font-weight-light"><%= @company.name.humanize %></h2>
 	
 	<div class="mb-2">
 		<img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">

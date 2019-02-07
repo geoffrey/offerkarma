@@ -1,16 +1,17 @@
 <div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
-	<h5 class="text-white font-weight-light"><%= @offer.company.name %></h5>
-	
-	<div class="mb-3">
-		<img width="60px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @offer.company.url %>">
+	<div class="text-white font-weight-light mb-3">
+		<h5><%= @offer.position %></h5> 
+		<h6><%= @offer.level %> <%= @offer.yoe ? "#{@offer.yoe.to_i} YOE" : "" %></h6>
 	</div>
 
-	<div class="text-white font-weight-light">
-		<h5><%= @offer.position %> <%= @offer.level %></h5> 
-		<h6><%= @offer.yoe ? @offer.yoe.to_i : "?" %> YOE</h6>
+	<div class="mb-1">
+		<a href="/companies/<%= @offer.company.id %>" class="text-white"><img width="60px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @offer.company.url %>"></a>
 	</div>
+
+	<h5 class="mb-3 text-white font-weight-light"><a href="/companies/<%= @offer.company.id %>" class="text-white"><%= @offer.company.name %></a></h5>
 	
-	<div class="mt-4 small text-white font-weight-bold text-uppercase">
+	<hr>
+	<div class="small text-white font-weight-bold text-uppercase">
 		<%= @offer.status %>
 	</div>
 
@@ -20,17 +21,17 @@
 </div>
 
 <div class="text-center border-bottom p-2">
-	<div class="">
+	<div>
 		<span class="mr-4">
-			<span class="far fa-eye"></span> <span class="small"><%= @offer.views %></span>
+			<span class="far fa-eye"></span> <%= @offer.views %>
 		</span>
 				
-		<span class="mr-2">
-			<span class="far fa-thumbs-up"></span> <span class="small"><%= @offer.votes.up.count %></span>
+		<span class="mr-4">
+			<span class="far fa-thumbs-up"></span> <%= @offer.votes.up.count %>
 		</span>
 
 		<span class="mr-4">
-			<span class="far fa-thumbs-down"></span> <span class="error small"><%= @offer.votes.down.count %></span>
+			<span class="far fa-thumbs-down"></span> <%= @offer.votes.down.count %>
 		</span>
 
 		<span>
@@ -39,28 +40,30 @@
 	</div>
 </div>
 
-<div class="border-bottom p-3 bg-light">
+<div class="border-bottom p-3 bg-dark">
 	<div class="center-box-max-width">
-		<div class="mb-4">
-		 	<div class="text-center border text-white bg-primary rounded p-2 mb-2">
+		<div class="">
+		 	<div class="text-center border bg-light  p-2 mb-3">
 				<div>Total Compensation</div>
 				<div class="lead font-weight-bold">$<%= number_to_human @offer.tc %> / year</div>
 			</div>
 
-			<div class="d-flex flex-row">
-				<div class="text-center bg-success text-white rounded p-2 mr-2">
+			<div class="d-flex mb-3">
+				<div class="flex-fill text-center bg-light  p-2 mr-2">
 					<div>Base <span class="fa fa-money-bill ml-2"></span></div>
 					<div class="lead font-weight-bold">$<%= number_to_human @offer.base_salary %> / year</div>
 				</div>		
 				
-				<div class="text-center bg-success text-white rounded p-2 mr-2">
-					<div>Signon Bonus <span class="fa fa-file-signature ml-2"></span></div>
+				<div class="flex-fill text-center bg-light  p-2 ml-2">
+					<div>Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
 					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %></div>
 				</div>		
+			</div>
 
-				<div class="text-center bg-info text-white rounded p-2">
-					<div>Stocks <span class="fa fa-chart-line ml-2"></span></div>
-					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+			<div class="d-flex flex-row">
+				<div class="flex-fill text-center bg-light  p-2">
+					<div>Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
+					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
 				</div>
 			</div>
 		</div>
@@ -74,15 +77,38 @@
 	</div>
 </div>
 
+<div class="p-3 border-bottom">
+	<div class="center-box-max-width">
+		<div>
+			<div class="d-flex">
+				<div class="flex-fill pr-2">
+					<button type="button" class="btn btn-success btn-block"><span class="fa fa-thumbs-up"></span> Great </button>
+				</div>
+				<div class="flex-fill pl-2">
+					<button type="button" class="btn btn-danger btn-block"><span class="fa fa-thumbs-down"></span> Poor </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="p-4 border-bottom">
 	<div class="center-box-max-width">
 		<div class="text-center lead mb-3"><%= @offer.comments.count %> Comments</div>		
 
 		<div class="mb-4">	
 			<% @offer.comments.each do |comment| %>
-				<div class="bg-light p-3 rounded border mb-2">
-					<div class="small">
-						<%= comment.user.id %> - <%= time_ago_in_words comment.created_at %> ago
+				<div class="bg-light p-3 border-bottom mb-2">
+					<div class="small d-flex justify-content-between">
+						<div>
+							<a href="/companies/<%= comment.user.current_company.id %>"><%= comment.user.current_company.name %></a> - <%= comment.user.username %> 
+						</div>
+
+						<div>
+							<span class="text-muted" title="<%= comment.created_at.strftime('%m/%d/%Y - %r') %>">
+								<%= time_ago_in_words comment.created_at %> ago
+							</span>
+						</div>
 					</div>
 					<div>
 						<%= comment.text %>	
@@ -92,9 +118,6 @@
 		</div>
 
 		<div>
-			<div class="lead mb-3 text-center">
-				Post a new comment
-			</div>
 			<%= form_for :comment, url: offer_comments_path do |f| %>
 				<div class="form-group">
 		      <%= f.text_area :text, class: "form-control", placeholder: "This offer looks great, congrats!", required: "true" %>

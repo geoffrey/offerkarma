@@ -13,7 +13,7 @@
 
 			<div>
 				<span class="text-white bg-success rounded p-2">
-					<b>$<%= number_to_human offer.tc %> / year</b>
+					<b>TC $<%= number_to_human offer.tc %> / year</b>
 				</span>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 			</div>
 
 			<div>
-				<%= time_ago_in_words offer.created_at %> ago
+				<span title="<%= offer.created_at.strftime('%m/%d/%Y - %r') %>"><%= time_ago_in_words offer.created_at %> ago</span>
 			</div>
 		</div>
 		

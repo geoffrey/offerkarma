@@ -12,12 +12,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :votes
 
-  def name
-    id
-  end
-
   def current_company
-    @current_company ||= Company.find(current_company_id)
+    id = current_company_id || Company::REFFO_COMPANY_ID
+    @current_company ||= Company.find(id)
   end
 
   private 

@@ -41,3 +41,8 @@ en:
           billion: B
           trillion: T
           quadrillion: Q
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "1 hour"
+        other: "%{count} hours"
