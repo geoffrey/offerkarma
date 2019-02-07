@@ -1,18 +1,20 @@
 <div>
-	<div class="p-3 d-flex">
-		<div class="mr-4 align-self-center">
+	<div class="p-3 d-flex align-items-center">
+		<div class="mr-4">
 			<div>
 				<img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
 			</div>
 		</div>
 
-		<div class="align-self-center">
-			<div class="mb-1">
+		<div>
+			<div class="mb-2">
 				<b><%= offer.position %></b> <small><%= offer.level %> <%= offer.yoe ? "#{offer.yoe.to_i} YOE" : "" %></small>
 			</div>
 
-			<div class="text-white bg-success rounded p-1 pl-2 pr-2">
-				<b>TC $<%= number_to_human offer.tc %> / year</b>
+			<div>
+				<span class="font-weight-bold text-white bg-success p-2 pt-1 pb-1 rounded">
+					TC $<%= number_to_human offer.tc %> / year
+				</span>
 			</div>
 		</div>
 	</div>
