@@ -1,4 +1,4 @@
-<div class="text-center homepage-header mb-3 p-4 bg-dark">
+<div class="text-center homepage-header p-4 bg-dark">
 	<div class="text-white">
 		<div class="lead">
 			Unleash feedback
@@ -10,39 +10,41 @@
 	</div>
 </div>
 
-<div class="container mt-4 mb-4 clearfix center-box-max-width border p-4 rounded">
-  <% if @user.errors.any? %>
-    <div class="alert alert-danger">
-      <ul class="list-unstyled">
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>      
-    </div>
-  <% end %>
+<div class="bg-light p-4">
+  <div class="container bg-white center-box-max-width border p-4 rounded">
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>      
+      </div>
+    <% end %>
 
-  <%= form_for(@user, url: signup_path) do |f| %>
-    <div class="form-group">
-      <%= f.label :email, value: "Work email" %>
-      <%= f.email_field :email, class: "form-control", placeholder: "bob@apple.com", required: "true" %>
-      <small id="emailHelp" class="form-text text-muted">Using your work email will unlock offers from your company.</small>
-    </div>
+    <%= form_for(@user, url: signup_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, value: "Work email" %>
+        <%= f.email_field :email, class: "form-control", placeholder: "bob@apple.com", required: "true" %>
+        <small id="emailHelp" class="form-text text-muted">Using your work email will unlock offers from your company.</small>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control", required: "true",  pattern: ".{6,}" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control", required: "true",  pattern: ".{6,}" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation, "Confirm password" %>
-      <%= f.password_field :password_confirmation, class: "form-control", required: "true",  pattern: ".{6,}" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm password" %>
+        <%= f.password_field :password_confirmation, class: "form-control", required: "true",  pattern: ".{6,}" %>
+      </div>
 
-    <%= f.submit "Create my account", class: "btn btn-block btn-danger" %>
-  <% end %>
-  <div class="mt-2 text-center">
-    <div>
-      <a href="/login">I already have an account</a>
+      <%= f.submit "Create my account", class: "btn btn-block btn-danger" %>
+    <% end %>
+    <div class="mt-2 text-center">
+      <div>
+        <a href="/login">I already have an account</a>
+      </div>
     </div>
   </div>
 </div>

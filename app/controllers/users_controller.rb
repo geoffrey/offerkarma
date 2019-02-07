@@ -6,10 +6,11 @@ class UsersController < ApplicationController
   	user = User.find_by(email: params[:user][:email].downcase)
     if user && user.authenticate(params[:user][:password])
       log_in user
+      flash[:success] = "You are now logged in."
       redirect_to offers_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'login'
+      flash.now[:danger] = "Invalid email/password combination"
+      render "login"
     end
   end
 
@@ -21,16 +22,19 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "You are now logged in!"
+      p "setting flash"
+      flash[:success] = "You are now logged in."
       redirect_to offers_path
     else
-      render 'signup'
+      flash.now[:danger] = "Invalid email/password combination"
+      render "signup"
     end
   end
 
   def logout
   	log_out
-    redirect_to login_path
+    flash[:warning] = "You have been logged out."
+    redirect_to root_path
   end
 
   private
