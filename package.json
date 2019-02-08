@@ -1,5 +1,7 @@
 {
   "name": "reffo",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@ibm/plex": "^1.2.3"
+  }
 }
