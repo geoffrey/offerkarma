@@ -44,25 +44,30 @@
 	<div class="center-box-max-width">
 		<div class="">
 		 	<div class="text-center border bg-light  p-2 mb-3">
-				<div>Total Compensation</div>
+				<div class="font-weight-light">Total Compensation</div>
 				<div class="lead font-weight-bold">$<%= number_to_human @offer.tc %> / year</div>
 			</div>
 
 			<div class="d-flex mb-3">
 				<div class="flex-fill text-center bg-light  p-2 mr-2">
-					<div>Base <span class="fa fa-money-bill ml-2"></span></div>
+					<div class="font-weight-light">Base <span class="fa fa-money-bill ml-2"></span></div>
 					<div class="lead font-weight-bold">$<%= number_to_human @offer.base_salary %> / year</div>
 				</div>		
 				
 				<div class="flex-fill text-center bg-light  p-2 ml-2">
-					<div>Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
+					<div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
 					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %></div>
 				</div>		
 			</div>
 
 			<div class="d-flex flex-row">
-				<div class="flex-fill text-center bg-light  p-2">
-					<div>Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
+				<div class="flex-fill text-center bg-light p-2 mr-2">
+					<div class="font-weight-light">Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
+					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
+				</div>				
+
+				<div class="flex-fill text-center bg-light p-2 ml-2">
+					<div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-2"></span>	</div>
 					<div class="lead font-weight-bold">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
 				</div>
 			</div>
@@ -72,7 +77,7 @@
 
 <% if @offer.notes.present? %>
 	<div class="border-bottom bg-light p-3">
-		<div class="mt-1 bg-white p-3 text-align-justity">
+		<div class="center-box-max-width bg-white p-3 text-align-justity">
 			<%= @offer.notes %>
 		</div>
 	</div>
