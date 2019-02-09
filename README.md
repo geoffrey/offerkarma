@@ -18,6 +18,18 @@ Console:
 bin/rails c
 ```
 
+### Heroku
+
+- `brew install heroku/brew/heroku`
+- `heroku login`
+- `heroku git:remote -a reffohq`
+
+#### Run command on Heroku:
+
+`heroku run <command>`
+
+E.g.: `heroku run rake db:migrate`
+
 ### Docker
 
 
