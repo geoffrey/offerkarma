@@ -12,6 +12,7 @@ gem "bootstrap", "~> 4.2.1"
 gem "httparty"
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem 'kaminari'
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.2"
