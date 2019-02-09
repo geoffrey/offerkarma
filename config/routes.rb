@@ -3,7 +3,11 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
-  root to: "offers#index"
+  root to: "pages#index"
+
+  get "stocks", to: "pages#stocks"
+  get "negotiate", to: "pages#negotiate"
+  get "referrals", to: "pages#stocks"
 
   get    "login",                    to: "users#login"
   post   "login",                    to: "users#post_login"

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OffersController < ApplicationController
-  before_action :redirect_to_login_if_needed, only: [:show]
+  before_action :redirect_to_login_if_needed, only: [:index, :show]
   before_action :set_offer, only: %i[show edit update destroy vote comment]
 
   # GET /offers

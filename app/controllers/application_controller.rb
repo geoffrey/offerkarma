@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_if_logged_in
+  def redirect_to_offers_if_logged_in
     redirect_to offers_path if logged_in?
   end
 
