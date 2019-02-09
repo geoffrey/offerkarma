@@ -1,7 +1,7 @@
 class CreateOffers < ActiveRecord::Migration[5.2]
   def change
-    create_table :offers do |t|
-      t.references :company, foreign_key: true
+    create_table :offers, id: :uuid do |t|
+      t.references :company, type: :uuid, foreign_key: true
       t.boolean :public
       t.boolean :comments_enabled
       t.boolean :votes_enabled
