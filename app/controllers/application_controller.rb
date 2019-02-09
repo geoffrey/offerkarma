@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def authenticate_admin_user!
+    return true if Rails.env.development?
+
     authenticate_or_request_with_http_basic("admin") do |username, password|
       ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch("ADMIN_USERNAME")) &
         ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch("ADMIN_PASSWORD"))
