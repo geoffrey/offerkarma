@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin_user!
     authenticate_or_request_with_http_basic("admin") do |username, password|
-      ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch['ADMIN_USERNAME']) &
-        ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch['ADMIN_PASSWORD'])
+      ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch["ADMIN_USERNAME"]) &
+        ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch["ADMIN_PASSWORD"])
     end
   end
 
