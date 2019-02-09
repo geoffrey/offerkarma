@@ -51,7 +51,11 @@ class OffersController < ApplicationController
     @vote = @offer.votes.new(vote_params)
     @vote.user = current_user
     @vote.save!
-    redirect_to offer_path @offer
+
+    render json: {
+      upvotes: @offer.votes.up.count,
+      downvotes: @offer.votes.down.count
+    }
   end
 
   # POST /offers/:id/comments
@@ -70,7 +74,7 @@ class OffersController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit(:vote)
+    params.permit(:vote)
   end
 
   def comment_params

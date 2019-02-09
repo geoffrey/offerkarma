@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Offer do
-  index do
-  end
   permit_params :accepted,
                 :base_salary,
                 :bonus_per_year_amount,

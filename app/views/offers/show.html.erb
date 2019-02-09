@@ -27,11 +27,11 @@
     </span>
 
     <span class="mr-4">
-      <span class="far fa-thumbs-up"></span> <%= @offer.votes.up.count %>
+      <span class="far fa-thumbs-up"></span> <span id="upvote-count"><%= @offer.votes.up.count %></span>
     </span>
 
     <span class="mr-4">
-      <span class="far fa-thumbs-down"></span> <%= @offer.votes.down.count %>
+      <span class="far fa-thumbs-down"></span> <span id="downvote-count"><%= @offer.votes.down.count %></span>
     </span>
 
     <span>
@@ -86,10 +86,14 @@
     <div>
       <div class="d-flex">
         <div class="flex-even pr-2">
-          <button type="button" class="btn btn-success btn-block"><span class="fa fa-thumbs-up"></span> Great </button>
+          <%= link_to offer_votes_path(@offer, vote: 1), class: "vote btn btn-success btn-block", method: :post , remote: true do %>
+            <span class="fa fa-thumbs-up"></span> Great!
+          <% end %>
         </div>
         <div class="flex-even pl-2">
-          <button type="button" class="btn btn-danger btn-block"><span class="fa fa-thumbs-down"></span> Poor </button>
+          <%= link_to offer_votes_path(@offer, vote: -1), class: "vote btn btn-danger btn-block", method: :post , remote: true do %>
+            <span class="fa fa-thumbs-down"></span> Poor
+          <% end %>
         </div>
       </div>
     </div>
@@ -131,3 +135,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).on('ajax:success', 'a.vote', function(evnt, status, data, xhr) {
+    debugger
+    console.log(data)
+    $("#upvote-count").text(data.upvotes)
+    $("#downvote-count").text(data.downvotes)
+  });
+</script>
