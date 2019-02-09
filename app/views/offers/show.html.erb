@@ -41,47 +41,45 @@
 </div>
 
 <div class="border-bottom p-3 bg-light">
-	<div class="center-box-max-width">
-		<div class="">
-		 	<div class="text-center border bg-white  p-2 mb-3">
-				<div class="font-weight-light">Total Compensation</div>
-				<div class="lead font-weight-normal">$<%= number_to_human @offer.tc %> / year</div>
-			</div>
+	<div class="center-box-max-width mb-3">
+	 	<div class="text-center border bg-white  p-2 mb-3">
+			<div class="font-weight-light">Total Compensation</div>
+			<div class="lead font-weight-normal">$<%= number_to_human @offer.tc %> / year</div>
+		</div>
 
-			<div class="d-flex mb-3">
-				<div class="flex-even text-center border bg-white p-2 mr-2">
-					<div class="font-weight-light">Base <span class="fa fa-money-bill ml-2"></span></div>
-					<div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
-				</div>		
-				
-				<div class="flex-even text-center border bg-white p-2 ml-2">
-					<div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
-					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
-				</div>		
-			</div>
+		<div class="d-flex mb-3">
+			<div class="flex-even text-center border bg-white p-2 mr-2">
+				<div class="font-weight-light">Base <span class="fa fa-money-bill ml-2"></span></div>
+				<div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
+			</div>		
+			
+			<div class="flex-even text-center border bg-white p-2 ml-2">
+				<div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
+				<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+			</div>		
+		</div>
 
-			<div class="d-flex flex-row">
-				<div class="flex-even text-center border bg-white p-2 mr-2">
-					<div class="font-weight-light">Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
-					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
-				</div>				
+		<div class="d-flex flex-row">
+			<div class="flex-even text-center border bg-white p-2 mr-2">
+				<div class="font-weight-light">Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
+				<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
+			</div>				
 
-				<div class="flex-even text-center border bg-white p-2 ml-2">
-					<div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-2"></span>	</div>
-					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
-				</div>
+			<div class="flex-even text-center border bg-white p-2 ml-2">
+				<div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-2"></span>	</div>
+				<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
 			</div>
 		</div>
 	</div>
+
+	<% if @offer.notes.present? %>
+		<div class="bg-light">
+			<div class="center-box-max-width bg-white border p-3 text-align-justity">
+				<%= @offer.notes %>
+			</div>
+		</div>
+	<% end %>
 </div>
-
-<% if @offer.notes.present? %>
-	<div class="border-bottom bg-light p-3">
-		<div class="center-box-max-width bg-white border p-3 text-align-justity">
-			<%= @offer.notes %>
-		</div>
-	</div>
-<% end %>
 		
 <div class="p-3 border-bottom">
 	<div class="center-box-max-width">
