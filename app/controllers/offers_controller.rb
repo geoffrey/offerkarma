@@ -25,7 +25,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
 
     if @offer.save
-      redirect_to @offer, notice: "Your offer was successfully created."
+      redirect_to @offer, notice: 'Your offer was successfully created.'
     else
       render :new
     end
