@@ -26,7 +26,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">              
+            <ul class="navbar-nav ml-auto">
               <% unless current_user %>
                  <li class="nav-item">
                   <a class="btn btn-sm btn-danger" href="/login">Sign-in</a>
@@ -37,10 +37,10 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/login">My offers</a>
-                </li>     
+                </li>
                 <li class="nav-item">
                   <%= link_to "Log out", logout_path, method: :delete, class: "nav-link text-danger" %>
-                </li>                
+                </li>
               <% end %>
             </ul>
           </div>
@@ -63,7 +63,7 @@
         Made with <span class="text-danger fa fa-heart"></span> in San Francisco
       </div>
       <div class="text-center text-ghost">
-        Logos provided by <a href="https://clearbit.com" target="_blank" class="text-ghost">Clearbit</a>
+        Company logos provided by <a href="https://clearbit.com" target="_blank" class="text-ghost">Clearbit</a>
       </div>
     </footer>
   </body>
