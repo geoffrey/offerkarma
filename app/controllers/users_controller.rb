@@ -22,6 +22,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    user_attr = user_params
+    user_attr[:password_confirmation] = user_attr[:password]
+
     @user = User.new(user_params)
     if @user.save
       log_in @user
