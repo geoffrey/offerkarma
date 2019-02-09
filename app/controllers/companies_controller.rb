@@ -13,6 +13,18 @@ class CompaniesController < ApplicationController
     @offers = @company.offers
   end
 
+  def edit
+    # TODO
+  end
+
+  def update
+    # TODO
+  end
+
+  def destroy
+    # TODO
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
