@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class OffersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,7 +18,7 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create offer" do
-    assert_difference('Offer.count') do
+    assert_difference("Offer.count") do
       post offers_url, params: { offer: { accepted: @offer.accepted, base_salary: @offer.base_salary, bonus_per_year_amount: @offer.bonus_per_year_amount, bonus_per_year_percent: @offer.bonus_per_year_percent, comments_enabled: @offer.comments_enabled, company_id: @offer.company_id, notes: @offer.notes, public: @offer.public, relocation_package: @offer.relocation_package, signon_bonus: @offer.signon_bonus, votes_enabled: @offer.votes_enabled } }
     end
 
@@ -39,7 +41,7 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy offer" do
-    assert_difference('Offer.count', -1) do
+    assert_difference("Offer.count", -1) do
       delete offer_url(@offer)
     end
 

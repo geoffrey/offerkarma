@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Offer < ApplicationRecord
   belongs_to :company
   belongs_to :user
@@ -7,17 +9,18 @@ class Offer < ApplicationRecord
 
   before_create :set_default_values
 
-  validates :status, inclusion: { in: %w(pending accepted rejected) }
-  validates_presence_of :position
+  validates :status, inclusion: { in: %w[pending accepted rejected] }
+  validates :position, presence: true
 
   def status_class
     return "success" if status == "accepted"
     return "danger" if status == "rejected"
+
     "info"
   end
 
   def views
-    rand(10000)
+    rand(10_000)
   end
 
   def tc
@@ -26,15 +29,15 @@ class Offer < ApplicationRecord
 
   def accept!
     self.status = "accepted"
-    self.save!
-  end
-  
-  def reject!
-    self.status = "rejected"
-    self.save!
+    save!
   end
 
-  private 
+  def reject!
+    self.status = "rejected"
+    save!
+  end
+
+  private
 
   def set_default_values
     self.status ||= "pending"

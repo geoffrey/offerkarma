@@ -1,12 +1,13 @@
-class UsersController < ApplicationController	
-  before_action :redirect_if_logged_in, only: [:login, :post_login, :signup, :create]
+# frozen_string_literal: true
 
-  def login
-  end
+class UsersController < ApplicationController
+  before_action :redirect_if_logged_in, only: %i[login post_login signup create]
+
+  def login; end
 
   def post_login
-  	user = User.find_by(email: params[:user][:email].downcase)
-    if user && user.authenticate(params[:user][:password])
+    user = User.find_by(email: params[:user][:email].downcase)
+    if user&.authenticate(params[:user][:password])
       log_in user
       flash[:success] = "You are now logged in."
       redirect_to offers_path
@@ -17,10 +18,10 @@ class UsersController < ApplicationController
   end
 
   def signup
-  	@user = User.new
+    @user = User.new
   end
 
-	def create
+  def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-  	log_out
+    log_out
     flash[:warning] = "You have been logged out."
     redirect_to root_path
   end
@@ -46,6 +47,6 @@ class UsersController < ApplicationController
   end
 
   def email_param
-  	params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end

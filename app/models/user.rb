@@ -1,7 +1,9 @@
-class User < ApplicationRecord
-	has_secure_password
+# frozen_string_literal: true
 
-  before_save { email.downcase! }  
+class User < ApplicationRecord
+  has_secure_password
+
+  before_save { email.downcase! }
 
   validates :password, length: { minimum: 6 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -17,7 +19,7 @@ class User < ApplicationRecord
     @current_company ||= Company.find(id)
   end
 
-  private 
+  private
 
   def set_current_company_id
     company_domain = email.split("@").last
@@ -29,12 +31,12 @@ class User < ApplicationRecord
     companies = JSON.parse(response.body)
     first_company = companies.first
 
-    return unless first_company 
+    return unless first_company
 
     c = Company.find_or_create_by!(url: first_company["domain"]) do |company|
       company.name = first_company["name"]
     end
-    
+
     self.current_company_id = c.id
   end
 end

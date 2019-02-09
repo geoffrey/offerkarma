@@ -1,0 +1,37 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'bin/**/*'
+    - "log/**/*"
+    - "vendor/**/*"
+  DisplayCopNames: true
+
+Rails:
+  Enabled: true
+
+Layout/AlignHash:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

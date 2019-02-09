@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,7 +18,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create company" do
-    assert_difference('Company.count') do
+    assert_difference("Company.count") do
       post companies_url, params: { company: { current_valuation: @company.current_valuation, last_funding_round: @company.last_funding_round, logo_url: @company.logo_url, name: @company.name, public: @company.public } }
     end
 
@@ -39,7 +41,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy company" do
-    assert_difference('Company.count', -1) do
+    assert_difference("Company.count", -1) do
       delete company_url(@company)
     end
 
