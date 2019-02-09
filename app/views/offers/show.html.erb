@@ -49,24 +49,24 @@
 			</div>
 
 			<div class="d-flex mb-3">
-				<div class="flex-fill text-center border bg-white p-2 mr-2">
+				<div class="flex-even text-center border bg-white p-2 mr-2">
 					<div class="font-weight-light">Base <span class="fa fa-money-bill ml-2"></span></div>
 					<div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
 				</div>		
 				
-				<div class="flex-fill text-center border bg-white p-2 ml-2">
+				<div class="flex-even text-center border bg-white p-2 ml-2">
 					<div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-2"></span>	</div>
 					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
 				</div>		
 			</div>
 
 			<div class="d-flex flex-row">
-				<div class="flex-fill text-center border bg-white p-2 mr-2">
+				<div class="flex-even text-center border bg-white p-2 mr-2">
 					<div class="font-weight-light">Stocks <span class="fa fa-chart-line ml-2"></span>	</div>
 					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
 				</div>				
 
-				<div class="flex-fill text-center border bg-white p-2 ml-2">
+				<div class="flex-even text-center border bg-white p-2 ml-2">
 					<div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-2"></span>	</div>
 					<div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %> / year</div>
 				</div>
@@ -87,10 +87,10 @@
 	<div class="center-box-max-width">
 		<div>
 			<div class="d-flex">
-				<div class="flex-fill pr-2">
+				<div class="flex-even pr-2">
 					<button type="button" class="btn btn-success btn-block"><span class="fa fa-thumbs-up"></span> Great </button>
 				</div>
-				<div class="flex-fill pl-2">
+				<div class="flex-even pl-2">
 					<button type="button" class="btn btn-danger btn-block"><span class="fa fa-thumbs-down"></span> Poor </button>
 				</div>
 			</div>
