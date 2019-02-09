@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get  "offers/:id",               to: "offers#show", as: "offer"
   post "offers/:id/votes",         to: "offers#vote", as: "offer_votes"
   post "offers/:id/comments",      to: "offers#comment", as: "offer_comments"
+
+  get "*path", to: redirect("/")
 end
