@@ -1,47 +1,47 @@
 <div class="text-center company-header p-4 bg-dark">
-	<h2 class="text-white font-weight-light"><%= @company.name.humanize %></h2>
-	
-	<div class="mb-2">
-		<img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
-	</div>
+  <h2 class="text-white font-weight-light"><%= @company.name.humanize %></h2>
 
-	<div>
-		<a href="//<%= @company.url %>" target="_blank" class="text-white"><%= @company.url %></a>
-	</div>
+  <div class="mb-2">
+    <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
+  </div>
+
+  <div>
+    <a href="//<%= @company.url %>" target="_blank" class="text-white"><%= @company.url %></a>
+  </div>
 </div>
 
 <div class="text-center border-bottom p-2">
-	<div class="container">
-		<span class="mr-4">
-			<span class="far fa-file-alt"></span> <span class="small"><%= @company.offers.count %></span>
-		</span>
-				
-		<span class="mr-2">
-			<span class="far fa-thumbs-up"></span> <span class="small"><%= @company.offers.count %></span>
-		</span>
+  <div class="container">
+    <span class="mr-4">
+      <span class="far fa-file-alt"></span> <span class="small"><%= @company.offers.count %></span>
+    </span>
 
-		<span class="mr-4">
-			<span class="far fa-thumbs-down"></span> <span class="error small"><%= @company.offers.count %></span>
-		</span>
+    <span class="mr-2">
+      <span class="far fa-thumbs-up"></span> <span class="small"><%= @company.offers.count %></span>
+    </span>
 
-		<span>
-			<span class="fa fa-comments"></span> <%= @company.offers.count %>
-		</span>
-	</div>
+    <span class="mr-4">
+      <span class="far fa-thumbs-down"></span> <span class="error small"><%= @company.offers.count %></span>
+    </span>
+
+    <span>
+      <span class="fa fa-comments"></span> <%= @company.offers.count %>
+    </span>
+  </div>
 </div>
 
 <div class="bg-light p-3 border-bottom">
-	<div class="container p-0">
-		<div class="row">
-			<% @offers.each do |offer| %>
-				<div class="col-lg-4 col-md-6 col-12 p-2">
-					<div class="border rounded list-group-item-action">
-						<a href="<%= offer_path offer.id %>" class="list-group-item-action">
-							<%= render partial: "/offers/offer_list_item", locals: { offer: offer } %>
-						</a>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
+  <div class="container p-0">
+    <div class="row">
+      <% @offers.each do |offer| %>
+        <div class="col-lg-4 col-md-6 col-12 p-2">
+          <div class="border rounded list-group-item-action">
+            <a href="<%= offer_path offer.id %>" class="list-group-item-action">
+              <%= render partial: "/offers/offer_list_item", locals: { offer: offer } %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

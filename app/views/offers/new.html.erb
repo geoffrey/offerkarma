@@ -1,79 +1,79 @@
 <div class="text-center homepage-header p-4 bg-dark">
-	<div class="text-white">
-		<div class="mb-2 lead">
-			Adding a new <span class="bg-white text-danger font-weight-bold p-1">offer↵</span>
-		</div>
-		
-		<div class="small font-weight-light">
-			First, fill in the details about the position.
-		</div>
-	</div>
+  <div class="text-white">
+    <div class="mb-2 lead">
+      Adding a new <span class="bg-white text-danger font-weight-bold p-1">offer↵</span>
+    </div>
+
+    <div class="small font-weight-light">
+      First, fill in the details about the position.
+    </div>
+  </div>
 </div>
 
 <div class="bg-light p-4">
-	<div class="container center-box-max-width bg-white border rounded p-4">
-		
-		<div class="progress mb-4">
-		  <div class="progress-bar bg-danger" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
+  <div class="container center-box-max-width bg-white border rounded p-4">
 
-		<div>
-			<form>
-			  <div class="form-group">
-			  	<div class="ui-widget">
-			  		<label for="company">Company name</label>
-				    <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autofocus required/>
-				  </div>
-				</div>
+    <div class="progress mb-4">
+      <div class="progress-bar bg-danger" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
 
-				<div class="row">
-    			<div class="col-md-6">
-					  <div class="form-group">
-					  	<label for="location">Location</label>
-						  <input name="location" type="text" class="form-control" id="location" aria-describedby="location" placeholder="San Francisco" required/>
-						</div>	
-					</div>
+    <div>
+      <form>
+        <div class="form-group">
+          <div class="ui-widget">
+            <label for="company">Company name</label>
+            <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autofocus required/>
+          </div>
+        </div>
 
-    			<div class="col-md-6">
-					  <div class="form-group">
-					  	<label for="position">Position</label>
-						  <input name="position" type="text" class="form-control" id="position" aria-describedby="position" placeholder="Software Engineer" required/>
-						</div>	
-					</div>
-				</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input name="location" type="text" class="form-control" id="location" aria-describedby="location" placeholder="San Francisco" required/>
+            </div>
+          </div>
 
-				<div class="row">
-    			<div class="col-md-6">
-					  <div class="form-group">
-					  	<label for="level">Level</label>
-						  <input name="level" type="text" class="form-control" id="level" aria-describedby="level" placeholder="L4"/>
-						</div>
-					</div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input name="position" type="text" class="form-control" id="position" aria-describedby="position" placeholder="Software Engineer" required/>
+            </div>
+          </div>
+        </div>
 
-    			<div class="col-md-6">
-						<div class="form-group">
-					  	<label for="yoe">Years of experience (yoe)</label>
-						  <input name="yoe" type="number" class="form-control" id="yoe" aria-describedby="yoe" placeholder="2"/>
-						</div>
-					</div>
-				</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="level">Level</label>
+              <input name="level" type="text" class="form-control" id="level" aria-describedby="level" placeholder="L4"/>
+            </div>
+          </div>
 
-			  <button type="submit" class="btn btn-block btn-danger">Next ></button>
-			</form>
-		</div>
-	</div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="yoe">Years of experience (yoe)</label>
+              <input name="yoe" type="number" class="form-control" id="yoe" aria-describedby="yoe" placeholder="2"/>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-danger">Next ></button>
+      </form>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
-	$('#company').autocomplete({
+  $('#company').autocomplete({
     minLength: 2,
     source: function(request, response) {
-    	url = 'https://autocomplete.clearbit.com/v1/companies/suggest'
-    	query = { query: request.term }
+      url = 'https://autocomplete.clearbit.com/v1/companies/suggest'
+      query = { query: request.term }
       $.getJSON(url, query, response);
     },
     select: function( event, ui ) {
-    	console.log(ui.item.name)
-    	$('#company').val("" + ui.item.name)
+      console.log(ui.item.name)
+      $('#company').val("" + ui.item.name)
     },
   }).autocomplete( 'instance' )._renderItem = function( ul, item ) {
     return $( '<li>' ).append( '<div>' + item.name + ' - ' + item.domain + '</div>' ).appendTo( ul );

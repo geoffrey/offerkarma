@@ -1,122 +1,122 @@
 <div class="text-center homepage-header p-4 bg-dark">
-	<div class="mb-4 lead">
-		<span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
-	</div>
-	<div>
-		<a class="btn btn-lg btn-danger" href="/offers/new">Add an offer</a>
-	</div>
+  <div class="mb-4 lead">
+    <span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
+  </div>
+  <div>
+    <a class="btn btn-lg btn-danger" href="/offers/new">Add an offer</a>
+  </div>
 </div>
 
 <% flash.each do |message_type, message| %>
-	<div class="container">
-		<div class="mt-3 alert alert-<%= message_type %> alert-dismissible fade show"><%= message %>
-	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	    	<span aria-hidden="true">&times;</span>
-	  	</button>
-	  </div>	
-	</div>
+  <div class="container">
+    <div class="mt-3 alert alert-<%= message_type %> alert-dismissible fade show"><%= message %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
 <% end %>
 
 <div class="bg-light text-center border-bottom p-4">
-	<div class="container p-0">
-		<div class="mb-3 lead font-weight-light">
-			<span class="font-weight-bold text-danger">reffo</span> is an anonymous community that empower employees by providing <span class="font-weight-bold text-danger">offer</span> feedback and education.
-		</div>
+  <div class="container p-0">
+    <div class="mb-3 lead font-weight-light">
+      <span class="font-weight-bold text-danger">reffo</span> is an anonymous community that empower employees by providing <span class="font-weight-bold text-danger">offer</span> feedback and education.
+    </div>
 
-		<div class="row">
-			<div class="col-md-6 p-2">
-				<div class="bg-white p-3">
-					<h6 class="mb-3">
-						<span class="fa fa-money-bill text-success mr-1"></span> Compensation evaluation
-					</h6>
-					<p class="text-muted font-weight-light">
-						You are selling your time in exchange of a salary. We think it is important for you to know if you are getting paid fairly and will tell you otherwise.
-					</p>
-					<a href="/offers/new" title="" class="btn btn-outline-success btn-sm">Evaluate my offer</a>
-				</div>
-			</div>
-			<div class="col-md-6 p-2">
-				<div class="bg-white p-3">
-					<h6 class="mb-3">
-						<span class="fa fa-chart-line text-danger mr-1"></span> Stocks education
-					</h6>
-					<p class="text-muted font-weight-light">
-						Stocks are an important part of your compensation and can sometimes be tricky to evaluate. We think it is essential for you to know everything you should ask the company before signing. 
-					</p>
-					<a href="/stocks" title="" class="btn btn-outline-danger btn-sm">Learn about stocks</a>
-				</div>
-			</div>
-		</div>
+    <div class="row">
+      <div class="col-md-6 p-2">
+        <div class="bg-white p-3">
+          <h6 class="mb-3">
+            <span class="fa fa-money-bill text-success mr-1"></span> Compensation evaluation
+          </h6>
+          <p class="text-muted font-weight-light">
+            You are selling your time in exchange of a salary. We think it is important for you to know if you are getting paid fairly and will tell you otherwise.
+          </p>
+          <a href="/offers/new" title="" class="btn btn-outline-success btn-sm">Evaluate my offer</a>
+        </div>
+      </div>
+      <div class="col-md-6 p-2">
+        <div class="bg-white p-3">
+          <h6 class="mb-3">
+            <span class="fa fa-chart-line text-danger mr-1"></span> Stocks education
+          </h6>
+          <p class="text-muted font-weight-light">
+            Stocks are an important part of your compensation and can sometimes be tricky to evaluate. We think it is essential for you to know everything you should ask the company before signing.
+          </p>
+          <a href="/stocks" title="" class="btn btn-outline-danger btn-sm">Learn about stocks</a>
+        </div>
+      </div>
+    </div>
 
-		<div class="row row-eq-height">
-			<div class="col-md-6 p-2">
-				<div class="bg-white p-3">
-					<h6 class="mb-3">
-						<span class="fa fa-handshake text-info mr-1"></span> Negotiation tips
-					</h6>
-					<p class="text-muted font-weight-light">
-						The first offer a company makes is often times below your current market value. We think there is always some room for negotiation and will help you go through it. 
-					</p>
-					<a href="/negotiation" title="" class="btn btn-outline-info btn-sm">How to negotiate</a> 
-				</div>
-			</div>
+    <div class="row row-eq-height">
+      <div class="col-md-6 p-2">
+        <div class="bg-white p-3">
+          <h6 class="mb-3">
+            <span class="fa fa-handshake text-info mr-1"></span> Negotiation tips
+          </h6>
+          <p class="text-muted font-weight-light">
+            The first offer a company makes is often times below your current market value. We think there is always some room for negotiation and will help you go through it.
+          </p>
+          <a href="/negotiation" title="" class="btn btn-outline-info btn-sm">How to negotiate</a>
+        </div>
+      </div>
 
-			<div class="col-md-6 p-2">
-				<div class="bg-white p-3">
-					<h6 class="mb-3">
-						<span class="fa fa-users text-warning mr-1"></span> Referrals <span class="ml-2 badge badge-warning text-white">coming soon</span>
-					</h6>
-					<p class="text-muted font-weight-light">
-						Your dream company isn't noticing your application? We think everybody deserves a chance to get an interview and we'll be happy to refer you whenever possible.
-					</p>
-					<a href="/referrals/new" title="" class="btn btn-outline-warning btn-sm">Refer me</a>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="col-md-6 p-2">
+        <div class="bg-white p-3">
+          <h6 class="mb-3">
+            <span class="fa fa-users text-warning mr-1"></span> Referrals <span class="ml-2 badge badge-warning text-white">coming soon</span>
+          </h6>
+          <p class="text-muted font-weight-light">
+            Your dream company isn't noticing your application? We think everybody deserves a chance to get an interview and we'll be happy to refer you whenever possible.
+          </p>
+          <a href="/referrals/new" title="" class="btn btn-outline-warning btn-sm">Refer me</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="text-center p-3 border-bottom">
-	<div class="container p-0">
-		<div class="mb-3 text-center">Access recent offers from these companies</div>
+  <div class="container p-0">
+    <div class="mb-3 text-center">Access recent offers from these companies</div>
 
-		<div class="row">
-			<% Company.all.sample(6).each do |company| %>
-				<div class="col-4 col-xl-2 p-3">
-					<a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.url %>" alt="<%= company.name %>"></a>
-				</div>
-			<% end %>
-		</div>
-	</div>
+    <div class="row">
+      <% Company.all.sample(6).each do |company| %>
+        <div class="col-4 col-xl-2 p-3">
+          <a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.url %>" alt="<%= company.name %>"></a>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class="bg-light p-3 border-bottom">
-	<div class="container p-0">
-		<div class="mb-3 text-center">Create offers, receive & give feedback</div>
+  <div class="container p-0">
+    <div class="mb-3 text-center">Create offers, receive & give feedback</div>
 
-		<div class="row">
-			<% @offers.each do |offer| %>
-				<div class="col-lg-4 col-md-6 col-12 p-2">
-					<div class="border rounded list-group-item-action">
-						<a href="<%= offer_path offer.id %>" class="list-group-item-action">
-							<%= render partial: "offer_list_item", locals: { offer: offer } %>
-						</a>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
+    <div class="row">
+      <% @offers.each do |offer| %>
+        <div class="col-lg-4 col-md-6 col-12 p-2">
+          <div class="border rounded list-group-item-action">
+            <a href="<%= offer_path offer.id %>" class="list-group-item-action">
+              <%= render partial: "offer_list_item", locals: { offer: offer } %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <% unless current_user %>
-	<div class="text-center homepage-header p-4">
-		<div>
-			<div class="mb-3 lead">
-				Are you ready to unleash feedback?
-			</div>
-			<div>
-				<a class="btn btn-danger" href="/signup">Get started</a>
-			</div>
-		</div>
-	</div>
+  <div class="text-center homepage-header p-4">
+    <div>
+      <div class="mb-3 lead">
+        Are you ready to unleash feedback?
+      </div>
+      <div>
+        <a class="btn btn-danger" href="/signup">Get started</a>
+      </div>
+    </div>
+  </div>
 <% end %>

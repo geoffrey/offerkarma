@@ -4,7 +4,7 @@
 @import "jquery-ui";
 
 body {
-	font-family: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 @-ms-viewport{
@@ -12,20 +12,20 @@ body {
 }
 
 .center-box-max-width {
-	margin: 0 auto;
-	max-width: 600px;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .list-group-item-action {
-	background-color: white;
+  background-color: white;
 }
 
 .underline {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .text-ghost {
-	color: #ccc;
+  color: #ccc;
 }
 
 .flex-even {

@@ -1,53 +1,53 @@
 <div>
-	<div class="p-3 d-flex align-items-center">
-		<div class="mr-4">
-			<div>
-				<img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
-			</div>
-		</div>
+  <div class="p-3 d-flex align-items-center">
+    <div class="mr-4">
+      <div>
+        <img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.url %>">
+      </div>
+    </div>
 
-		<div>
-			<div class="mb-2">
-				<b><%= offer.position %></b> <small><%= offer.level %> <%= offer.yoe ? "#{offer.yoe.to_i} YOE" : "" %></small>
-			</div>
+    <div>
+      <div class="mb-2">
+        <b><%= offer.position %></b> <small><%= offer.level %> <%= offer.yoe ? "#{offer.yoe.to_i} YOE" : "" %></small>
+      </div>
 
-			<div>
-				<span class="font-weight-bold text-white bg-success p-2 pt-1 pb-1 rounded">
-					TC $<%= number_to_human offer.tc %> / year
-				</span>
-			</div>
-		</div>
-	</div>
+      <div>
+        <span class="font-weight-bold text-white bg-success p-2 pt-1 pb-1 rounded">
+          TC $<%= number_to_human offer.tc %> / year
+        </span>
+      </div>
+    </div>
+  </div>
 
-	<div class="border-top text-muted small p-2 pr-3 pl-3">
+  <div class="border-top text-muted small p-2 pr-3 pl-3">
 
-		<div class="small d-flex justify-content-between">
-			<div class="font-weight-bold align-self-center text-uppercase text-<%= offer.status_class %>">
-				<%= offer.status %>
-			</div>
+    <div class="small d-flex justify-content-between">
+      <div class="font-weight-bold align-self-center text-uppercase text-<%= offer.status_class %>">
+        <%= offer.status %>
+      </div>
 
-			<div>
-				<span class="mr-3">
-					<span class="far fa-eye"></span> <%= offer.views %>
-				</span>
-						
-				<span class="mr-3">
-					<span class="far fa-thumbs-up"></span> <%= offer.votes.up.count %>
-				</span>
+      <div>
+        <span class="mr-3">
+          <span class="far fa-eye"></span> <%= offer.views %>
+        </span>
 
-				<span class="mr-3">
-					<span class="far fa-thumbs-down"></span> <%= offer.votes.down.count %>
-				</span>
+        <span class="mr-3">
+          <span class="far fa-thumbs-up"></span> <%= offer.votes.up.count %>
+        </span>
 
-				<span>
-					<span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
-				</span>
-			</div>
+        <span class="mr-3">
+          <span class="far fa-thumbs-down"></span> <%= offer.votes.down.count %>
+        </span>
 
-			<div>
-				<span title="<%= offer.created_at.strftime('%m/%d/%Y - %r') %>"><%= time_ago_in_words offer.created_at %> ago</span>
-			</div>
-		</div>
-		
-	</div>	
+        <span>
+          <span class="fa fa-comments text-muted"></span> <%= offer.comments.count %>
+        </span>
+      </div>
+
+      <div>
+        <span title="<%= offer.created_at.strftime('%m/%d/%Y - %r') %>"><%= time_ago_in_words offer.created_at %> ago</span>
+      </div>
+    </div>
+
+  </div>
 </div>
