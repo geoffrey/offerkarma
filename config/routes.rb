@@ -26,6 +26,4 @@ Rails.application.routes.draw do
       post :comments
     end
   end
-
-  get "*path", to: redirect("/")
 end
