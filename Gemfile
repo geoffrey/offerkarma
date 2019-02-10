@@ -9,16 +9,18 @@ gem "activeadmin"
 gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.2.1"
+gem "default_value_for", "~> 3.1"
 gem "httparty"
 gem "jquery-rails"
 gem "jquery-ui-rails"
-gem 'kaminari'
+gem "kaminari", "~> 1.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.2"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "validate_url", "~> 1.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

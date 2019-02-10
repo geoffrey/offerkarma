@@ -3,16 +3,16 @@
 class User < ApplicationRecord
   has_secure_password
 
-  before_save { email.downcase! }
-
   validates :password, length: { minimum: 6 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
 
-  has_many :offers
-  has_many :comments
-  has_many :votes
+  has_many :offers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
+
+  before_save { email.downcase! }
 
   def current_company
     id = current_company_id || Company.first.id
