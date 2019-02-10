@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for signing up, <%= @user.username %>!</h1>
+    <p>Please click this <a href="#{ENV.fetch(REFFO_BASE_URL)/users/verify_email}">link<a/> to verify your email!</p>
+  </body>
+</html>

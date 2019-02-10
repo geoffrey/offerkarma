@@ -23,16 +23,19 @@ class UsersController < ApplicationController
     end
   end
 
+  # Set user on signup page.
   def signup
     @user = User.new
   end
 
+  # Actually process the sign up.
   def create
     user_attr = user_params
     user_attr[:password_confirmation] = user_attr[:password]
 
     @user = User.new(user_params)
     if @user.save
+      UserNotifierMailer.send_signup_email(@user).deliver
       log_in @user
       redirect_back
     else
