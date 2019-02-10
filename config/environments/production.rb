@@ -31,7 +31,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and `config.assets.version`
+  # have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -49,7 +50,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -97,12 +98,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: 'geoffrey@reffo.us' }
+  config.action_mailer.default_options = { from: "geoffrey@reffo.us" }
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch('SENDGRID_USERNAME'),
-    password: ENV.fetch('SENDGRID_PASSWORD'),
-    domain: 'reffo.us',
-    address:'smtp.sendgrid.net',
+    user_name: ENV.fetch("SENDGRID_USERNAME"),
+    password: ENV.fetch("SENDGRID_PASSWORD"),
+    domain: "reffo.us",
+    address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
     enable_starttls_auto: true
