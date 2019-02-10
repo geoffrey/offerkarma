@@ -5,7 +5,6 @@
   </head>
   <body>
     <h1>Thanks for signing up, <%= @user.username %>!</h1>
-    <p>Thanks for joining and have a great day! Now sign in and do
-awesome things!</p>
+    <p>Please click this <a href="#{ENV.fetch(REFFO_BASE_URL)/users/verify_email}">link<a/> to verify your email!</p>
   </body>
 </html>

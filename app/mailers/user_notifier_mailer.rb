@@ -4,6 +4,6 @@ class UserNotifierMailer < ApplicationMailer
  # send a signup email to the user
  def send_signup_email(user)
    @user = user
-   mail(to: @user.email, subject: 'Thanks for signing up for our amazing app')
+   mail(to: @user.email, subject: 'Thanks for signing up for reffo!')
  end
 end
