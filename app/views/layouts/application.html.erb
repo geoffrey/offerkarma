@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render "layouts/analytics" %>
+    <%= render "layouts/analytics" if Rails.env.production? %>
 
     <title>reffo - offer feedback community</title>
 

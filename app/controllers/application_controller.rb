@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
   include SessionsHelper
+
+  protect_from_forgery with: :exception
+
+  before_action :store_return_to
 
   def authenticate_admin_user!
     return true if Rails.env.development?
@@ -11,6 +14,10 @@ class ApplicationController < ActionController::Base
       ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch("ADMIN_USERNAME")) &
         ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch("ADMIN_PASSWORD"))
     end
+  end
+
+  def redirect_back_or_default
+    redirect_to(session[:return_to] || root_path)
   end
 
   def redirect_to_offers_if_logged_in

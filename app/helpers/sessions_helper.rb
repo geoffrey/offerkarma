@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module SessionsHelper
+  def store_return_to
+    session[:return_to] = request.url
+  end
+
   def log_in(user)
     session[:user_id] = user.id
   end

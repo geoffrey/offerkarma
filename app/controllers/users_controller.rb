@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  skip_before_action :store_return_to
   before_action :redirect_to_offers_if_logged_in, only: %i[login post_login signup create]
 
   def login; end
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
     if user&.authenticate(params[:user][:password])
       log_in user
       flash[:success] = "You are now logged in."
-      redirect_to offers_path
+      redirect_back_or_default
     else
       flash.now[:danger] = "Invalid email/password combination"
       render "login"
@@ -28,8 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      p "setting flash"
-      redirect_to offers_path
+      redirect_back_or_default
     else
       flash.now[:danger] = "Invalid email/password combination"
       render "signup"
