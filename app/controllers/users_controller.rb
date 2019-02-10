@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  skip_before_action :store_return_to
+  skip_before_action :store_return_to, except: %i[account]
+  before_action :redirect_to_login_if_needed, only: %i[account]
   before_action :redirect_to_offers_if_logged_in, only: %i[login post_login signup create]
+
+  def account
+    @offers = current_user.offers
+  end
 
   def login; end
 

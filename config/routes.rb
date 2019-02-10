@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get    "signup",                   to: "users#signup"
   post   "signup",                   to: "users#create"
   delete "logout",                   to: "users#logout"
+  get    "account",                  to: "users#account"
 
   get  "companies/:id",            to: "companies#show"
   get  "companies/:id/offers/new", to: "offers#new"

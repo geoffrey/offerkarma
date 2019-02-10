@@ -7,12 +7,11 @@ class Offer < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :status, inclusion: { in: %w[pending accepted rejected] }
   validates :position, presence: true
   validates :base_salary, :bonus_per_year_amount, :signon_bonus, :relocation_package,
-            inclusion: 100..10_000_000
-  validates :bonus_per_year_percent, inclusion: 0..100
-  validates :yoe, inclusion: 0..99
+            inclusion: 100..10_000_000, allow_nil: true
+  validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
+  validates :yoe, inclusion: 0..99, allow_nil: true
 
   enum status: %i[accepted rejected pending]
 
