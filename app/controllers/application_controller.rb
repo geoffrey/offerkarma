@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_back_or_default
-    redirect_to(session[:return_to] || root_path)
+  def redirect_back
+    redirect_to(session[:return_to] || offers_path)
   end
 
   def redirect_to_offers_if_logged_in

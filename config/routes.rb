@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get "stocks", to: "pages#stocks"
   get "negotiate", to: "pages#negotiate"
-  get "referrals", to: "pages#stocks"
+  get "referrals", to: "pages#referrals"
 
   get    "login",                    to: "users#login"
   post   "login",                    to: "users#post_login"

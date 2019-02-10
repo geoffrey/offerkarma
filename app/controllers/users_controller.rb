@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if user&.authenticate(params[:user][:password])
       log_in user
       flash[:success] = "You are now logged in."
-      redirect_back_or_default
+      redirect_back
     else
       flash.now[:danger] = "Invalid email/password combination"
       render "login"
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_back_or_default
+      redirect_back
     else
       flash.now[:danger] = "Invalid email/password combination"
       render "signup"
@@ -43,7 +43,6 @@ class UsersController < ApplicationController
 
   def logout
     log_out
-    flash[:warning] = "You have been logged out."
     redirect_to root_path
   end
 
