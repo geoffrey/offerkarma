@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: "pages#index"
 
-  get "stocks", to: "pages#stocks"
+  get "equity",    to: "pages#equity"
   get "negotiate", to: "pages#negotiate"
   get "referrals", to: "pages#referrals"
 

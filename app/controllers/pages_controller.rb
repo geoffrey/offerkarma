@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @offers = Offer.includes(:company, :votes, :comments).last(10)
   end
 
-  def stocks
+  def equity
   end
 
   def referrals
