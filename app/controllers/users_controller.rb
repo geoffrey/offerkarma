@@ -29,18 +29,12 @@ class UsersController < ApplicationController
 
   # Actually process the sign up.
   def create
-    user_attr = user_params
-    user_attr[:password_confirmation] = user_attr[:password]
-
-    @user = User.new(user_params)
-    if @user.save
-      UserNotifierMailer.send_signup_email(@user).deliver
-      log_in @user
-      redirect_back
-    else
-      flash.now[:danger] = "Invalid email/password combination"
-      render "signup"
-    end
+    @user = Services.user_registration.sign_up(user_attrs: user_params)
+    log_in @user
+    redirect_back
+  rescue Users::Registration::UserCreationError
+    flash.now[:danger] = "Invalid email/password combination"
+    render "signup"
   end
 
   def logout
