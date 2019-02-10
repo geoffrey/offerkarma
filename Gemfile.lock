@@ -322,7 +322,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   default_value_for (~> 3.1)
-  devise
+  devise (~> 4.6.0)
   httparty
   jquery-rails
   jquery-ui-rails
