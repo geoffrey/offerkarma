@@ -8,4 +8,4 @@ build:
 	docker-compose build
 
 shell:
-	docker-compose run --rm reffo bash
+	docker-compose run --rm -p "9000:3000" reffo bash
