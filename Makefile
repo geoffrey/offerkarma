@@ -1,11 +1,11 @@
 up:
-  docker-compose up
+	docker-compose up
 
 down:
-  docker-compose down
+	docker-compose down
 
 build:
-  docker-compose build
+	docker-compose build
 
 shell:
-  docker-compose run --rm reffo bash
+	docker-compose run --rm reffo bash
