@@ -16,17 +16,16 @@ Rails.application.routes.draw do
   delete "logout",                   to: "users#logout"
   get    "account",                  to: "users#account"
 
-  get  "companies/:id",            to: "companies#show"
-  get  "companies/:id/offers/new", to: "offers#new"
-  post "companies/:id/offers",     to: "offers#create"
+  resources :companies, only: [:show] do
+    resources :offers, only: %i[new create]
+  end
 
-  get  "offers",                   to: "offers#index"
-  get  "offers/new",               to: "offers#new"
-  get  "offers/:id",               to: "offers#show", as: "offer"
-  put  "offers/:id",               to: "offers#update"
-  get  "offers/:id/edit",          to: "offers#edit"
-  post "offers/:id/votes",         to: "offers#vote", as: "offer_votes"
-  post "offers/:id/comments",      to: "offers#comment", as: "offer_comments"
+  resources :offers, only: %i[index new show] do
+    member do
+      post :vote
+      post :comments
+    end
+  end
 
   get "*path", to: redirect("/")
 end
