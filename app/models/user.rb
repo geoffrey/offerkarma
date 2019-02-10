@@ -15,8 +15,16 @@ class User < ApplicationRecord
   has_many :votes
 
   def current_company
-    id = current_company_id || Company::REFFO_COMPANY_ID
+    id = current_company_id || Company.first.id
     @current_company ||= Company.find(id)
+  end
+
+  def upvoted?(offer)
+    offer.votes.up.where(user: self).exists?
+  end
+
+  def downvoted?(offer)
+    offer.votes.down.where(user: self).exists?
   end
 
   private

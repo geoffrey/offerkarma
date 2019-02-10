@@ -48,9 +48,14 @@ class OffersController < ApplicationController
 
   # POST /offers/:id/votes
   def vote
-    @vote = @offer.votes.new(vote_params)
-    @vote.user = current_user
-    @vote.save!
+    vote = @offer.votes.find_or_create_by!(user: current_user)
+
+    if vote.vote == params[:vote].to_i
+      vote.delete
+    else
+      vote.vote = params[:vote]
+      vote.save!
+    end
 
     render json: {
       upvotes: @offer.votes.up.count,

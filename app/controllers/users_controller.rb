@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       p "setting flash"
-      flash[:success] = "You are now logged in."
       redirect_to offers_path
     else
       flash.now[:danger] = "Invalid email/password combination"
