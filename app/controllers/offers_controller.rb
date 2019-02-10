@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class OffersController < ApplicationController
-  before_action :redirect_to_login_if_needed, only: [:index, :show]
-  before_action :set_offer, only: %i[show edit update destroy vote comment]
+  before_action :redirect_to_login_if_needed, only: %i[index show]
+  before_action :set_offer, only: %i[show vote comment]
+  before_action :set_own_offer, only: %i[edit update destroy]
 
   # GET /offers
   def index
@@ -25,7 +26,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
 
     if @offer.save
-      redirect_to @offer, notice: 'Your offer was successfully created.'
+      redirect_to @offer
     else
       render :new
     end
@@ -34,7 +35,7 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   def update
     if @offer.update(offer_params)
-      redirect_to @offer, notice: "Your offer was successfully updated."
+      redirect_to @offer
     else
       render :edit
     end
@@ -70,7 +71,10 @@ class OffersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def set_own_offer
+    @offer = current_user.offers.find(params[:id])
+  end
+
   def set_offer
     @offer = Offer.find(params[:id])
   end

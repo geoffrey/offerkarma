@@ -1,3 +1,8 @@
+<% if @offer.user == current_user %>
+  <div class="p-2 text-center alert alert-warning mb-0">
+    <a class="small text-uppercase text-dark" href="/offers/<%= @offer.id %>/edit">Edit my offer</a>
+  </div>
+<% end %>
 <div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
   <div class="text-white font-weight-light mb-3">
     <h5><%= @offer.position %></h5>
