@@ -57,10 +57,7 @@ class OffersController < ApplicationController
       vote.save!
     end
 
-    render json: {
-      upvotes: @offer.votes.up.count,
-      downvotes: @offer.votes.down.count
-    }
+    redirect_to offer_path @offer
   end
 
   # POST /offers/:id/comments
