@@ -73,7 +73,7 @@
     <div class="row">
       <% Company.all.sample(6).each do |company| %>
         <div class="col-4 col-xl-2 p-3">
-          <a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.url %>" alt="<%= company.name %>"></a>
+          <a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.domain %>" alt="<%= company.name %>"></a>
         </div>
       <% end %>
     </div>

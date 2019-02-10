@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
     return unless first_company
 
-    c = Company.find_or_create_by!(url: first_company["domain"]) do |company|
+    c = Company.find_or_create_by!(domain: first_company["domain"]) do |company|
       company.name = first_company["name"]
     end
 

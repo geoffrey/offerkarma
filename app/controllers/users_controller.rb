@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:user][:email].downcase)
     if user&.authenticate(params[:user][:password])
       log_in user
-      flash[:success] = "You are now logged in."
       redirect_back
     else
       flash.now[:danger] = "Invalid email/password combination"

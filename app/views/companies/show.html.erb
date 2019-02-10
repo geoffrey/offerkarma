@@ -2,11 +2,11 @@
   <h2 class="text-white font-weight-light"><%= @company.name.humanize %></h2>
 
   <div class="mb-2">
-    <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.url %>">
+    <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.domain %>">
   </div>
 
   <div>
-    <a href="//<%= @company.url %>" target="_blank" class="text-white"><%= @company.url %></a>
+    <a href="//<%= @company.domain %>" target="_blank" class="text-white"><%= @company.domain %></a>
   </div>
 </div>
 
