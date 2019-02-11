@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Offer < ApplicationRecord
+  acts_as_punchable
+
   belongs_to :company
   belongs_to :user
 
@@ -25,7 +27,7 @@ class Offer < ApplicationRecord
   end
 
   def views
-    rand(10_000)
+    hits
   end
 
   def tc
