@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_075327) do
+ActiveRecord::Schema.define(version: 2019_02_11_021646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -65,8 +65,10 @@ ActiveRecord::Schema.define(version: 2019_02_10_075327) do
     t.datetime "updated_at", null: false
     t.uuid "current_company_id"
     t.string "password_digest"
+    t.string "confirmation_digest"
+    t.datetime "confirmed_at"
     t.index ["current_company_id"], name: "index_users_on_current_company_id"
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   create_table "votes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
