@@ -73,7 +73,7 @@
     <div class="row">
       <% Company.all.sample(6).each do |company| %>
         <div class="col-4 col-xl-2 p-3">
-          <a href="/companies/<%= company.id %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.domain %>" alt="<%= company.name %>"></a>
+          <a href="<%= company_path company.uuid %>"><img width="60px" class=" rounded" src="//logo.clearbit.com/<%= company.domain %>" alt="<%= company.name %>"></a>
         </div>
       <% end %>
     </div>
@@ -88,7 +88,7 @@
       <% @offers.each do |offer| %>
         <div class="col-lg-4 col-md-6 col-12 p-2">
           <div class="border rounded list-group-item-action">
-            <a href="<%= offer_path offer.id %>" class="list-group-item-action">
+            <a href="<%= offer_path offer.uuid %>" class="list-group-item-action">
               <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
             </a>
           </div>

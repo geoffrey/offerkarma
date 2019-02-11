@@ -2,7 +2,7 @@
 
 class OffersController < ApplicationController
   before_action :redirect_to_login_if_needed, only: %i[index show]
-  before_action :set_offer, only: %i[show vote comment]
+  before_action :set_offer, only: %i[show vote comments]
   before_action :set_own_offer, only: %i[edit update destroy]
 
   # GET /offers
@@ -60,25 +60,25 @@ class OffersController < ApplicationController
       vote.save!
     end
 
-    redirect_to offer_path @offer
+    redirect_to offer_path @offer.uuid
   end
 
   # POST /offers/:id/comments
-  def comment
+  def comments
     @comment = @offer.comments.new(comment_params)
     @comment.user = current_user
     @comment.save!
-    redirect_to offer_path @offer
+    redirect_to offer_path @offer.uuid
   end
 
   private
 
   def set_own_offer
-    @offer = current_user.offers.find(params[:id])
+    @offer = current_user.offers.find_by_uuid!(params[:id])
   end
 
   def set_offer
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find_by_uuid!(params[:id])
   end
 
   def vote_params
