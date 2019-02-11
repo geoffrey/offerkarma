@@ -1,3 +1,16 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui-autocomplete {
+  width: 1px;
+  padding-left: 0px;
+}
+
+.ui-autocomplete > li {
+    border: 1px solid #ededed;
+    background-color: white;
+    :hover {
+        cursor: pointer;
+    }
+}
