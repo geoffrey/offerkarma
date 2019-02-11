@@ -19,10 +19,12 @@
 
     <div>
       <form>
-        <div class="form-group">
-          <div class="ui-widget">
-            <label for="company">Company name</label>
-            <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autocomplete="off" required/>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="company">Company name</label>
+              <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autocomplete="off" required/>
+            </div>
           </div>
         </div>
 
@@ -83,8 +85,10 @@
       results: function() {}
     }
   }).autocomplete('instance')._renderItem = function(ul, item) {
-    return $('<li>')
-      .append('<span><img src="' + item.logo + '?size=25" class="mr-2" /><span>'+item.name+'</span><span class="text-muted">' + item.domain + '</span>')
+    ul.addClass('list-group')
+
+    return $('<li class="d-flex list-group-item">')
+      .append('<div class="mr-auto"><img src="' + item.logo + '?size=20" class="mr-2" />'+item.name+'</div><div class="ml-auto text-muted">' + item.domain + '</div>')
       .appendTo(ul);
   };
 </script>

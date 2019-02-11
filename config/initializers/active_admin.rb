@@ -122,9 +122,10 @@ ActiveAdmin.setup do |config|
   #
   # You can completely disable comments:
   config.comments = false
+
   #
   # You can change the name under which comments are registered:
-  # config.comments_registration_name = 'AdminComment'
+  config.comments_registration_name = 'AdminComment'
   #
   # You can change the order for the comments and you can change the column
   # to be used for ordering:

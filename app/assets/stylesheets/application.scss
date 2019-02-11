@@ -1,9 +1,7 @@
 @import "bootstrap";
 @import "companies";
 @import "offers";
-@import "jquery-ui/core";
-@import "jquery-ui/theme";
-@import "jquery-ui/autocomplete";
+
 
 @-ms-viewport{
   width: device-width;
@@ -28,4 +26,8 @@
 
 .flex-even {
   flex: 1;
+}
+
+.ui-autocomplete {
+  max-width: 400px
 }
