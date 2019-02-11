@@ -63,13 +63,5 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.default_options = { from: 'geoffrey@reffo.us' }
-  config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch('SENDGRID_USERNAME'),
-    password: ENV.fetch('SENDGRID_PASSWORD'),
-    domain: 'reffo.us',
-    address:'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 end

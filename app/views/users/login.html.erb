@@ -30,8 +30,7 @@
         </small>
       </div>
 
-      <%= f.submit "Login", class: "btn btn-block btn-danger" %>
-
+      <%= invisible_recaptcha_tags text: "Login", class: "btn btn-block btn-danger" %>
     <% end %>
 
     <div class="mt-2 text-center">

@@ -22,7 +22,7 @@
         <div class="form-group">
           <div class="ui-widget">
             <label for="company">Company name</label>
-            <input name="company" type="text" class="form-control" id="company" aria-describedby="company" placeholder="Google" autofocus required/>
+            <input name="company" type="text" class="ui-autocomplete-input form-control" id="company" aria-describedby="company" placeholder="Google" autocomplete="off" required/>
           </div>
         </div>
 
@@ -66,19 +66,18 @@
 
 <script type="text/javascript">
   $('#company').autocomplete({
-    minChars: 1,
-    source: function(request, response){
-      $.getJSON('https://autocomplete.clearbit.com/v1/companies/suggest', { query: request.term }, function(data){ response(data); });
+    minChars: 2,
+    source: function(req, res){
+      $.getJSON('https://autocomplete.clearbit.com/v1/companies/suggest', { query: req.term }, function(data){ res(data); });
     },
     select: function(event, ui){
       $('#company').val(ui.item.name);
       return false;
     }
-  }).autocomplete('instance')._renderItem = function (ul, item) {
+  }).autocomplete('instance')._renderItem = function(ul, item) {
     return $('<li class="dropdown-item">')
       .append('<img src="' + item.logo + '?size=25" class="mr-2" />')
       .append('<span>' + item.name + ' <span class="ml-2 text-muted">' + item.domain + '</span></span>')
       .appendTo(ul);
   };
-
 </script>

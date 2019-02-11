@@ -4,21 +4,17 @@ module Users
   class Registration
     class UserCreationError < StandardError; end
 
-    def sign_up(user_attrs:)
-      create_user(user_attrs).tap do |user|
-        send_confirmation_email(user)
-      end
+    def sign_up(user:)
+      create_user(user)
+      send_confirmation_email(user)
+      user
     end
 
     private
 
-    def create_user(user_attrs)
-      # TODO: hack to be removed when migration to devise is complete
-      user_attrs[:password_confirmation] = user_attrs[:password]
-      user = User.create!(user_attrs)
+    def create_user(user)
+      user.save
       raise UserCreationError.new unless user.persisted?
-
-      user
     end
 
     def send_confirmation_email(user)

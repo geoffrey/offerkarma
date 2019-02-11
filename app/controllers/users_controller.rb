@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def post_login
     user = User.find_by(email: params[:user][:email].downcase)
+    verify_recaptcha!(model: user, env: Rails.env)
     if user&.authenticate(params[:user][:password])
       log_in user
       redirect_back
@@ -29,7 +30,11 @@ class UsersController < ApplicationController
 
   # Actually process the sign up.
   def create
-    @user = Services.user_registration.sign_up(user_attrs: user_params)
+    user_attr = user_params
+    user_attr[:password_confirmation] = user_attr[:password]
+    @user = User.new(user_attr)
+    verify_recaptcha!(model: @user, env: Rails.env)
+    Services.user_registration.sign_up(user: @user)
     log_in @user
     redirect_back
   rescue Users::Registration::UserCreationError
