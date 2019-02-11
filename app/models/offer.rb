@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Offer < ApplicationRecord
+  is_impressionable
+
   belongs_to :company
   belongs_to :user
 
@@ -32,7 +34,7 @@ class Offer < ApplicationRecord
   end
 
   def views
-    hits
+    impressionist_count
   end
 
   def stock_value

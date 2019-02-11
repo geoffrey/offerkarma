@@ -11,6 +11,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.2.1"
 gem "default_value_for", "~> 3.1"
 gem "httparty"
+gem 'impressionist'
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "kaminari", "~> 1.0"

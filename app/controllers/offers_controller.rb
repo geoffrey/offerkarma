@@ -12,6 +12,7 @@ class OffersController < ApplicationController
 
   # GET /offers/1
   def show
+    impressionist @offer
   end
 
   # GET /offers/new
