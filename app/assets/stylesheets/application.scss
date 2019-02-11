@@ -1,7 +1,9 @@
 @import "bootstrap";
 @import "companies";
 @import "offers";
-@import "jquery-ui";
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
+@import "jquery-ui/autocomplete";
 
 @-ms-viewport{
   width: device-width;
