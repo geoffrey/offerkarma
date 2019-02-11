@@ -20,5 +20,5 @@ ActiveAdmin.register Offer do
     :stock_strike_price,
     :user,
     :votes_enabled,
-:yoe
+    :yoe
 end
