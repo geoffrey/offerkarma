@@ -13,6 +13,9 @@ class Offer < ApplicationRecord
   validates :base_salary, :signon_bonus, :relocation_package,
             inclusion: 100..10_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
+  validates :stock_strike_price, inclusion: 0..1000, allow_nil: true
+  validates :stock_fair_market_value, inclusion: 0..1_000, allow_nil: true
+  validates :stock_count, inclusion: 0..1_000_000, allow_nil: true
   validates :yoe, inclusion: 0..99, allow_nil: true
 
   enum scope: %i[public_scope private_scope]

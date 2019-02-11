@@ -87,8 +87,8 @@
   }).autocomplete('instance')._renderItem = function(ul, item) {
     ul.addClass('list-group')
 
-    return $('<li class="d-flex list-group-item">')
-      .append('<div class="mr-auto"><img src="' + item.logo + '?size=20" class="mr-2" />'+item.name+'</div><div class="ml-auto text-muted">' + item.domain + '</div>')
+    return $('<li class="d-flex list-group-item list-group-item-action">')
+      .append('<div class="mr-auto"><img src="' + item.logo + '?size=20" class="mr-2" />'+item.name+'</div><div class="ml-auto small text-muted">' + item.domain + '</div>')
       .appendTo(ul);
   };
 </script>
