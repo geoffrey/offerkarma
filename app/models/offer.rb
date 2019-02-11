@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Offer < ApplicationRecord
-  acts_as_punchable
-
   belongs_to :company
   belongs_to :user
 

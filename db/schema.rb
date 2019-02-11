@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_224758) do
+ActiveRecord::Schema.define(version: 2019_02_11_232013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -62,17 +62,6 @@ ActiveRecord::Schema.define(version: 2019_02_11_224758) do
     t.float "stock_fair_market_value"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
-  end
-
-  create_table "punches", id: :serial, force: :cascade do |t|
-    t.integer "punchable_id", null: false
-    t.string "punchable_type", limit: 20, null: false
-    t.datetime "starts_at", null: false
-    t.datetime "ends_at", null: false
-    t.datetime "average_time", null: false
-    t.integer "hits", default: 1, null: false
-    t.index ["average_time"], name: "index_punches_on_average_time"
-    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
   create_table "users", force: :cascade do |t|

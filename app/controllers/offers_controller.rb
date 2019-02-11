@@ -12,7 +12,6 @@ class OffersController < ApplicationController
 
   # GET /offers/1
   def show
-    @offer.punch(request)
   end
 
   # GET /offers/new
