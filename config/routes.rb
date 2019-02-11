@@ -26,4 +26,6 @@ Rails.application.routes.draw do
       post :comments
     end
   end
+
+  resources :email_confirmations, only: [:edit]
 end
