@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_200224) do
+ActiveRecord::Schema.define(version: 2019_02_11_204320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_02_11_200224) do
     t.integer "signon_bonus"
     t.integer "relocation_package"
     t.text "notes"
-    t.integer "bonus_per_year_amount"
     t.integer "bonus_per_year_percent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,9 +50,13 @@ ActiveRecord::Schema.define(version: 2019_02_11_200224) do
     t.string "location"
     t.string "position"
     t.uuid "user_id"
-    t.string "status"
-    t.string "scope"
     t.string "level"
+    t.integer "scope"
+    t.integer "status"
+    t.integer "stock_type"
+    t.integer "stock_count"
+    t.float "stock_strike_price"
+    t.float "stock_fair_market_value"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end

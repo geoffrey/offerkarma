@@ -3,7 +3,6 @@
 ActiveAdmin.register Offer do
   permit_params :accepted,
                 :base_salary,
-                :bonus_per_year_amount,
                 :bonus_per_year_percent,
                 :comments_enabled,
                 :company_id,
@@ -15,7 +14,11 @@ ActiveAdmin.register Offer do
                 :relocation_package,
                 :type,
                 :signon_bonus,
+                :scope,
+                :share_fmv,
                 :status,
+                :stock_option_stike_price,
+                :stock_type,
                 :user_id,
                 :votes_enabled,
                 :yoe
