@@ -1,9 +1,17 @@
-## Compparator
+## Reffo
 
 Get anonymous feedback on your job offers
 
 
 ## Dev
+
+Clone this repo:
+
+```sh
+git clone https://github.com/geoffrey/reffo.git
+cd reffo
+cp .env.development.default .env
+```
 
 Start server:
 ```sh
@@ -18,6 +26,11 @@ Console:
 bin/rails c
 ```
 
+
+### Deployment
+
+Simple merge/push to master and Heroku will automatically deploy the branch master and run the necessary migrations.
+
 ### Heroku
 
 - `brew install heroku/brew/heroku`
@@ -28,8 +41,14 @@ bin/rails c
 
 `heroku run <command>`
 
-E.g.: `heroku run rake db:migrate`
+E.g.: `heroku run rails console`
 
 ### Docker
+
+```sh
+make build
+make up
+make shell
+```
 
 
