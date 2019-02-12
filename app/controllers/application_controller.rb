@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   before_action :store_return_to
 
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
+
   def authenticate_admin_user!
     return true if Rails.env.development?
 
@@ -14,6 +16,10 @@ class ApplicationController < ActionController::Base
       ActiveSupport::SecurityUtils.secure_compare(username, ENV.fetch("ADMIN_USERNAME")) &
         ActiveSupport::SecurityUtils.secure_compare(password, ENV.fetch("ADMIN_PASSWORD"))
     end
+  end
+
+  def handle_record_not_found
+    redirect_to root_path
   end
 
   def redirect_back

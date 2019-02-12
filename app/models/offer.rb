@@ -20,11 +20,11 @@ class Offer < ApplicationRecord
 
   enum scope: %i[public_scope private_scope]
   enum status: %i[accepted rejected pending]
-  enum stock_type: %i[option rsus]
+  enum stock_type: %i[options rsus]
 
   default_value_for(:scope) { :public_scope }
   default_value_for(:status) { :pending }
-  default_value_for(:stock_type) { :option }
+  default_value_for(:stock_type) { :options }
 
   def status_class
     return "success" if accepted?
@@ -33,19 +33,34 @@ class Offer < ApplicationRecord
     "info"
   end
 
+  def stocks_liquid?
+    stock_type.rsu?
+  end
+
   def views
     impressionist_count
   end
 
-  def stock_value
-    stock_count.to_i * stock_fair_market_value.to_i
+  def stocks_profit
+    stock_profit.to_f * stock_count.to_f
   end
 
-  def stock_cost
-    stock_count.to_i * stock_strike_price.to_i
+  def stock_profit
+    stock_fair_market_value.to_f - stock_strike_price.to_f
+  end
+
+  def stocks_profit_per_year
+    stocks_profit.to_f / 4
+  end
+
+  def bonus_value_per_year
+    bonus_per_year_percent.to_f * base_salary.to_f / 100
   end
 
   def tc
-    base_salary.to_i + signon_bonus.to_i + stock_value.to_i - stock_cost.to_i
+    base_salary.to_i +
+      signon_bonus.to_i +
+      stocks_profit_per_year.to_f +
+      bonus_value_per_year.to_f
   end
 end
