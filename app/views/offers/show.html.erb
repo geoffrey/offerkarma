@@ -47,62 +47,79 @@
 
 <div class="border-bottom p-3 bg-light">
   <div class="center-box-max-width">
-     <div class="text-center border bg-white  p-2 mb-3">
-      <div class="font-weight-light">Total Compensation</div>
-      <div class="lead font-weight-normal">$<%= number_to_human @offer.tc %> / year</div>
-    </div>
-
-    <div class="d-flex mb-3">
-      <div class="flex-even text-center border bg-white p-2">
-        <div class="font-weight-light">Base salary <span class="fa fa-money-bill ml-2"></span></div>
-        <div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
+    <div class="row">
+      <div class="col-12 mb-2 mb-md-3">
+        <div class="col-12 text-center border bg-white p-2">
+          <div class="font-weight-bold">Total Compensation</div>
+          <div class="lead font-weight-bold">$<%= number_to_human @offer.tc %> / year</div>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex mb-3">
-      <div class="flex-even text-center border bg-white p-2 mr-2">
-        <div class="font-weight-light">Relocation package <span class="fa fa-people-carry ml-2"></span></div>
-        <div class="lead font-weight-normal">$<%= number_to_human @offer.relocation_package.to_i %></div>
-      </div>
-
-      <div class="flex-even text-center border bg-white p-2 ml-2">
-        <div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-2"></span>  </div>
-        <div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+    <div class="row">
+      <div class="col-12 mb-2 mb-md-3">
+        <div class="col-12 text-center border bg-white p-2">
+          <div class="font-weight-light">Base salary <span class="fa fa-money-bill ml-1 text-muted"></span></div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex flex-row">
-      <div class="flex-even text-center border bg-white p-2 mr-2">
-        <div class="font-weight-light">Stocks (<%= @offer.stock_type.humanize %>) <span class="fa fa-chart-line ml-2"></span>  </div>
-        <div class="lead font-weight-normal">$<%= number_to_human @offer.stocks_profit_per_year.to_i %> / year</div>
-
-        <% if @offer.stock_count %>
-          <div class="small">
-            <%= number_to_human @offer.stock_count %> <%= @offer.stock_type %>s at $<%= number_to_human @offer.stock_profit %> over 4 years.
-            <% if @offer.options? %>
-              <div class="text-muted">
-                ($<%= number_to_human @offer.stock_fair_market_value %> FMV - $<%= number_to_human @offer.stock_strike_price %> strike price)
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-2 mb-md-3">
+        <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.relocation_package.to_i.zero? ? 'disabled' : '' %>">
+          <div class="font-weight-light">Relocation package <span class="fa fa-people-carry ml-1 text-muted"></span></div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.relocation_package.to_i %></div>
+        </div>
       </div>
 
-      <div class="flex-even text-center border bg-white p-2 ml-2">
-        <div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-2"></span>  </div>
-        <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year.to_i %> / year</div>
-        <% if @offer.bonus_per_year_percent %>
-          <div class="small text-muted">
-            <%= @offer.bonus_per_year_percent %>% of base salary (<%= @offer.base_salary %>)
-          </div>
-        <% end %>
+      <div class="col-12 col-md-6 mb-2 mb-md-3">
+        <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.signon_bonus.to_i.zero? ? 'disabled' : '' %>">
+          <div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-1 text-muted"></span>  </div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 mb-2 mb-md-3">
+        <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
+          <div class="font-weight-light">Stocks (<%= @offer.stock_type.humanize %>) <span class="fa fa-chart-line ml-1 text-muted"></span>  </div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.stocks_profit_per_year.to_i %> / year</div>
+
+          <% if @offer.stock_count %>
+            <div class="small">
+              <%= number_to_human @offer.stock_count %> <%= @offer.stock_type %>s at $<%= number_to_human @offer.stock_profit %> over 4 years.
+              <% if @offer.options? %>
+                <div class="text-muted">
+                  ($<%= number_to_human @offer.stock_fair_market_value %> FMV - $<%= number_to_human @offer.stock_strike_price %> strike price)
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 mb-2 mb-md-3">
+        <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.bonus_per_year_percent.to_i.zero? ? 'disabled' : '' %>">
+          <div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-1 text-muted"></span>  </div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year.to_i %> / year</div>
+          <% if @offer.bonus_per_year_percent %>
+            <div class="small text-muted">
+              <%= @offer.bonus_per_year_percent.to_i %>% of base salary (<%= @offer.base_salary %>)
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
     <% if @offer.notes.present? %>
       <div class="bg-light">
         <div class="center-box-max-width bg-white border p-3 text-align-justity">
-          <%= @offer.notes %>
+          <div class="font-weight-light text-center">Notes <span class="fa fa-pen-square ml-1 text-muted"></span></div>
+          <div>
+            <%= @offer.notes %>
+          </div>
         </div>
       </div>
     <% end %>

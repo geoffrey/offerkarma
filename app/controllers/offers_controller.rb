@@ -25,7 +25,11 @@ class OffersController < ApplicationController
 
   # POST /offers
   def create
+    company = Company.find_or_create_from_clearbit!(
+      offer_company_params[:company_name]
+    )
     @offer = Offer.new(offer_params)
+    @offer.company = company
 
     if @offer.save
       redirect_to @offer
@@ -89,8 +93,17 @@ class OffersController < ApplicationController
     params.require(:comment).permit(:text)
   end
 
+  def offer_company_params
+    params.require(:offer).permit(:company_name)
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
-    params.require(:offer).permit(:company_id, :public, :comments_enabled, :votes_enabled, :base_salary, :signon_bonus, :relocation_package, :notes, :bonus_per_year_amount, :bonus_per_year_percent, :accepted)
+    params.require(:offer).permit(
+      :position,
+      :yoe,
+      :level,
+      :location
+    )
   end
 end

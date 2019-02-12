@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :offers, only: %i[new create]
   end
 
-  resources :offers, only: %i[index new show edit update] do
+  resources :offers, only: %i[index new create show edit update] do
     member do
       post :vote
       post :comments

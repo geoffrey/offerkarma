@@ -51,21 +51,9 @@ class User < ApplicationRecord
 
   def set_current_company_id
     company_domain = email.split("@").last
-    url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=#{company_domain}"
-    response = HTTParty.get(url)
+    company = Company.find_or_create_from_clearbit!(company_domain)
 
-    return unless response.success?
-
-    companies = JSON.parse(response.body)
-    first_company = companies.first
-
-    return unless first_company
-
-    c = Company.find_or_create_by!(domain: first_company["domain"]) do |company|
-      company.name = first_company["name"]
-    end
-
-    self.current_company_id = c.id
+    self.current_company_id = company&.id
   end
 
   def create_activation_digest
