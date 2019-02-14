@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  match "(*any)", to: redirect(subdomain: ""), via: :all, constraints: { subdomain: "www" }
+  get "(*any)", to: redirect(ENV.fetch("REFFO_BASE_URL")),
+                constraints: ->(request) { request.subdomain == "www" }
+
+  get "(*any)", to: redirect(ENV.fetch("REFFO_BASE_URL")),
+                constraints: ->(request) { request.domain == ENV.fetch("SECOND_DOMAIN") }
 
   ActiveAdmin.routes(self)
 
