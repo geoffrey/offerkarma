@@ -21,4 +21,8 @@ ActiveAdmin.register Offer do
     :user,
     :votes_enabled,
     :yoe
+
+  form title: "offer" do |f|
+    f.inputs :except => [:uuid]
+  end
 end
