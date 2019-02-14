@@ -1,11 +1,23 @@
 <div class="text-center homepage-header p-4 bg-dark text-white">
   <div class="lead">Account</div>
   <div class="small font-weight-light">Manage your offers</div>
+  <% if @offers.any? %>
+    <div class="text-center mt-3">
+      <a class="btn btn-sm btn-danger" href="<%= new_offer_path %>">Submit an offer</a>
+    </div>
+  <% end %>
 </div>
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-0">
-
+    <% if @offers.none? %>
+      <div class="text-center">
+        <div class="lead mb-2">
+          You haven't submitted any offers yet.
+        </div>
+        <a class="btn btn-danger" href="<%= new_offer_path %>">Submit your first offer now!</a>
+      </div>
+    <% end %>
     <div class="row">
       <% @offers.each do |offer| %>
         <div class="col-lg-4 col-md-6 col-12 p-2">
@@ -17,10 +29,5 @@
         </div>
       <% end %>
     </div>
-
-    <div class="text-center">
-      <a class="btn btn-danger" href="/offers/new">create a new offer</a>
-    </div>
-
   </div>
 </div>

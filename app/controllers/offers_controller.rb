@@ -83,11 +83,11 @@ class OffersController < ApplicationController
   private
 
   def set_own_offer
-    @offer = current_user.offers.find_by_uuid!(params[:id]).includes(:comments, :votes, :impressions)
+    @offer = current_user.offers.find_by_uuid!(params[:id])
   end
 
   def set_offer
-    @offer = Offer.find_by_uuid!(params[:id]).includes(:comments, :votes, :impressions)
+    @offer = Offer.find_by_uuid!(params[:id])
   end
 
   def vote_params
