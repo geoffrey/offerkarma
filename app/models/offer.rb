@@ -34,7 +34,7 @@ class Offer < ApplicationRecord
   end
 
   def stocks_liquid?
-    stock_type.rsu?
+    rsus? && company.public?
   end
 
   def views

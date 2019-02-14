@@ -108,12 +108,15 @@
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light">Stocks (<%= @offer.stock_type.humanize %>) <span class="fa fa-chart-line ml-1 text-muted"></span>  </div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.stocks_profit_per_year.to_i %> / year</div>
-
+          <% unless @offer.stocks_liquid? %>
+            <span class="badge badge-warning">not liquid*</span>
+          <% end %>
+<!--
           <% if @offer.stock_count %>
             <div class="small">
               <%= number_with_delimiter  @offer.stock_count, delimiter: ","%> units over 4 years
             </div>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
 
