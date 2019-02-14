@@ -55,8 +55,7 @@ class UsersController < ApplicationController
       @user.verify!
       log_in @user
     else
-      flash[:danger] = "Invalid activation link"
-      redirect_to root_url
+      render 'verify_failed'
     end
   end
 

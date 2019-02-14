@@ -1,0 +1,24 @@
+<div class="text-center homepage-header p-4 bg-dark">
+  <div class="text-white">
+    <div class="lead">
+      Verification failed <span class="fa fa-exclamation-triangle"></span>
+    </div>
+
+    <div class="small font-weight-light">
+      This verification link is invalid
+    </div>
+  </div>
+</div>
+
+<div class="bg-light p-4">
+  <div class="container bg-white p-4 rounded text-center">
+    <div class="lead mb-3">
+      <% if current_user.verified? %>
+        Your account is already verified!
+      <% else %>
+        Sorry but this verification link has expired or is invalid.
+      <% end %>
+    </div>
+    <a href="<%= root_url %>" class="btn btn-danger">Go back home</a>
+  </div>
+</div>
