@@ -1,27 +1,58 @@
 <div class="text-center homepage-header p-4 bg-dark">
   <div class="text-white">
     <div class="lead">
-      You are now verified <span class="fa fa-check"></span>
+      Congrats, you are now verified <span class="fa fa-check"></span>
     </div>
 
     <div class="small font-weight-light">
-      Thank you for verifying your account!
+      Thank you for verifying your account.
     </div>
   </div>
 </div>
 
 <div class="bg-light p-4">
   <div class="container bg-white p-4 rounded">
-    <% unless @user.current_company %>
-      <div>
-        <div class="font-weight-bold mb-3">Unfortunately we did not detect any company from the email address you used to register with.</div>
-        <div>
-          Don't worry you can still browse the list of offers we have. The only downside is that you won't be able to see some offers restricted to your company.
+    <div class="text-center">
+      <% if current_user.current_company %>
 
-          If you wish to be verified with a company, please sign up again using your work email.
+        <div class="lead mb-3">You are all set!</div>
+
+        <div class="mb-3">
+          We were successfully able to verify that you are currently working for the following company:
         </div>
 
+        <div>
+          <img width="100px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= current_user.current_company.domain %>">
+        </div>
+
+        <div class="mb-3">
+          <a href="<%= company_path current_user.current_company.uuid %>" class="btn btn-link text-danger">
+            See offers from <%= current_user.current_company.name %>
+          </a>
+        </div>
+
+      <% else %>
+
+        <div class="font-weight-bold mb-3">
+          Unfortunately, we did not detect any company from the email address you used to register with.
+        </div>
+
+        <div>
+          Don't worry you can still use reffo. The only downside is that you won't be able to see some offers restricted to some companies.
+
+          If you wish to be verified with a company, please sign up again using your work email this time.
+        </div>
+
+      <% end %>
+
+      <div>
+        <% if current_user.offers.none? %>
+          <a href="<%= new_offer_path %>" class="btn btn-danger">Evaluate my first offer</a>
+        <% else %>
+          <a href="<%= account_path %>" class="btn btn-outline-danger">Manage my offers</a>
+        <% end %>
+        or <a href="<%= offers_path %>" class="btn btn-outline-danger">See our most recent offers</a>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

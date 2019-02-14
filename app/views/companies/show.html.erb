@@ -32,16 +32,27 @@
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-0">
-    <div class="row">
-      <% @offers.each do |offer| %>
-        <div class="col-lg-4 col-md-6 col-12 p-2">
-          <div class="border rounded list-group-item-action">
-            <a href="<%= offer_path offer.uuid %>" class="list-group-item-action">
-              <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
-            </a>
+    <% if @offers.any? %>
+      <div class="row">
+        <% @offers.each do |offer| %>
+          <div class="col-lg-4 col-md-6 col-12 p-2">
+            <div class="border rounded list-group-item-action">
+              <a href="<%= offer_path offer.uuid %>" class="list-group-item-action">
+                <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
+              </a>
+            </div>
           </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="bg-white p-3 text-center">
+        <div class="lead mb-3">
+          We do not have any offer for <b><%= @company.name %> </b> yet
         </div>
-      <% end %>
-    </div>
+
+        <a href="<%= new_offer_path %>" class="btn btn-danger">Evaluate a <%= @company.name %> offer</a>
+      </div>
+
+    <% end %>
   </div>
 </div>

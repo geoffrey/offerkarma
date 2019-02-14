@@ -3,10 +3,6 @@
     <div class="lead">
       Verification failed <span class="fa fa-exclamation-triangle"></span>
     </div>
-
-    <div class="small font-weight-light">
-      This verification link is invalid
-    </div>
   </div>
 </div>
 
@@ -14,9 +10,9 @@
   <div class="container bg-white p-4 rounded text-center">
     <div class="lead mb-3">
       <% if current_user.verified? %>
-        Your account is already verified!
+        Your account has already been verified!
       <% else %>
-        Sorry but this verification link has expired or is invalid.
+        Sorry, this verification link has expired or is invalid.
       <% end %>
     </div>
     <a href="<%= root_url %>" class="btn btn-danger">Go back home</a>

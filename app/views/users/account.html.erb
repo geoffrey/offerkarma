@@ -3,7 +3,7 @@
   <div class="small font-weight-light">Manage your offers</div>
   <% if @offers.any? %>
     <div class="text-center mt-3">
-      <a class="btn btn-sm btn-danger" href="<%= new_offer_path %>">Submit an offer</a>
+      <a class="btn btn-danger" href="<%= new_offer_path %>">Evaluate a new offer</a>
     </div>
   <% end %>
 </div>
@@ -11,11 +11,11 @@
 <div class="bg-light p-3 border-bottom">
   <div class="container p-0">
     <% if @offers.none? %>
-      <div class="text-center">
+      <div class="bg-white p-3 text-center">
         <div class="lead mb-2">
           You haven't submitted any offers yet.
         </div>
-        <a class="btn btn-danger" href="<%= new_offer_path %>">Submit your first offer now!</a>
+        <a class="btn btn-danger" href="<%= new_offer_path %>">Submit your first offer now</a>
       </div>
     <% end %>
     <div class="row">

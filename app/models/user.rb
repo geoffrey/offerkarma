@@ -61,7 +61,6 @@ class User < ApplicationRecord
     self.current_company_id = find_current_company_id
     self.verification_digest = nil
     self.verified_at = DateTime.now
-    byebug
     save!
   end
 
