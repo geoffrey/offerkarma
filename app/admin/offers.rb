@@ -22,7 +22,7 @@ ActiveAdmin.register Offer do
     :votes_enabled,
     :yoe
 
-  form title: "offer" do |f|
+  form title: "Offer" do |f|
     f.inputs :except => [:uuid]
     f.actions
   end

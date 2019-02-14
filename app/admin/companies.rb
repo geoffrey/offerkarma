@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Company do
-  permit_params :current_valuation,
-                :last_funding_round,
-                :name,
-                :public,
-                :url
+   permit_params :domain,
+    :name,
+    :public
+
+  form title: "Company" do |f|
+    f.inputs :except => [:uuid]
+    f.actions
+  end
 end
