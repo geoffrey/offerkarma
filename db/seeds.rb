@@ -11,5 +11,5 @@ Company.create!(name: "coinbase", domain: "coinbase.com")
 Company.create!(name: "stripe", domain: "stripe.com")
 
 Offer.create!(user: user, company: instacart, base_salary: 180000, stock_type: :rsus, stock_count: 20000, stock_fair_market_value: 30.00, position: "Senior Software Engineer", status: "pending")
-Offer.create!(user: user2, company: sharespost, base_salary: 180000, stock_type: :options, stock_count: 50000, stock_fair_market_value: 3.00, stock_strike_price: 1.00, position: "Senior Software Engineer", status: "pending")
-Offer.create!(user: user2, company: eaze, base_salary: 185000, stock_type: :options, stock_count: 5000, stock_fair_market_value: 8.00, stock_strike_price: 3.3, position: "Senior Software Engineer", status: "pending")
+Offer.create!(user: user, company: sharespost, base_salary: 180000, stock_type: :options, stock_count: 50000, stock_fair_market_value: 3.00, stock_strike_price: 1.00, position: "Senior Software Engineer", status: "pending")
+Offer.create!(user: user, company: eaze, base_salary: 185000, stock_type: :options, stock_count: 5000, stock_fair_market_value: 8.00, stock_strike_price: 3.3, position: "Senior Software Engineer", status: "pending")
