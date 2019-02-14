@@ -11,7 +11,7 @@ class Offer < ApplicationRecord
 
   validates :position, presence: true
   validates :base_salary, :signon_bonus, :relocation_package,
-            inclusion: 100..10_000_000, allow_nil: true
+            inclusion: 0..10_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
   validates :stock_strike_price, inclusion: 0..1000, allow_nil: true
   validates :stock_fair_market_value, inclusion: 0..1_000, allow_nil: true
@@ -59,7 +59,6 @@ class Offer < ApplicationRecord
 
   def tc
     base_salary.to_i +
-      signon_bonus.to_i +
       stocks_profit_per_year.to_f +
       bonus_value_per_year.to_f
   end
