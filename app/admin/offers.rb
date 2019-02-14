@@ -24,5 +24,6 @@ ActiveAdmin.register Offer do
 
   form title: "offer" do |f|
     f.inputs :except => [:uuid]
+    f.actions
   end
 end
