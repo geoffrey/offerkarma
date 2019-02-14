@@ -1,5 +1,5 @@
 ActiveAdmin.register Comment do
-  permit_params :content, :offer, :user
+  permit_params :offer, :text, :user
 
   form title: "Comment" do |f|
     f.inputs :except => [:uuid]
