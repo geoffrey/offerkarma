@@ -2,7 +2,12 @@
 
 class PagesController < ApplicationController
   def index
-    @offers = Offer.includes(:company, :votes, :comments).last(10)
+    @offers = Offer.includes(
+      :company,
+      :votes,
+      :comments,
+      :impressions
+    ).last(10)
   end
 
   def equity

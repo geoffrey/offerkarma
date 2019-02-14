@@ -47,6 +47,19 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def verify
+    @user = User.find_by_email(params[:email])
+    if @user &&
+      !@user.verified? &&
+      @user.authenticated?(:verification, params[:token])
+      @user.verify!
+      log_in @user
+    else
+      flash[:danger] = "Invalid activation link"
+      redirect_to root_url
+    end
+  end
+
   private
 
   def user_params

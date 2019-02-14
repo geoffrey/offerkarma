@@ -13,6 +13,7 @@ class Company < ApplicationRecord
   def self.find_or_create_from_clearbit!(search)
     search.downcase!
     company = self.find_by_name(search)
+    company ||= self.find_by_domain(search)
     return company if company
 
     clearbit_company = find_on_clearbit(search)

@@ -7,7 +7,12 @@ class OffersController < ApplicationController
 
   # GET /offers
   def index
-    @offers = Offer.includes(:company, :votes, :comments).last(10)
+    @offers = Offer.includes(
+      :company,
+      :votes,
+      :comments,
+      :impressions
+    ).last(10)
   end
 
   # GET /offers/1
@@ -78,11 +83,11 @@ class OffersController < ApplicationController
   private
 
   def set_own_offer
-    @offer = current_user.offers.find_by_uuid!(params[:id])
+    @offer = current_user.offers.find_by_uuid!(params[:id]).includes(:comments, :votes, :impressions)
   end
 
   def set_offer
-    @offer = Offer.find_by_uuid!(params[:id])
+    @offer = Offer.find_by_uuid!(params[:id]).includes(:comments, :votes, :impressions)
   end
 
   def vote_params

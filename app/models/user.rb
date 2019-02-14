@@ -3,9 +3,9 @@
 class User < ApplicationRecord
   has_secure_password
 
-  attr_accessor :confirmation_token
+  attr_accessor :verification_token
 
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, if: :setting_password?
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   before_save { email.downcase! }
-  before_create :create_activation_digest
+  before_create :create_verification_digest
 
   # TODO: move to a lib
   class << self
@@ -43,21 +43,44 @@ class User < ApplicationRecord
     offer.votes.down.where(user: self).exists?
   end
 
-  def confirmed?
-    !!confirmed_at
+  def uses_corporate_email?
+    !!Company.find_on_clearbit(email_domain)
+  end
+
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def verified?
+    !!verified_at
+  end
+
+  def verify!
+    self.current_company_id = find_current_company_id
+    self.verification_digest = nil
+    self.verified_at = DateTime.now
+    byebug
+    save!
   end
 
   private
 
-  def set_current_company_id
-    company_domain = email.split("@").last
-    company = Company.find_or_create_from_clearbit!(company_domain)
-
-    self.current_company_id = company&.id
+  def setting_password?
+    password || password_confirmation
   end
 
-  def create_activation_digest
-    self.confirmation_token = User.new_token
-    self.confirmation_digest = User.digest(self.confirmation_token)
+  def find_current_company_id
+    Company.find_or_create_from_clearbit!(email_domain)&.id
+  end
+
+  def email_domain
+    email.split("@").last
+  end
+
+  def create_verification_digest
+    self.verification_token = User.new_token
+    self.verification_digest = User.digest(self.verification_token)
   end
 end

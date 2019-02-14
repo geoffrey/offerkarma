@@ -4,7 +4,20 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for signing up for reffo!</h1>
-    <p>In order to verify your account, please click this <a href="#{ENV.fetch(REFFO_BASE_URL)}/users/verify?code=#{}">link<a/>.</p>
+    <h1>Great news!</h1>
+    <p>
+      You are almost done signing up for Reffo.
+    </p>
+    <% unless @user.uses_corporate_email? %>
+      <p>
+        It is generally best to use your work email address so that we can automatically validate that you are currently working for a company. It will also allow you to vote and comment on offers from your company specificly.
+      </p>
+    <% end %>
+    <p>
+      In order to verify your account, please <a href="<%= verify_url @user.verification_token, email: @user.email %>">visit this link<a/>.
+      <br/>
+      Alternatively, you can copy/paste the following link into your browser:
+      <%= verify_url @user.verification_token, email: @user.email %>
+    </p>
   </body>
 </html>

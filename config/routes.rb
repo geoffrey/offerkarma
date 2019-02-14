@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post   "signup",                   to: "users#create"
   delete "logout",                   to: "users#logout"
   get    "account",                  to: "users#account"
+  get    "verify/:token",            to: "users#verify", as: :verify
 
   resources :companies, only: [:show] do
     resources :offers, only: %i[new create]
@@ -28,6 +29,4 @@ Rails.application.routes.draw do
       post :comments
     end
   end
-
-  resources :email_confirmations, only: [:edit]
 end
