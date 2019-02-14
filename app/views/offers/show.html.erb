@@ -1,8 +1,30 @@
 <% if @offer.user == current_user %>
   <div class="p-2 text-center alert alert-warning mb-0">
-    <a class="small text-uppercase text-dark" href="<%= edit_offer_path @offer.uuid %>">Edit my offer</a>
+    <div class="center-box-max-width d-flex">
+      <div class="mr-auto">
+        <a class="btn btn-outline-secondary" href="<%= edit_offer_path @offer.uuid %>">Edit</a>
+      </div>
+      <div>
+        <% unless @offer.pending? %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :pending }), class: "btn btn-info", method: :put do %>
+            Pending
+          <% end %>
+        <% end %>
+        <% unless @offer.rejected? %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :rejected }), class: "btn btn-danger", method: :put do %>
+            Rejected
+          <% end %>
+        <% end %>
+        <% unless @offer.accepted? %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :accepted }), class: "btn btn-success", method: :put do %>
+            Accepted
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>
+
 <div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
   <div class="text-white font-weight-light mb-3">
     <h5><%= @offer.position %></h5>
@@ -89,12 +111,7 @@
 
           <% if @offer.stock_count %>
             <div class="small">
-              <%= number_to_human @offer.stock_count %> <%= @offer.stock_type %>s at $<%= number_to_human @offer.stock_profit %> over 4 years.
-              <% if @offer.options? %>
-                <div class="text-muted">
-                  ($<%= number_to_human @offer.stock_fair_market_value %> FMV - $<%= number_to_human @offer.stock_strike_price %> strike price)
-                </div>
-              <% end %>
+              <%= number_with_delimiter  @offer.stock_count, delimiter: ","%> units over 4 years
             </div>
           <% end %>
         </div>

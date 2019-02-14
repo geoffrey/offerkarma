@@ -32,7 +32,7 @@ class OffersController < ApplicationController
     @offer.company = company
 
     if @offer.save
-      redirect_to @offer
+      redirect_to offer_path @offer.uuid
     else
       render :new
     end
@@ -41,7 +41,7 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   def update
     if @offer.update(offer_params)
-      redirect_to @offer
+      redirect_to offer_path @offer.uuid
     else
       render :edit
     end
@@ -103,7 +103,8 @@ class OffersController < ApplicationController
       :position,
       :yoe,
       :level,
-      :location
+      :location,
+      :status,
     )
   end
 end
