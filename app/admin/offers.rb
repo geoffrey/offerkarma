@@ -4,7 +4,7 @@ ActiveAdmin.register Offer do
   permit_params :base_salary,
     :bonus_per_year_percent,
     :comments_enabled,
-    :company,
+    :company_id,
     :location,
     :level,
     :notes,
@@ -18,7 +18,7 @@ ActiveAdmin.register Offer do
     :stock_fair_market_value,
     :stock_type,
     :stock_strike_price,
-    :user,
+    :user_id,
     :votes_enabled,
     :yoe
 
