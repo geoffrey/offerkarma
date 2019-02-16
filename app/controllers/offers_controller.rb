@@ -33,7 +33,7 @@ class OffersController < ApplicationController
     company = Company.find_or_create_from_clearbit!(
       offer_company_params[:company_name]
     )
-    @offer = Offer.new(offer_params)
+    @offer = current_user.offers.new(offer_params)
     @offer.company = company
     byebug
     if @offer.save

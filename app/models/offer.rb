@@ -67,7 +67,7 @@ class Offer < ApplicationRecord
 
   private
 
-  def first_step
+  def first_step?
     creation_step == 1
   end
 end
