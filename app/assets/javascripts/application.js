@@ -18,4 +18,5 @@
 //= require jquery-ui/widgets/autocomplete
 //= require popper
 //= require bootstrap
+//= require cleave.js/dist/cleave.min.js
 //= require_tree .

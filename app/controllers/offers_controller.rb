@@ -35,7 +35,7 @@ class OffersController < ApplicationController
     )
     @offer = Offer.new(offer_params)
     @offer.company = company
-
+    byebug
     if @offer.save
       redirect_to offer_path @offer.uuid
     else
@@ -105,6 +105,7 @@ class OffersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
     params.require(:offer).permit(
+      :creation_step,
       :position,
       :yoe,
       :level,

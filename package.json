@@ -2,6 +2,7 @@
   "name": "reffo",
   "private": true,
   "dependencies": {
-    "@ibm/plex": "^1.2.3"
+    "@ibm/plex": "^1.2.3",
+    "cleave.js": "^1.4.7"
   }
 }

@@ -3,13 +3,15 @@
 class Offer < ApplicationRecord
   is_impressionable
 
+  attr_reader :creation_step
+
   belongs_to :company
   belongs_to :user
 
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :position, presence: true
+  validates :position, presence: true, if: :first_step?
   validates :base_salary, :signon_bonus, :relocation_package,
             inclusion: 0..10_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
@@ -61,5 +63,11 @@ class Offer < ApplicationRecord
     base_salary.to_i +
       stocks_profit_per_year.to_f +
       bonus_value_per_year.to_f
+  end
+
+  private
+
+  def first_step
+    creation_step == 1
   end
 end

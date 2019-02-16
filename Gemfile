@@ -15,6 +15,8 @@ gem 'impressionist'
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "kaminari", "~> 1.0"
+gem "money"
+gem "monetize"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pry-rails"
 gem "puma", "~> 3.11"
