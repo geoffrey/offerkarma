@@ -8,3 +8,11 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
+
+import newOffer from 'offers/new.js'
+import whenDomReady from 'when-dom-ready'
+
+whenDomReady().then(() => {
+  newOffer.setMasking()
+  newOffer.setAutocomplete()
+})
