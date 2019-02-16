@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   has_many :offers, dependent: :destroy
 
   validates :name, :domain, presence: true
+  validates_uniqueness_of :domain
 
   before_save { domain.downcase! }
   before_save { name.downcase! }
@@ -12,8 +13,8 @@ class Company < ApplicationRecord
 
   def self.find_or_create_from_clearbit!(search)
     search.downcase!
-    company = self.find_by_name(search)
-    company ||= self.find_by_domain(search)
+    company = self.find_by_domain(search)
+    company ||= self.find_by_name(search)
     return company if company
 
     clearbit_company = find_on_clearbit(search)
