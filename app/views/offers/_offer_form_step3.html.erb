@@ -5,7 +5,7 @@
     </div>
 
     <div class="font-weight-light">
-      Will you have any equity?
+      I assume you are getting equity?
     </div>
   </div>
 </div>
@@ -31,10 +31,30 @@
 
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :bonus_per_year_percent do %>
+            <%= f.label :stock_count do %>
               How many units? <span class="small text-muted">optional</span>
             <% end %>
-            <%= f.text_field :bonus_per_year_percent, class: "form-control", placeholder: "5,000" %>
+            <%= f.number_field :stock_count, class: "form-control", placeholder: "5,000" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :stock_strike_price do %>
+              Strike price <span class="small text-muted">if options selected</span>
+            <% end %>
+            <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22" %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :stock_fair_market_value do %>
+              Current fair market value? <span class="small text-muted">optional</span>
+            <% end %>
+            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92" %>
           </div>
         </div>
       </div>
