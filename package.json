@@ -14,9 +14,5 @@
   },
   "devDependencies": {
     "webpack-dev-server": ">=3.1.11"
-  },
-  "scripts": {
-    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
-    "heroku-postbuild": "npm run webpack:deploy"
   }
 }

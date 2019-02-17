@@ -10,10 +10,10 @@ gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "default_value_for", "~> 3.1"
 gem "httparty"
-gem 'impressionist'
+gem "impressionist"
 gem "kaminari", "~> 1.0"
-gem "money"
 gem "monetize"
+gem "money"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pry-rails"
 gem "puma", "~> 3.11"
@@ -32,11 +32,11 @@ group :development, :test do
 end
 
 group :development do
-  gem "mailcatcher"
   gem "awesome_print"
   gem "better_errors"
   gem "bullet"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "mailcatcher"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
