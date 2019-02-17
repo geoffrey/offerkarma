@@ -7,23 +7,15 @@ export default {
     if(!document.getElementById('offer_base_salary'))
       return
 
-    new Cleave('#offer_base_salary', {
+    const cleaveCurrencyOption = {
       noImmediatePrefix: true,
       numeral: true,
       numeralThousandsGroupStyle: 'thousand'
-    });
+    }
 
-    new Cleave('#offer_relocation_package', {
-      noImmediatePrefix: true,
-      numeral: true,
-      numeralThousandsGroupStyle: 'thousand'
-    });
-
-    new Cleave('#offer_signon_bonus', {
-      noImmediatePrefix: true,
-      numeral: true,
-      numeralThousandsGroupStyle: 'thousand'
-    });
+    new Cleave('#offer_base_salary', cleaveCurrencyOption);
+    new Cleave('#offer_relocation_package', cleaveCurrencyOption);
+    new Cleave('#offer_signon_bonus', cleaveCurrencyOption);
   },
 
   setAutocomplete: () => {
