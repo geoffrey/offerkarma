@@ -22,7 +22,7 @@ class OffersController < ApplicationController
 
   # GET /offers/new
   def new
-    @offer = Offer.new
+    @offer = current_user.offers.new
   end
 
   # GET /offers/1/edit
@@ -35,7 +35,7 @@ class OffersController < ApplicationController
     )
     @offer = current_user.offers.new(offer_params)
     @offer.company = company
-    byebug
+
     if @offer.save
       redirect_to offer_path @offer.uuid
     else
