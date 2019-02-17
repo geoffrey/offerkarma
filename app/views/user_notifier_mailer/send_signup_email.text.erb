@@ -1,0 +1,18 @@
+
+Verify your account
+
+Great news!
+
+You are only one step away from completing your REFFO account registration!
+
+If you used your work email we will automatically verify you for that company.
+Simply click on the following link to verify your account now:
+
+<%= verify_url @verification_token, email: @user.email %>
+
+--
+Geoffrey from Reffo
+reffo.us
+
+
+Unsubscribe: <%= unsubscribe_url email: @user.email %>

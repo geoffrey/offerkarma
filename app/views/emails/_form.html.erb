@@ -1,0 +1,13 @@
+<div class="container bg-white p-4 rounded">
+  <div class="mb-12">
+    <%= form_tag unsubscribe_path, method: :patch do %>
+     <div class="form-group">
+        <label>Please confirm your email to unsubscribe:</label>
+        <%= text_field_tag :email, params[:email] %> <%= submit_tag "Unsubscribe", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="container bg-white p-4 rounded text-center">
+  <a href="<%= root_url %>" class="btn btn-danger">Go back home</a>
+</div>
