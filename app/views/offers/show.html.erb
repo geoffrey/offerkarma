@@ -151,12 +151,12 @@
     <div>
       <div class="d-flex">
         <div class="flex-even pr-2">
-          <%= link_to vote_offer_path(@offer.uuid, vote: 1), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success' : 'btn-outline-success' }", method: :post do %>
+          <%= link_to votes_offer_path(@offer.uuid, vote: 1), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success' : 'btn-outline-success' }", method: :post do %>
             <span class="fa fa-thumbs-up"></span> Nice!
           <% end %>
         </div>
         <div class="flex-even pl-2">
-          <%= link_to vote_offer_path(@offer.uuid, vote: -1), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger' : 'btn-outline-danger' }", method: :post do %>
+          <%= link_to votes_offer_path(@offer.uuid, vote: -1), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger' : 'btn-outline-danger' }", method: :post do %>
             <span class="fa fa-thumbs-down"></span> Meh...
           <% end %>
         </div>

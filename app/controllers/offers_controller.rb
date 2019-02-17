@@ -37,7 +37,7 @@ class OffersController < ApplicationController
     @offer.company = company
 
     if @offer.save
-      redirect_to offer_path @offer.uuid
+      redirect_to offers_path @offer.uuid
     else
       render :new
     end
@@ -46,7 +46,7 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   def update
     if @offer.update(offer_params)
-      redirect_to offer_path @offer.uuid
+      redirect_to offers_path @offer.uuid
     else
       render :edit
     end
@@ -59,7 +59,7 @@ class OffersController < ApplicationController
   end
 
   # POST /offers/:id/votes
-  def vote
+  def votes
     vote = @offer.votes.find_or_create_by!(user: current_user)
 
     if vote.vote == params[:vote].to_i
@@ -69,7 +69,7 @@ class OffersController < ApplicationController
       vote.save!
     end
 
-    redirect_to offer_path @offer.uuid
+    redirect_to offers_path @offer.uuid
   end
 
   # POST /offers/:id/comments
@@ -77,7 +77,7 @@ class OffersController < ApplicationController
     @comment = @offer.comments.new(comment_params)
     @comment.user = current_user
     @comment.save!
-    redirect_to offer_path @offer.uuid
+    redirect_to offers_path @offer.uuid
   end
 
   private
