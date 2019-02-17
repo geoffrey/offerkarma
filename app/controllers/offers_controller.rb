@@ -2,7 +2,7 @@
 
 class OffersController < ApplicationController
   before_action :redirect_to_login_if_needed
-  before_action :set_offer, only: %i[show vote comments]
+  before_action :set_offer, only: %i[show votes comments]
   before_action :set_own_offer, only: %i[edit update destroy]
 
   # GET /offers
