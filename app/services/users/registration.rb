@@ -14,11 +14,13 @@ module Users
 
     def create_user(user)
       user.save
-      raise UserCreationError.new unless user.persisted?
+      raise UserCreationError unless user.persisted?
     end
 
     def send_confirmation_email(user)
-      UserNotifierMailer.send_signup_email(user).deliver
+      UserNotifierMailer
+        .send_signup_email(user, user.verification_token)
+        .deliver_later
     end
   end
 end
