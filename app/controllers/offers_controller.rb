@@ -23,6 +23,7 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = Offer.new
+    @step = params[:step]&.match?(/\A\d+\Z/) ? params[:step] : 1
   end
 
   # GET /offers/1/edit
@@ -35,7 +36,7 @@ class OffersController < ApplicationController
     )
     @offer = Offer.new(offer_params)
     @offer.company = company
-    byebug
+
     if @offer.save
       redirect_to offer_path @offer.uuid
     else
