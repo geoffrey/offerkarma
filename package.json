@@ -3,6 +3,16 @@
   "private": true,
   "dependencies": {
     "@ibm/plex": "^1.2.3",
-    "cleave.js": "^1.4.7"
+    "@rails/webpacker": "3.5",
+    "bootstrap": "^4.3.1",
+    "cleave.js": "^1.4.7",
+    "jquery": "^3.3.1",
+    "jquery-autocomplete": "^1.2.8",
+    "jquery-ui": "^1.12.1",
+    "turbolinks": "^5.2.0",
+    "when-dom-ready": "^1.2.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }

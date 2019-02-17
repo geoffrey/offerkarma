@@ -8,12 +8,9 @@ ruby "2.5.3"
 gem "activeadmin"
 gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.2.1"
 gem "default_value_for", "~> 3.1"
 gem "httparty"
 gem 'impressionist'
-gem "jquery-rails"
-gem "jquery-ui-rails"
 gem "kaminari", "~> 1.0"
 gem "money"
 gem "monetize"
@@ -26,6 +23,7 @@ gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "validate_url", "~> 1.0"
+gem "webpacker", "~> 3.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
