@@ -12,12 +12,14 @@ console.log('Hello World from Webpacker')
 import NewOffer from 'offers/new.js'
 import Rails from 'rails-ujs'
 import Turbolinks from 'turbolinks'
-import WhenDomReady from 'when-dom-ready'
+
+const ondomloaded = () => {
+  NewOffer.setMasking()
+  NewOffer.setAutocomplete()
+}
+
+document.addEventListener("DOMContentLoaded", ondomloaded)
+document.addEventListener("turbolinks:load", ondomloaded)
 
 Turbolinks.start()
 Rails.start()
-
-WhenDomReady().then(() => {
-  NewOffer.setMasking()
-  NewOffer.setAutocomplete()
-})
