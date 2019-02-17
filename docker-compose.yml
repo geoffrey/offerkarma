@@ -16,6 +16,10 @@ services:
           nocopy: true
     depends_on:
       - postgres
+      - redis
 
   postgres:
     image: postgres:9.6.4
+
+  redis:
+    image: redis:2.8.12
