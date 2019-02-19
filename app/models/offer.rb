@@ -21,7 +21,7 @@ class Offer < ApplicationRecord
   validates :yoe, inclusion: 0..99, allow_nil: true
 
   enum scope: %i[public_scope private_scope]
-  enum status: %i[accepted rejected pending]
+  enum status: %i[accepted declined pending]
   enum stock_type: %i[options rsus]
 
   default_value_for(:scope) { :public_scope }
@@ -30,7 +30,7 @@ class Offer < ApplicationRecord
 
   def status_class
     return "success" if accepted?
-    return "danger" if rejected?
+    return "danger" if declined?
 
     "info"
   end

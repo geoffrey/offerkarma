@@ -10,9 +10,9 @@
             Pending
           <% end %>
         <% end %>
-        <% unless @offer.rejected? %>
-          <%= link_to offer_path(@offer.uuid, offer: { status: :rejected }), class: "btn btn-danger", method: :put do %>
-            Rejected
+        <% unless @offer.declined? %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :declined }), class: "btn btn-danger", method: :put do %>
+            Declined
           <% end %>
         <% end %>
         <% unless @offer.accepted? %>
