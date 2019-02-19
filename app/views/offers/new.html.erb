@@ -1,4 +1,7 @@
-<%= render "offer_form_step1", locals: { offer: @offer } %>
-<%= render "offer_form_step2", locals: { offer: @offer } %>
-<%= render "offer_form_step3", locals: { offer: @offer } %>
-<%= render "offer_form_step4", locals: { offer: @offer } %>
+<% if params[:debug] %>
+  <% OffersController::NEW_OFFER_STEPS.each do |step| %>
+    <%= render "offer_form_step_#{step}", locals: { offer: @offer } %>
+  <% end %>
+<% else %>
+  <%= render "offer_form_step_#{@step}", locals: { offer: @offer } %>
+<% end %>

@@ -5,6 +5,8 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[show votes comments]
   before_action :set_own_offer, only: %i[edit update destroy]
 
+  NEW_OFFER_STEPS = *(1..4)
+
   # GET /offers
   def index
     @offers = Offer.includes(
@@ -23,6 +25,8 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = current_user.offers.new
+    @step = params[:step]&.to_i
+    @step = 1 unless NEW_OFFER_STEPS.include?(@step)
   end
 
   # GET /offers/1/edit

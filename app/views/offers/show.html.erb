@@ -28,7 +28,7 @@
 <div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
   <div class="text-white font-weight-light mb-3">
     <h5><%= @offer.position %></h5>
-    <h6><%= @offer.level %> <%= @offer.yoe ? "#{@offer.yoe.to_i} YOE" : "" %></h6>
+    <h6><%= @offer.level %> <% if @offer.level && @offer.yoe %> - <% end %><%= @offer.yoe ? "#{@offer.yoe.to_i} yoe" : "" %></h6>
   </div>
 
   <div class="mb-1">
