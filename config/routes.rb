@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get    "account",                  to: "users#account"
   get    "verify/:token",            to: "users#verify", as: :verify
 
+  get    "unsubscribe",              to: "emails#show"
+  patch  "unsubscribe",              to: "emails#update"
+
   resources :companies, only: [:show] do
     resources :offers, only: %i[new create]
   end

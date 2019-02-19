@@ -1,0 +1,15 @@
+<div class="text-center homepage-header p-4 bg-dark">
+  <div class="text-white">
+    <div class="lead">
+      Sad to see you go 😢
+    </div>
+  </div>
+</div>
+
+<div class="bg-light p-4">
+  <% if @unsubscribed %>
+    <%= render 'unsubscribed' %>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
+</div>
