@@ -9,13 +9,6 @@ class PagesController < ApplicationController
       :impressions
     ).last(6)
 
-    @accepted_offers = Offer.accepted.includes(
-      :company,
-      :votes,
-      :comments,
-      :impressions
-    ).last(3)
-
     @companies = Company.joins(:offers)
       .group('companies.id')
       .having('count(company_id) > 0')

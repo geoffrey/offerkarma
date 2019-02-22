@@ -68,7 +68,7 @@
 
 <div class="text-center p-3 border-bottom">
   <div class="container p-0">
-    <div class="mb-3 text-center">Access recent offers from these companies</div>
+    <div class="mb-3 text-center">Explore recent offers from these companies</div>
 
     <div class="row">
       <% @companies.each do |company| %>
@@ -82,8 +82,7 @@
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-0">
-    <div class="mb-2 text-center">Create offers, receive & give feedback</div>
-    <div class="mb-3 small text-muted text-center">Most recent pending offers:</div>
+    <div class="mb-2 text-center">Give feedback on our pending offers</div>
 
     <div class="row">
       <% @pending_offers.each do |offer| %>
@@ -97,18 +96,8 @@
       <% end %>
     </div>
 
-    <div class="mb-3 small text-muted text-center">Most recent accepted offers:</div>
-
-    <div class="row">
-      <% @accepted_offers.each do |offer| %>
-        <div class="col-lg-4 col-md-6 col-12 p-2">
-          <div class="border rounded list-group-item-action">
-            <a href="<%= offer_path offer.uuid %>" class="list-group-item-action">
-              <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
-            </a>
-          </div>
-        </div>
-      <% end %>
+    <div class="mt-2 text-center">
+      <a href="<%= offers_path %>" class="btn btn-sm btn-outline-secondary">Explore all the offers</a>
     </div>
   </div>
 </div>
