@@ -1,5 +1,5 @@
-<div class="text-center company-header p-4 bg-dark">
-  <h2 class="text-white font-weight-light"><%= @company.name.humanize %></h2>
+<div class="text-center company-header p-4 bg-dark text-white">
+  <h2 class="font-weight-light"><%= @company.name.humanize %></h2>
 
   <div class="mb-2">
     <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @company.domain %>">
@@ -8,26 +8,13 @@
   <div>
     <a href="//<%= @company.domain %>" target="_blank" class="text-white"><%= @company.domain %></a>
   </div>
-</div>
 
-<div class="text-center border-bottom p-2">
-  <div>
-    <span class="mr-4 text-info">
-      <span class="far fa-file-alt"></span> <span class="small"><%= @company.offers.count %></span>
-    </span>
-
-    <span class="mr-4 text-success">
-      <span class="far fa-thumbs-up"></span> <span class="small"><%= @company.offers.count %></span>
-    </span>
-
-    <span class="mr-4 text-danger">
-      <span class="far fa-thumbs-down"></span> <span class="error small"><%= @company.offers.count %></span>
-    </span>
-
-    <span>
-      <span class="fa fa-comments"></span> <%= @company.offers.count %>
-    </span>
-  </div>
+  <% if @company.public? %>
+    <hr/>
+    <div>
+      <a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank">$<%= @company.symbol.upcase %>: <%= @company.quote %></a>
+    </div>
+  <% end %>
 </div>
 
 <div class="bg-light p-3 border-bottom">
