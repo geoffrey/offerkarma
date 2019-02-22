@@ -21,6 +21,7 @@ ActiveAdmin.setup do |config|
   # config.site_title_image = "logo.png"
 
   # == Default Namespace
+  # config.display_name_methods = [:id, :uuid, :to_s]
   #
   # Set the default namespace each administration resource
   # will be added to.

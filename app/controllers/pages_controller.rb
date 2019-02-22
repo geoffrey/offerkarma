@@ -2,12 +2,24 @@
 
 class PagesController < ApplicationController
   def index
-    @offers = Offer.includes(
+    @pending_offers = Offer.pending.includes(
       :company,
       :votes,
       :comments,
       :impressions
-    ).last(10)
+    ).last(6)
+
+    @accepted_offers = Offer.accepted.includes(
+      :company,
+      :votes,
+      :comments,
+      :impressions
+    ).last(3)
+
+    @companies = Company.joins(:offers)
+      .group('companies.id')
+      .having('count(company_id) > 0')
+      .sample(6)
   end
 
   def equity

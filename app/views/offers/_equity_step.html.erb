@@ -25,7 +25,7 @@
             <%= f.label :stock_type do %>
               What type? <span class="small text-muted">optional</span>
             <% end %>
-            <%= f.select :stock_type, Offer.stock_types.keys.map { |t| [t.humanize, t] }, { include_blank: "Select...", selected: "", disabled: "" }, class: "form-control" %>
+            <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: "", disabled: "" }, class: "form-control" %>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
             <%= f.label :stock_strike_price do %>
               Strike price <span class="small text-muted">if options selected</span>
             <% end %>
-            <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22" %>
+            <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22", step: :any %>
           </div>
         </div>
 
@@ -54,12 +54,14 @@
             <%= f.label :stock_fair_market_value do %>
               Current fair market value? <span class="small text-muted">optional</span>
             <% end %>
-            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92" %>
+            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any %>
           </div>
         </div>
       </div>
 
-      <%= f.submit "Next >", class: "btn btn-block btn-danger" %>
+      <%= f.submit "Next", class: "btn btn-block btn-danger" %>
+      <%= f.submit "Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
+
     <% end %>
   </div>
 </div>

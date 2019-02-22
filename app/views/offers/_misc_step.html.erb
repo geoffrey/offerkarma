@@ -24,12 +24,14 @@
         <%= f.label :notes do %>
           Notes <span class="small text-muted">optional</span>
         <% end %>
-        <%= f.text_area :notes, class: "form-control", placeholder: "I do/don't like the team... I think the mission of the company is/isn't interesting to me because...", required: "true", autocomplete: "off", rows: "5" %>
+        <%= f.text_area :notes, class: "form-control", placeholder: "I do/don't like the team... I think the mission of the company is/isn't interesting to me because...", autocomplete: "off", rows: "5" %>
       </div>
 
-      <%= f.submit "Finish and publish", class: "btn btn-block btn-danger" %>
+      <%= f.submit "Submit", class: "btn btn-block btn-danger" %>
+      <%= f.submit "Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
 
       <small class="text-muted">By submitting this form, our members will be able to comment and vote on your offer.</small>
+
     <% end %>
   </div>
 </div>

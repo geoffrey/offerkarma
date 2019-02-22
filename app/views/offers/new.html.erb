@@ -1,7 +1,13 @@
-<% if params[:debug] %>
-  <% OffersController::NEW_OFFER_STEPS.each do |step| %>
-    <%= render "offer_form_step_#{step}", locals: { offer: @offer } %>
-  <% end %>
-<% else %>
-  <%= render "offer_form_step_#{@step}", locals: { offer: @offer } %>
+<% if @offer.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="list-unstyled">
+      <% @offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+
+<%= form_for @offer do |f| %>
+  <%= render "#{@offer.current_step}_step", f: f %>
+ <% end %>

@@ -24,9 +24,9 @@ class OffersController < ApplicationController
 
   # GET /offers/new
   def new
-    @offer = current_user.offers.new
-    @step = params[:step]&.to_i
-    @step = 1 unless NEW_OFFER_STEPS.include?(@step)
+    session[:offer_params] ||= {}
+    @offer = current_user.offers.new(session[:offer_params])
+    @offer.current_step = session[:offer_step]
   end
 
   # GET /offers/1/edit
@@ -34,16 +34,31 @@ class OffersController < ApplicationController
 
   # POST /offers
   def create
-    company = Company.find_or_create_from_clearbit!(
-      offer_company_params[:company_name]
-    )
-    @offer = current_user.offers.new(offer_params)
-    @offer.company = company
+    session[:offer_params].deep_merge!(offer_params) if offer_params
+    @offer = current_user.offers.new(session[:offer_params])
+    @offer.current_step = session[:offer_step]
 
-    if @offer.save
-      redirect_to offer_path @offer.uuid
+    if @offer.first_step?
+      create_company!
+      session[:offer_params].deep_merge!(company_id: @offer.company_id)
+    end
+
+    if @offer.valid?
+      if params[:back_button]
+        @offer.previous_step
+      elsif @offer.last_step?
+        @offer.save if @offer.all_valid?
+      else
+        @offer.next_step
+      end
+      session[:offer_step] = @offer.current_step
+    end
+
+    if @offer.new_record?
+      redirect_to new_offer_path
     else
-      render :new
+      session[:offer_step] = session[:offer_params] = nil
+      redirect_to offer_path @offer.reload.uuid
     end
   end
 
@@ -86,6 +101,12 @@ class OffersController < ApplicationController
 
   private
 
+  def create_company!
+    @offer.company = Company.find_or_create_from_clearbit!(
+      offer_company_params[:company_name]
+    )
+  end
+
   def set_own_offer
     @offer = current_user.offers.find_by_uuid!(params[:id])
   end
@@ -109,12 +130,21 @@ class OffersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
     params.require(:offer).permit(
-      :creation_step,
-      :position,
-      :yoe,
+      :base_salary,
+      :bonus_per_year_percent,
+      :company_name,
       :level,
       :location,
+      :notes,
+      :position,
+      :relocation_package,
+      :signon_bonus,
+      :stock_count,
+      :stock_fair_market_value,
+      :stock_strike_price,
+      :stock_type,
       :status,
+      :yoe
     )
   end
 end

@@ -72,7 +72,7 @@
     <div class="row">
       <div class="col-12 mb-2 mb-md-3">
         <div class="col-12 text-center border bg-white p-2">
-          <div class="font-weight-bold">Total Compensation</div>
+          <div class="font-weight-light mb-1">Total Compensation</div>
           <div class="lead font-weight-bold">$<%= number_to_human @offer.tc %> / year</div>
         </div>
       </div>
@@ -81,7 +81,7 @@
     <div class="row">
       <div class="col-12 mb-2 mb-md-3">
         <div class="col-12 text-center border bg-white p-2">
-          <div class="font-weight-light">Base salary <span class="fa fa-money-bill ml-1 text-muted"></span></div>
+          <div class="font-weight-light mb-1">Base salary <span class="money-bill ml-1 text-muted"></span></div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
         </div>
       </div>
@@ -90,14 +90,14 @@
     <div class="row">
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.relocation_package.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light">Relocation package <span class="fa fa-people-carry ml-1 text-muted"></span></div>
+          <div class="font-weight-light mb-1">Relocation package</div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.relocation_package.to_i %></div>
         </div>
       </div>
 
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.signon_bonus.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light">Signon Bonus <span class="fa fa-file-signature ml-1 text-muted"></span>  </div>
+          <div class="font-weight-light mb-1">Signon Bonus</div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
         </div>
       </div>
@@ -106,7 +106,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light">Stocks (<%= @offer.stock_type.humanize %>) <span class="fa fa-chart-line ml-1 text-muted"></span>  </div>
+          <div class="font-weight-light mb-1">Stocks (<%= @offer.stock_type.humanize %>)</div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.stocks_profit_per_year.to_i %> / year</div>
           <% unless @offer.stocks_liquid? %>
             <span class="badge badge-warning">not liquid*</span>
@@ -122,7 +122,7 @@
 
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.bonus_per_year_percent.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light">Bonus <span class="fa fa-hand-holding-usd ml-1 text-muted"></span>  </div>
+          <div class="font-weight-light">Bonus</div>
           <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year.to_i %> / year</div>
           <% if @offer.bonus_per_year_percent %>
             <div class="small text-muted">
@@ -136,7 +136,7 @@
     <% if @offer.notes.present? %>
       <div class="bg-light">
         <div class="center-box-max-width bg-white border p-3 text-align-justity">
-          <div class="font-weight-light text-center">Notes <span class="fa fa-pen-square ml-1 text-muted"></span></div>
+          <div class="font-weight-light text-center">Notes</div>
           <div>
             <%= @offer.notes %>
           </div>
@@ -151,12 +151,12 @@
     <div>
       <div class="d-flex">
         <div class="flex-even pr-2">
-          <%= link_to votes_offer_path(@offer.uuid, vote: 1), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success' : 'btn-outline-success' }", method: :post do %>
+          <%= link_to votes_offer_path(@offer.uuid, vote: 1), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success disabled' : 'btn-outline-success' }", method: :post do %>
             <span class="fa fa-thumbs-up"></span> Nice!
           <% end %>
         </div>
         <div class="flex-even pl-2">
-          <%= link_to votes_offer_path(@offer.uuid, vote: -1), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger' : 'btn-outline-danger' }", method: :post do %>
+          <%= link_to votes_offer_path(@offer.uuid, vote: -1), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger disabled' : 'btn-outline-danger' }", method: :post do %>
             <span class="fa fa-thumbs-down"></span> Meh...
           <% end %>
         </div>
@@ -174,7 +174,7 @@
         <div class="bg-light p-3 border-bottom mb-2">
           <div class="small d-flex justify-content-between">
             <div>
-              <a href="<%= company_path comment.user.current_company.uuid %>"><%= comment.user.current_company.name %></a> - <%= comment.user.uuid.first(8) %> <sup class="font-weight-bold text-danger"><%= @offer.user.id == comment.user.id ? "OP" : "" %></sup>
+              <a href="<%= company_path comment.user.current_company.uuid %>"><%= comment.user.current_company.name %></a> - <%= comment.user.username %> <sup class="font-weight-bold text-danger"><%= @offer.user.id == comment.user.id ? "OP" : "" %></sup>
             </div>
 
             <div>

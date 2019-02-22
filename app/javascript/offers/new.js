@@ -8,6 +8,8 @@ export default {
       return
 
     const cleaveCurrencyOption = {
+      prefix: '$',
+      delimiterLazyShow: true,
       noImmediatePrefix: true,
       numeral: true,
       numeralThousandsGroupStyle: 'thousand'
@@ -19,17 +21,22 @@ export default {
   },
 
   setAutocomplete: () => {
-    $('#offer_company_name').autocomplete({
+    const $companyNameInput = $('#offer_company_name')
+
+    if ($companyNameInput.length == 0)
+      return
+
+    $companyNameInput.autocomplete({
       minChars: 2,
       source: function(req, res){
         $.getJSON('https://autocomplete.clearbit.com/v1/companies/suggest', { query: req.term }, function(data){ res(data); });
       },
       focus: function(event, ui){
-        $('#offer_company_name').val(ui.item.name);
+        $companyNameInput.val(ui.item.name);
         return false;
       },
       select: function(event, ui){
-        $('#offer_company_name').val(ui.item.name);
+        $companyNameInput.val(ui.item.name);
         return false;
       },
       messages: {

@@ -30,6 +30,10 @@ class User < ApplicationRecord
     end
   end
 
+  def username
+     read_attribute(:username) || uuid.first(8)
+  end
+
   def current_company
     id = current_company_id || Company.first.id
     @current_company ||= Company.find(id)

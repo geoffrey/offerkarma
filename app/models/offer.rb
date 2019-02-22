@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Offer < ApplicationRecord
+  include OfferCreation
+
   is_impressionable
 
-  attr_reader :creation_step
+  attr_accessor :company_name
 
   belongs_to :company
   belongs_to :user
@@ -11,14 +13,16 @@ class Offer < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :position, presence: true, if: :first_step?
   validates :base_salary, :signon_bonus, :relocation_package,
             inclusion: 0..10_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
-  validates :stock_strike_price, inclusion: 0..1000, allow_nil: true
-  validates :stock_fair_market_value, inclusion: 0..1_000, allow_nil: true
-  validates :stock_count, inclusion: 0..1_000_000, allow_nil: true
-  validates :yoe, inclusion: 0..99, allow_nil: true
+  validates :stock_strike_price, inclusion: 0..1_000, allow_nil: true
+  validates :stock_fair_market_value, inclusion: 0..10_000, allow_nil: true
+  validates :stock_count, inclusion: 0..2_000_000, allow_nil: true
+  validates :yoe, inclusion: 0..50, allow_nil: true
+
+  scope :accepted, -> { where(status: :accepted) }
+  scope :pending, -> { where(status: :pending) }
 
   enum scope: %i[public_scope private_scope]
   enum status: %i[accepted declined pending]
@@ -63,11 +67,5 @@ class Offer < ApplicationRecord
     base_salary.to_i +
       stocks_profit_per_year.to_f +
       bonus_value_per_year.to_f
-  end
-
-  private
-
-  def first_step?
-    creation_step == 1
   end
 end
