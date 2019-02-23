@@ -22,6 +22,18 @@ ActiveAdmin.register Offer do
     :votes_enabled,
     :yoe
 
+  index do
+    selectable_column
+
+    Offer.column_names.each do |c|
+      column c.to_sym
+    end
+
+    actions do |offer|
+      item "View on site", offer_path(offer.uuid), target: "_blank"
+    end
+  end
+
   form title: "Offer" do |f|
     f.inputs :except => [:uuid]
     f.actions
