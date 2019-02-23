@@ -26,6 +26,7 @@ class Offer < ApplicationRecord
 
   scope :accepted, -> { where(status: :accepted) }
   scope :pending, -> { where(status: :pending) }
+  scope :declined, -> { where(status: :declined) }
 
   enum scope: %i[public_scope private_scope]
   enum status: %i[accepted declined pending]
@@ -55,7 +56,7 @@ class Offer < ApplicationRecord
   end
 
   def stock_fair_market_value
-    company.quote || read_attribute(:stock_fair_market_value)
+    company&.quote || read_attribute(:stock_fair_market_value)
   end
 
   def stock_profit

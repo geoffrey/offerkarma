@@ -7,7 +7,6 @@ class OffersController < ApplicationController
 
   NEW_OFFER_STEPS = *(1..4)
 
-  # GET /offers
   def index
     @offers = Offer.includes(
       :company,
@@ -18,22 +17,18 @@ class OffersController < ApplicationController
     ).last(10)
   end
 
-  # GET /offers/1
   def show
     impressionist @offer
   end
 
-  # GET /offers/new
   def new
     session[:offer_params] ||= {}
     @offer = current_user.offers.new(session[:offer_params])
     @offer.current_step = session[:offer_step]
   end
 
-  # GET /offers/1/edit
   def edit; end
 
-  # POST /offers
   def create
     session[:offer_params].deep_merge!(offer_params) if offer_params
     @offer = current_user.offers.new(session[:offer_params])
@@ -63,22 +58,16 @@ class OffersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /offers/1
   def update
-    if @offer.update(offer_params)
-      redirect_to offer_path @offer.uuid
-    else
-      render :edit
-    end
+    @offer.update(offer_params)
+    redirect_to offer_path @offer.uuid
   end
 
-  # DELETE /offers/1
   def destroy
     @offer.destroy
     edirect_to offers_url, notice: "Your offer was successfully destroyed."
   end
 
-  # POST /offers/:id/votes
   def votes
     vote = @offer.votes.find_or_create_by!(user: current_user)
 
@@ -92,7 +81,6 @@ class OffersController < ApplicationController
     redirect_to offer_path @offer.uuid
   end
 
-  # POST /offers/:id/comments
   def comments
     @comment = @offer.comments.new(comment_params)
     @comment.user = current_user
@@ -128,7 +116,6 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:company_name)
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
     attrs = params.require(:offer).permit(
       :base_salary,

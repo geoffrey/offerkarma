@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def uses_corporate_email?
-    !!Company.find_on_clearbit(email_domain)
+    !!find_current_company_id
   end
 
   def authenticated?(attribute, token)
