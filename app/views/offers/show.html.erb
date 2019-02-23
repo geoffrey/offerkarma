@@ -73,7 +73,7 @@
       <div class="col-12 mb-2 mb-md-3">
         <div class="col-12 text-center border bg-white p-2">
           <div class="font-weight-light mb-1">Total Compensation</div>
-          <div class="lead font-weight-bold">$<%= number_to_human @offer.tc %> / year</div>
+          <div class="lead font-weight-bold" title="<%= @offer.tc %>">$<%= number_to_human @offer.tc %> / year</div>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
       <div class="col-12 mb-2 mb-md-3">
         <div class="col-12 text-center border bg-white p-2">
           <div class="font-weight-light mb-1">Base salary <span class="money-bill ml-1 text-muted"></span></div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.base_salary %> / year</div>
+          <div class="lead font-weight-normal" title="<%= @offer.base_salary %>">$<%= number_to_human @offer.base_salary %> / year</div>
         </div>
       </div>
     </div>
@@ -91,14 +91,14 @@
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.relocation_package.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Relocation package</div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.relocation_package.to_i %></div>
+          <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package %></div>
         </div>
       </div>
 
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.signon_bonus.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Signon Bonus</div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+          <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus %></div>
         </div>
       </div>
     </div>
@@ -107,9 +107,11 @@
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Stocks (<%= @offer.stock_type.humanize %>)</div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.stocks_profit_per_year.to_i %> / year</div>
-          <% unless @offer.stocks_liquid? %>
-            <span class="badge badge-warning">not liquid*</span>
+          <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_per_year %>">$<%= number_to_human @offer.stocks_profit_per_year %> / year</div>
+          <% if @offer.stocks_liquid? %>
+            <span class="badge badge-success">liquid</span>
+          <% else %>
+            <span class="badge badge-warning">not liquid</span>
           <% end %>
 <!--
           <% if @offer.stock_count %>
@@ -123,10 +125,10 @@
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.bonus_per_year_percent.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light">Bonus</div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year.to_i %> / year</div>
+          <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year %> / year</div>
           <% if @offer.bonus_per_year_percent %>
             <div class="small text-muted">
-              <%= @offer.bonus_per_year_percent.to_i %>% of base salary (<%= @offer.base_salary %>)
+              <%= @offer.bonus_per_year_percent %>% of base salary (<%= @offer.base_salary %>)
             </div>
           <% end %>
         </div>

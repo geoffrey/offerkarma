@@ -16,16 +16,8 @@ class Company < ApplicationRecord
   ALPHAVANTAGE_BASE_URL = "https://www.alphavantage.co/query?apikey=#{ENV.fetch('ALPHAVANTAGE_API_KEY')}"
   YAHOO_FINANCE_BASE_URL = "https://finance.yahoo.com/quote"
 
-  def quote
-    return if symbol.blank?
-    update_quote
-    save
-    reload
-    read_attribute(:quote)
-  end
-
   def public?
-    symbol.present? && read_attribute(:quote).present?
+    symbol.present? && quote.present?
   end
 
   def yahoo_finance_url
@@ -61,7 +53,7 @@ class Company < ApplicationRecord
   end
 
   def update_quote
-    self.quote = get_quote
+    self.quote = get_quote if get_quote
   end
 
   def get_symbol

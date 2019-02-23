@@ -32,6 +32,10 @@ class Offer < ApplicationRecord
   default_value_for(:status) { :pending }
   default_value_for(:stock_type) { :options }
 
+  def views
+    impressionist_count
+  end
+
   def status_class
     return "success" if accepted?
     return "danger" if declined?
@@ -39,28 +43,32 @@ class Offer < ApplicationRecord
     "info"
   end
 
-  def stocks_liquid?
-    rsus? && company.public?
+  def bonus_value_per_year
+    bonus_per_year_percent.to_f * base_salary.to_f / 100
   end
 
-  def views
-    impressionist_count
+  def stocks_liquid?
+    company.public?
+  end
+
+  def stock_fair_market_value
+    company.quote || read_attribute(:stock_fair_market_value)
+  end
+
+  def stock_profit
+    if options?
+      stock_fair_market_value.to_f  -= stock_strike_price.to_f
+    else
+      stock_fair_market_value.to_f
+    end
   end
 
   def stocks_profit
     stock_profit.to_f * stock_count.to_f
   end
 
-  def stock_profit
-    stock_fair_market_value.to_f - stock_strike_price.to_f
-  end
-
   def stocks_profit_per_year
     stocks_profit.to_f / 4
-  end
-
-  def bonus_value_per_year
-    bonus_per_year_percent.to_f * base_salary.to_f / 100
   end
 
   def tc
