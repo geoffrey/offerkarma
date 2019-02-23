@@ -57,7 +57,7 @@ class Offer < ApplicationRecord
 
   def stock_profit
     if options?
-      stock_fair_market_value.to_f  -= stock_strike_price.to_f
+      stock_fair_market_value.to_f - stock_strike_price.to_f
     else
       stock_fair_market_value.to_f
     end
