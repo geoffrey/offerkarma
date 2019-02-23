@@ -129,7 +129,7 @@ class OffersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
-    params.require(:offer).permit(
+    attrs = params.require(:offer).permit(
       :base_salary,
       :bonus_per_year_percent,
       :company_name,
@@ -146,5 +146,11 @@ class OffersController < ApplicationController
       :status,
       :yoe
     )
+
+    attrs[:base_salary] = Monetize.parse(attrs[:base_salary]).amount if attrs[:base_salary].present?
+    attrs[:relocation_package] = Monetize.parse(attrs[:relocation_package]).amount if attrs[:relocation_package].present?
+    attrs[:signon_bonus] = Monetize.parse(attrs[:signon_bonus]).amount if attrs[:signon_bonus].present?
+
+    attrs
   end
 end
