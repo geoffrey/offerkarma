@@ -24,10 +24,6 @@ class Offer < ApplicationRecord
   validates :stock_count, inclusion: 0..2_000_000, allow_nil: true
   validates :yoe, inclusion: 0..50, allow_nil: true
 
-  scope :accepted, -> { where(status: :accepted) }
-  scope :pending, -> { where(status: :pending) }
-  scope :declined, -> { where(status: :declined) }
-
   enum scope: %i[public_scope private_scope]
   enum status: %i[accepted declined pending]
   enum stock_type: %i[options rsus]

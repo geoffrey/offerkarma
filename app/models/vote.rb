@@ -6,6 +6,7 @@ class Vote < ApplicationRecord
 
   validates :offer, uniqueness: { scope: :user }
 
-  scope :up, -> { where(vote: 1) }
-  scope :down, -> { where(vote: -1) }
+  enum vote: %i[up down]
+
+  default_value_for(:vote) { :up }
 end
