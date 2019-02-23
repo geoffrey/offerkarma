@@ -23,12 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # Set user on signup page.
   def signup
     @user = User.new
   end
 
-  # Actually process the sign up.
   def create
     user_attr = user_params
     user_attr[:password_confirmation] = user_attr[:password]

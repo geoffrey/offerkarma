@@ -9,12 +9,10 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= favicon_link_tag asset_path('favicon.png') %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <%= stylesheet_pack_tag 'app', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -56,7 +54,7 @@
         </div>
       </div>
       <div class="small mb-2">
-        Any suggestions? <a href="mailto:hello@reffo.us?subject=Feedback">Email us!</a>
+        Any suggestions? <a href="mailto:hello@reffo.us?subject=Feedback" target="_blank">Email us!</a>
       </div>
       <div class="mb-2 small text-muted">
         Made with <span class="text-danger fa fa-heart"></span> in San Francisco

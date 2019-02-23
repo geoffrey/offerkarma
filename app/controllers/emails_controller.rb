@@ -3,7 +3,7 @@
 class EmailsController < ApplicationController
   def show
     # TODO
-    @unsubscribed =  false
+    @unsubscribed = false
   end
 
   def update

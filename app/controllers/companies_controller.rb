@@ -23,12 +23,10 @@ class CompaniesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_company
     @company = Company.find_by_uuid!(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def company_params
     params.require(:company).permit(:name, :url, :public, :current_valuation, :last_funding_round)
   end

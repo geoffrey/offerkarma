@@ -1,6 +1,5 @@
-@import 'bootstrap/dist/css/bootstrap';
-@import "companies";
-@import "offers";
+@import '../styles/bootstrap';
+@import '../styles/fontawesome';
 
 @-ms-viewport{
   width: device-width;

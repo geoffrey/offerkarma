@@ -37,6 +37,8 @@ class Company < ApplicationRecord
     company
   end
 
+  private
+
   def self.find_on_clearbit(search)
     response = HTTParty.get("#{CLEARBIT_COMPANY_SEARCH_URL}?query=#{search}")
     return nil unless response.success?
@@ -45,8 +47,6 @@ class Company < ApplicationRecord
   rescue
     nil
   end
-
-  private
 
   def update_symbol
     self.symbol ||= get_symbol
