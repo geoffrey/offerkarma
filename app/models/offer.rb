@@ -11,6 +11,9 @@ class Offer < ApplicationRecord
   belongs_to :user
 
   has_many :votes, dependent: :destroy
+  has_many :upvotes, -> { up }, class_name: "Vote"
+  has_many :downvotes, -> { down }, class_name: "Vote"
+
   has_many :comments, dependent: :destroy
 
   validates :base_salary, :signon_bonus, :relocation_package,
@@ -33,7 +36,7 @@ class Offer < ApplicationRecord
   default_value_for(:stock_type) { :options }
 
   def views
-    impressionist_count
+    impressions.size
   end
 
   def status_class

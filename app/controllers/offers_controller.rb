@@ -11,7 +11,8 @@ class OffersController < ApplicationController
   def index
     @offers = Offer.includes(
       :company,
-      :votes,
+      :upvotes,
+      :downvotes,
       :comments,
       :impressions
     ).last(10)

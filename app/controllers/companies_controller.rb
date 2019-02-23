@@ -3,26 +3,22 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy]
 
-  # GET /companies
   def index
     @companies = Company.all
   end
 
-  # GET /companies/1
   def show
+    @company.save
     @offers = @company.offers
   end
 
   def edit
-    # TODO
   end
 
   def update
-    # TODO
   end
 
   def destroy
-    # TODO
   end
 
   private

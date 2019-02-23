@@ -4,7 +4,8 @@ class PagesController < ApplicationController
   def index
     @pending_offers = Offer.pending.includes(
       :company,
-      :votes,
+      :upvotes,
+      :downvotes,
       :comments,
       :impressions
     ).last(6)

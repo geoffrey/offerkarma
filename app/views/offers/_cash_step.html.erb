@@ -24,13 +24,13 @@
           <%= f.label :base_salary do %>
             Base salary <span class="text-danger">*</span>
           <% end %>
-          <%= f.text_field :base_salary, class: "form-control", placeholder: "$50,000", required: "true", autocomplete: "off" %>
+          <%= f.text_field :base_salary, class: "form-control", placeholder: "$100,000", required: "true", autocomplete: "off" %>
         </div>
       </div>
 
       <div class="col-md-6">
         <%= f.label :bonus_per_year_percent do %>
-          Target bonus per year? <span class="small text-ghost">optional</span>
+          Target bonus per year <span class="small text-ghost">optional</span>
         <% end %>
         <div class="input-group mb-3">
           <%= f.number_field :bonus_per_year_percent, max: 100, class: "form-control", placeholder: "0" %>
@@ -44,19 +44,19 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :relocation_package do %>
-            Any relocation package? <span class="small text-ghost">optional</span>
+          <%= f.label :signon_bonus do %>
+            Sign-on bonus <span class="small text-ghost">optional</span>
           <% end %>
-          <%= f.text_field :relocation_package, class: "form-control", placeholder: "$0", autocomplete: "off" %>
+          <%= f.text_field :signon_bonus, class: "form-control", placeholder: "$0", autocomplete: "off" %>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :signon_bonus do %>
-            What about a signon bonus? <span class="small text-ghost">optional</span>
+          <%= f.label :relocation_package do %>
+            Relocation package <span class="small text-ghost">optional</span>
           <% end %>
-          <%= f.text_field :signon_bonus, class: "form-control", placeholder: "$0", autocomplete: "off" %>
+          <%= f.text_field :relocation_package, class: "form-control", placeholder: "$0", autocomplete: "off" %>
         </div>
       </div>
     </div>

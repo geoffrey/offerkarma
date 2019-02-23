@@ -9,7 +9,7 @@ class Company < ApplicationRecord
   before_save { domain.downcase! }
   before_save { name.downcase! }
   before_save { symbol&.upcase! }
-  before_save { set_symbol }
+  before_save { update_symbol }
   before_save { update_quote }
 
   CLEARBIT_COMPANY_SEARCH_URL = "https://autocomplete.clearbit.com/v1/companies/suggest"
@@ -48,12 +48,13 @@ class Company < ApplicationRecord
 
   private
 
-  def set_symbol
+  def update_symbol
     self.symbol ||= get_symbol
   end
 
   def update_quote
-    self.quote = get_quote if get_quote
+    quote = get_quote
+    self.quote = quote if quote
   end
 
   def get_symbol

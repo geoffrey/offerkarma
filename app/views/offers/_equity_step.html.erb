@@ -55,6 +55,11 @@
               Current fair market value? <span class="small text-muted">optional</span>
             <% end %>
             <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any %>
+            <% if @offer.company.quote %>
+              <div>
+                <%= @offer.company.quote %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -65,3 +70,4 @@
     <% end %>
   </div>
 </div>
+

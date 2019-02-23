@@ -26,9 +26,7 @@ Rails.application.routes.draw do
   get    "unsubscribe",              to: "emails#show"
   patch  "unsubscribe",              to: "emails#update"
 
-  resources :companies, only: [:show] do
-    resources :offers, only: %i[new create]
-  end
+  resources :companies, only: [:show]
 
   resources :offers, only: %i[index new create show edit update] do
     member do
