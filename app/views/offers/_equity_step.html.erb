@@ -25,7 +25,7 @@
             <%= f.label :stock_type do %>
               What type? <span class="small text-muted">optional</span>
             <% end %>
-            <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: "", disabled: "" }, class: "form-control" %>
+            <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: @offer.company.public? ? "rsus" : "options", disabled: "" }, class: "form-control", disabled: @offer.company.public? %>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
             <%= f.label :stock_strike_price do %>
               Strike price <span class="small text-muted">if options selected</span>
             <% end %>
-            <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22", step: :any %>
+            <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22", step: :any, value: @offer.company.public? ? 0 : '', disabled: @offer.company.public? %>
           </div>
         </div>
 
@@ -54,11 +54,9 @@
             <%= f.label :stock_fair_market_value do %>
               Current fair market value? <span class="small text-muted">optional</span>
             <% end %>
-            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any %>
+            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any, value: @offer.company.quote, disabled: @offer.company.public? %>
             <% if @offer.company.quote %>
-              <div>
-                <%= @offer.company.quote %>
-              </div>
+              <small class="form-text text-muted"><%= @offer.company.name.humanize %> (<a href="<%= @offer.company.yahoo_finance_url %>" target="_blank">$<%= @offer.company.symbol %></a>) is publicly traded.</small>
             <% end %>
           </div>
         </div>
