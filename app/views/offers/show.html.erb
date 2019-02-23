@@ -91,14 +91,14 @@
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.relocation_package.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Relocation package</div>
-          <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package %></div>
+          <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package.to_i %></div>
         </div>
       </div>
 
       <div class="col-12 col-md-6 mb-2 mb-md-3">
         <div class="col-12 text-center border height-100 bg-white p-2 <%= @offer.signon_bonus.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Signon Bonus</div>
-          <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus %></div>
+          <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus.to_i %></div>
         </div>
       </div>
     </div>
@@ -128,7 +128,7 @@
           <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year %> / year</div>
           <% if @offer.bonus_per_year_percent %>
             <div class="small text-muted">
-              <%= @offer.bonus_per_year_percent %>% of base salary (<%= @offer.base_salary %>)
+              <%= @offer.bonus_per_year_percent %>% of $<%= number_to_human @offer.base_salary %>
             </div>
           <% end %>
         </div>
