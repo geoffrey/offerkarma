@@ -46,7 +46,7 @@
       <% end %>
 
       <div>
-        <% if current_user.offers.none? %>
+        <% if current_user.offers&.none? %>
           <a href="<%= new_offer_path %>" class="btn btn-danger">Evaluate my first offer</a>
         <% else %>
           <a href="<%= account_path %>" class="btn btn-outline-danger">Manage my offers</a>

@@ -9,7 +9,7 @@
 <div class="bg-light p-4">
   <div class="container bg-white p-4 rounded text-center">
     <div class="lead mb-3">
-      <% if current_user.verified? %>
+      <% if current_user&.verified? %>
         Your account has already been verified!
       <% else %>
         Sorry, this verification link has expired or is invalid.
