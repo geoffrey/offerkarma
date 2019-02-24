@@ -176,7 +176,14 @@
         <div class="bg-light p-3 border-bottom mb-2">
           <div class="small d-flex justify-content-between">
             <div>
-              <a href="<%= company_path comment.user.current_company.uuid %>"><%= comment.user.current_company.name %></a> - <%= comment.user.username %> <sup class="font-weight-bold text-danger"><%= @offer.user.id == comment.user.id ? "OP" : "" %></sup>
+              <% if comment.user.current_company %>
+                <a href="<%= company_path comment.user.current_company.uuid %>">
+                  <%= comment.user.current_company.name %>
+                </a>
+              <% else %>
+                New
+              <% end %>
+              - <%= comment.user.username %> <sup class="font-weight-bold text-danger"><%= @offer.user.id == comment.user.id ? "OP" : "" %></sup>
             </div>
 
             <div>

@@ -35,16 +35,15 @@ class User < ApplicationRecord
   end
 
   def current_company
-    id = current_company_id || Company.first.id
-    @current_company ||= Company.find(id)
+    @current_company ||= Company.find(current_company_id) if current_company_id
   end
 
   def upvoted?(offer)
-    offer.votes.up.where(user: self).exists?
+    offer.upvotes.where(user: self).exists?
   end
 
   def downvoted?(offer)
-    offer.votes.down.where(user: self).exists?
+    offer.downvotes.where(user: self).exists?
   end
 
   def uses_corporate_email?
