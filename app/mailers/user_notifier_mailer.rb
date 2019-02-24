@@ -1,10 +1,9 @@
 class UserNotifierMailer < ApplicationMailer
-  default from: 'geoffrey@reffo.us'
+  default from: 'Geoffrey from Reffo <geoffrey@reffo.us>'
 
- # send a signup email to the user
- def send_signup_email(user, verification_token)
+ def signup_email(user, verification_token)
    @user = user
    @verification_token = verification_token
-   mail(to: @user.email, subject: 'Welcome to reffo')
+   mail(to: @user.email, subject: 'Welcome to Reffo')
  end
 end

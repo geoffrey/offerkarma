@@ -19,7 +19,7 @@ module Users
 
     def send_confirmation_email(user)
       UserNotifierMailer
-        .send_signup_email(user, user.verification_token)
+        .signup_email(user, user.verification_token)
         .deliver_later
     end
   end

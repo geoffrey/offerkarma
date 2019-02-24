@@ -14,7 +14,7 @@
     <![endif]-->
     <!--[if (gte mso 9)|(IE)]>
     <style type="text/css">
-      body {width: 600px;margin: 0 auto;}
+      body {width: 500px;margin: 0 auto;}
       table {border-collapse: collapse;}
       table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
       img {-ms-interpolation-mode: bicubic;}
@@ -103,11 +103,11 @@
      <!--End Head user entered-->
   </head>
   <body>
-    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #ffffff;">
+    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size: 14px; font-family: arial; color: #000000; background-color: #f8f9fa; border-radius:6px; margin: 20px;">
       <div class="webkit">
-        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#ffffff">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f8f9fa">
           <tr>
-            <td valign="top" bgcolor="#ffffff" width="100%">
+            <td valign="top" bgcolor="#f8f9fa" width="100%">
               <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="100%">
@@ -116,11 +116,11 @@
                         <td>
                           <!--[if mso]>
                           <center>
-                          <table><tr><td width="600">
+                          <table><tr><td width="500">
                           <![endif]-->
-                          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:600px;" align="center">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width:500px;" align="center">
                             <tr>
-                              <td role="modules-container" style="padding: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor="#ffffff" width="100%" align="left">
+                              <td role="modules-container" style="padding: 20px 20px 20px 20px; color: #000000; text-align: left;" bgcolor="#ffffff" width="100%" align="left">
 
     <table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%"
            style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
@@ -133,24 +133,20 @@
 
     <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
       <tr>
-        <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit;"
+        <td style="padding:0px 0px 10px 0px;line-height:22px;text-align:inherit;"
             height="100%"
             valign="top"
             bgcolor="">
-            <h3>Great news!</h3>
+            <h3>Final step...</h3>
 
-<div>You are only one step away from completing your <span style="color:#dc3545;"><strong>Reffo</strong></span> account registration!</div>
+<div>Confirm your email address to complete your <span style="font-weight: 600; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-family: arial; font-size: 14px; color: rgb(220, 53, 69);">reffo</span>&nbsp;account.</div>
 
-<div><span style="font-size: 14px; text-align: inherit; background-color: transparent;">If you used your&nbsp;work email we will automatically verify you for that company.</span></div>
-
-<div>
-<div style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-family: arial; font-size: 14px; color: rgb(0, 0, 0);"><strong>Simply click on the following button to verify your account now:</strong></div>
-</div>
+<div>It&#39;s easy - just click the button below.</div>
 
         </td>
       </tr>
     </table>
-  <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%"><tbody><tr><td align="center" bgcolor="" class="outer-td" style="padding:0px 0px 0px 0px"><table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center"><tbody><tr><td align="center" bgcolor="#dc3545" class="inner-td" style="border-radius:6px;font-size:16px;text-align:center;background-color:inherit"><a href="<%= verify_url @verification_token, email: @user.email %>" style="background-color:#dc3545;border:1px solid #333333;border-color:#dc3545;border-radius:6px;border-width:1px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:16px;font-weight:normal;letter-spacing:0px;line-height:16px;padding:12px 18px 12px 18px;text-align:center;text-decoration:none" target="_blank">Verify my account</a></td></tr></tbody></table></td></tr></tbody></table>
+  <table border="0" cellPadding="0" cellSpacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed" width="100%"><tbody><tr><td align="left" class="outer-td" style="padding:0px 0px 0px 0px"><table border="0" cellPadding="0" cellSpacing="0" class="button-css__deep-table___2OZyb wrapper-mobile" style="text-align:center"><tbody><tr><td align="center" bgcolor="#dc3545" class="inner-td" style="border-radius:6px;font-size:16px;text-align:left;background-color:inherit"><a style="background-color:#dc3545;border:1px solid #333333;border-color:#dc3545;border-radius:6px;border-width:1px;color:#ffffff;display:inline-block;font-family:arial,helvetica,sans-serif;font-size:16px;font-weight:normal;letter-spacing:0px;line-height:16px;padding:12px 18px 12px 18px;text-align:center;text-decoration:none" href="<%= verify_url @verification_token, email: @user.email %>" target="_blank">Confirm now</a></td></tr></tbody></table></td></tr></tbody></table>
     <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
       <tr>
         <td style="padding:18px 0px 18px 0px;line-height:22px;text-align:inherit;"
@@ -158,7 +154,7 @@
             valign="top"
             bgcolor="">
             <div>
-<div style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-family: arial; font-size: 14px; color: rgb(0, 0, 0);"><span style="color:#808080;">If the button above doesn&#39;t work, simply copy/paste the following link in your browser:
+<div style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-family: arial; font-size: 14px; color: rgb(0, 0, 0);"><span style="color:#808080;">Button above doesn&#39;t work? Copy and paste this one into your browser
 <br/>
 <b><%= verify_url @verification_token, email: @user.email %></b>
 </span></div>
