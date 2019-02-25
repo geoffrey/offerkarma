@@ -32,7 +32,7 @@
   </div>
 
   <div class="mb-1">
-    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= @offer.company.domain %>"></a>
+    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="img-thumbnail rounded border-0" src="//logo.clearbit.com/<%= @offer.company.domain %>"></a>
   </div>
 
   <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
@@ -72,7 +72,7 @@
     <div class="row">
       <div class="col-12 mb-2 mb-md-3">
         <div class="col-12 text-center border bg-white p-2">
-          <div class="font-weight-light mb-1">Total Compensation</div>
+          <div class="font-weight-light mb-1">Total Compensation (TC)</div>
           <div class="lead font-weight-bold" title="<%= @offer.tc %>">$<%= number_to_human @offer.tc %> / year</div>
         </div>
       </div>

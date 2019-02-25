@@ -2,20 +2,23 @@
   <div class="p-3 d-flex align-items-center">
     <div class="mr-4">
       <div>
-        <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.domain %>">
+        <img width="70px" class="img-thumbnail rounded border-0" src="//logo.clearbit.com/<%= offer.company.domain %>">
       </div>
     </div>
 
     <div>
       <div class="mb-2">
-        <b><%= offer.position %></b>
-        <br/>
-        <small><b><%= offer.level %></b> <%= offer.yoe ? "(#{offer.yoe.to_i} YOE)" : "" %></small>
+        <div>
+          <b><%= offer.position %></b>
+        </div>
+        <div class="small">
+          <b><%= offer.level %></b> <%= offer.yoe ? "(#{offer.yoe.to_i} YOE)" : "" %>
+        </div>
       </div>
 
       <div>
-        <span class="font-weight-bold text-success border border-success rounded pt-1 pb-1 pl-2 pr-2" title="Total Compensation">
-          TC $<%= number_to_human offer.tc %> / year
+        <span class="font-weight-bold text-success" title="Total Compensation">
+          $<%= number_to_human offer.tc %> / year
         </span>
       </div>
     </div>
