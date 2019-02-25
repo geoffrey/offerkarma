@@ -19,7 +19,7 @@
     <header class="border-bottom">
       <div class="container">
         <nav class="pl-0 pr-0 navbar navbar-light <%= logged_in? ? 'navbar-expand-sm' : 'navbar-expand' %>  my-2 my-lg-0 bg-white">
-          <a class="navbar-brand" href="<%= logged_in? ? '/offers' : '/' %>"><span class="text-danger font-weight-bold">reffo↵</span></a>
+          <a class="navbar-brand" href="/"><span class="text-danger font-weight-bold">reffo↵</span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,10 @@
             <ul class="navbar-nav ml-auto">
               <% if logged_in? %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/account">Account</a>
+                  <a class="nav-link" href="/offers">Offers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/account"><span class="fa fa-user"></span> My account</a>
                 </li>
                 <li class="nav-item">
                   <%= link_to "Log out", logout_path, method: :delete, class: "nav-link text-danger" %>
