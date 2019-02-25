@@ -12,6 +12,7 @@
     "jquery": "^3.3.1",
     "jquery-autocomplete": "^1.2.8",
     "jquery-ui": "^1.12.1",
+    "popper.js": "^1.14.7",
     "rails-ujs": "^5.2.2",
     "turbolinks": "^5.2.0",
     "when-dom-ready": "^1.2.12"

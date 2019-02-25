@@ -1,1 +1,18 @@
 @import '~bootstrap/dist/css/bootstrap';
+
+.center-box-max-width {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-ghost {
+  color: #ccc;
+}
+
+.flex-even {
+  flex: 1;
+}
