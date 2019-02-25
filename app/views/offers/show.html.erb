@@ -31,19 +31,24 @@
     <h6><%= @offer.level %> <% if @offer.level && @offer.yoe %> - <% end %><%= @offer.yoe ? "#{@offer.yoe.to_i} yoe" : "" %></h6>
   </div>
 
+  <hr/>
+
   <div class="mb-1">
-    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="img-thumbnail rounded border-0" src="//logo.clearbit.com/<%= @offer.company.domain %>"></a>
+    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="rounded" src="//logo.clearbit.com/<%= @offer.company.domain %>"></a>
   </div>
 
   <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
 
-  <hr>
-  <div class="small text-white font-weight-bold text-uppercase">
-    <%= @offer.status %>
-  </div>
+  <hr/>
 
-  <div class="small text-light font-weight-light">
-    added <%= time_ago_in_words @offer.created_at %> ago
+  <div>
+    <div class="small text-white font-weight-bold text-uppercase">
+      <%= @offer.status %>
+    </div>
+
+    <div class="small text-light font-weight-light">
+      added <%= time_ago_in_words @offer.created_at %> ago
+    </div>
   </div>
 </div>
 
@@ -110,6 +115,9 @@
           <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_per_year %>">$<%= number_to_human @offer.stocks_profit_per_year %> / year</div>
           <% if @offer.stocks_liquid? %>
             <span class="badge badge-success">liquid</span>
+            <span class="small">
+              <a href="<%= @offer.company.yahoo_finance_url %>" target="_blank">$<%= @offer.company.symbol.upcase %>: <%= @offer.company.quote %></a>
+            </span>
           <% else %>
             <span class="badge badge-warning">not liquid</span>
           <% end %>
