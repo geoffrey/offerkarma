@@ -22,13 +22,7 @@
     <% if @offers.any? %>
       <div class="row">
         <% @offers.each do |offer| %>
-          <div class="col-lg-4 col-md-6 col-12 p-2">
-            <div class="border rounded list-group-item-action">
-              <a href="<%= offer_path offer.uuid %>" class="list-group-item-action">
-                <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
-              </a>
-            </div>
-          </div>
+          <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
         <% end %>
       </div>
     <% else %>
