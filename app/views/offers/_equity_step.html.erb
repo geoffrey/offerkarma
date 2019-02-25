@@ -23,7 +23,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= f.label :stock_type do %>
-              What type? <span class="small text-muted">optional</span>
+              What type? <span class="small text-ghost">optional</span>
             <% end %>
             <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: @offer.company.public? ? "rsus" : "options", disabled: "" }, class: "form-control", disabled: @offer.company.public? %>
           </div>
@@ -32,7 +32,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= f.label :stock_count do %>
-              How many units? <span class="small text-muted">optional</span>
+              How many units? <span class="small text-ghost">optional</span>
             <% end %>
             <%= f.number_field :stock_count, class: "form-control", placeholder: "5,000" %>
           </div>
@@ -52,7 +52,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= f.label :stock_fair_market_value do %>
-              Current fair market value? <span class="small text-muted">optional</span>
+              Current fair market value? <span class="small text-ghost">optional</span>
             <% end %>
             <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any, value: @offer.company.quote, readonly: @offer.company.public? %>
             <% if @offer.company.quote %>

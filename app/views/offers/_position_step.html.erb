@@ -43,7 +43,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :position do %>
-            Position <span class="text-danger">*</span>
+            Position/Title <span class="text-danger">*</span>
           <% end %>
           <%= f.text_field :position, class: "form-control", placeholder: "Software Engineer", required: "true", autocomplete: "off" %>
         </div>
@@ -53,13 +53,17 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :level %>
+          <%= f.label :level do %>
+            Level <span class="small text-ghost">optional</span>
+          <% end %>
           <%= f.text_field :level, class: "form-control", placeholder: "L5" %>
         </div>
       </div>
 
       <div class="col-md-6">
-        <%= f.label :yoe, "Years of experience" %>
+        <%= f.label :yoe do %>
+          Years of experience <span class="small text-ghost">optional</span>
+        <% end %>
         <div class="input-group mb-3">
           <%= f.number_field :yoe, class: "form-control", placeholder: "4" %>
           <div class="input-group-append">
