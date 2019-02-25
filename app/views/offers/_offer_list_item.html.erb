@@ -2,13 +2,15 @@
   <div class="p-3 d-flex align-items-center">
     <div class="mr-4">
       <div>
-        <img width="50px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.domain %>">
+        <img width="80px" class="img-thumbnail rounded" src="//logo.clearbit.com/<%= offer.company.domain %>">
       </div>
     </div>
 
     <div>
       <div class="mb-2">
-        <b><%= offer.position %></b> <small><%= offer.level %> <%= offer.yoe ? "#{offer.yoe.to_i} YOE" : "" %></small>
+        <b><%= offer.position %></b>
+        <br/>
+        <small><b><%= offer.level %></b> <%= offer.yoe ? "(#{offer.yoe.to_i} YOE)" : "" %></small>
       </div>
 
       <div>
