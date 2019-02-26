@@ -17,6 +17,10 @@ class Company < ApplicationRecord
   ALPHAVANTAGE_BASE_URL    = "https://www.alphavantage.co/query?apikey=#{ENV.fetch('ALPHAVANTAGE_API_KEY')}"
   YAHOO_FINANCE_BASE_URL   = "https://finance.yahoo.com/quote"
 
+  def display_name
+    name.humanize
+  end
+
   def logo_url
     "#{CLEARBIT_LOGO_BASE_URL}/#{domain}"
   end

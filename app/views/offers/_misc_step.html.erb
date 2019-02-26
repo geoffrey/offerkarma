@@ -17,19 +17,19 @@
     </div>
   </div>
 
-  <div class="container center-box-max-width bg-white border rounded p-4">
+  <div class="center-box-max-width bg-white card-shadow rounded p-4">
     <%= form_for(@offer, url: offers_path) do |f| %>
 
       <div class="form-group">
         <%= f.label :notes do %>
           Notes <span class="small text-ghost">optional</span>
         <% end %>
-        <%= f.text_area :notes, class: "form-control", placeholder: "Current TC or anything else you'd like to add about the company or the team?", autocomplete: "off", rows: "5" %>
+        <%= f.text_area :notes, class: "form-control", placeholder: "Tell us about your current TC or anything else you'd like to add about this offer, #{@offer.company.display_name} or the team withing #{@offer.company.display_name}...", autocomplete: "off", rows: "5" %>
       </div>
 
 
       <%= f.submit "Submit", class: "btn btn-block btn-danger" %>
-      <small class="form-text text-muted">By submitting this form, our members will be able to comment and vote on your offer.</small>
+      <small class="form-text text-muted">By submitting this form, you agree to publish your offer to our community for feedback.</small>
       <%= f.submit "Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
     <% end %>
   </div>

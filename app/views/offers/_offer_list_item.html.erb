@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-6 col-12 p-2 d-flex">
-  <a href="<%= offer_path offer.uuid %>" class="list-group-item list-group-item-action p-0">
+  <a href="<%= offer_path offer.uuid %>" class="list-group-item list-group-item-action p-0 rounded card-shadow border-0 bg-white">
     <div class="d-flex flex-column justify-content-between height-100">
       <div class="p-3 d-flex align-items-center">
         <div class="mr-4">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="mt-auto border-top text-muted small p-2 pr-3 pl-3 bg-light">
+      <div class="mt-auto rounded-bottom border-top text-muted small p-2 pr-3 pl-3 bg-light">
         <div class="small d-flex justify-content-between ">
           <div class="font-weight-bold align-self-center text-uppercase text-<%= offer.status_class %>">
             <%= offer.status %>
