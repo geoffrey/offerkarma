@@ -16,3 +16,20 @@
 .flex-even {
   flex: 1;
 }
+
+input::-webkit-input-placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+input::-moz-placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+input:-moz-placeholder { /* Older versions of Firefox */
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+input:-ms-input-placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
