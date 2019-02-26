@@ -10,6 +10,10 @@ class CompaniesController < ApplicationController
   def show
     @company.save
     @offers = @company.offers
+
+    if Offer.statuses.keys.include?(params[:status]&.downcase)
+      @offers = @offers.where(status: params[:status].downcase)
+    end
   end
 
   def edit

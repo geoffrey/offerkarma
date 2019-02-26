@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Offer do
+  scope :all, default: true
+  scope :pending
+  scope :accepted
+  scope :declined
+
   permit_params :base_salary,
     :bonus_per_year_percent,
     :comments_enabled,
@@ -22,12 +27,33 @@ ActiveAdmin.register Offer do
     :votes_enabled,
     :yoe
 
+
   index do
     selectable_column
-
-    Offer.column_names.each do |c|
-      column c.to_sym
+    id_column
+    column :user
+    column :status
+    column :company
+    column :location
+    column :position
+    column :level
+    column :yoe
+    column :base_salary do |offer|
+      number_to_human offer.base_salary
     end
+    column :signon_bonus do |offer|
+      number_to_human offer.signon_bonus
+    end
+    column :relocation_package do |offer|
+      number_to_human offer.relocation_package
+    end
+    column :bonus_per_year_percent
+    column :stock_type
+    column :stock_count
+    column :stock_strike_price
+    column :stock_fair_market_value
+    column :created_at
+    column :updated_at
 
     actions do |offer|
       item "View on site", offer_path(offer.uuid), target: "_blank"

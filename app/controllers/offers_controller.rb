@@ -8,13 +8,20 @@ class OffersController < ApplicationController
   NEW_OFFER_STEPS = *(1..4)
 
   def index
+    params
     @offers = Offer.includes(
       :company,
       :upvotes,
       :downvotes,
       :comments,
       :impressions
-    ).last(10)
+    )
+
+    if Offer.statuses.keys.include?(params[:status]&.downcase)
+      @offers = @offers.where(status: params[:status].downcase)
+    end
+
+    @offers = @offers.last(30)
   end
 
   def show

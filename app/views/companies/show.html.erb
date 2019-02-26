@@ -23,6 +23,19 @@
 <div class="bg-light p-3 border-bottom">
   <div class="container p-0">
     <% if @offers.any? %>
+
+      <div class="center-box-max-width mb-3">
+        <div class="bg-white p-3 border rounded">
+          <div class="text-center font-weight-bold">Filters</div>
+
+          <div class="form-inline">
+            <%= label_tag :status, "Status:", class: "mr-3" %>
+            <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
+
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <% @offers.each do |offer| %>
           <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
@@ -31,9 +44,18 @@
     <% else %>
       <div class="bg-white p-3 text-center">
         <div class="lead mb-3">
-          We do not have any offer for <b><%= @company.name %> </b> yet
+          No offers that matches your search.
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#status").on('change', function() {
+      window.location = `/companies/<%= @company.uuid %>?status=${$(this).val()}`
+    });
+  });
+</script>

@@ -10,7 +10,8 @@
 import NewOffer from 'offers/new'
 import Rails from 'rails-ujs'
 import Turbolinks from 'turbolinks'
-import 'bootstrap/dist/js/bootstrap';
+import 'jquery/src/jquery'
+import 'bootstrap/dist/js/bootstrap'
 
 const ondomloaded = () => {
   NewOffer.setMasking()

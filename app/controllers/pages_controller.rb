@@ -8,7 +8,8 @@ class PagesController < ApplicationController
       :downvotes,
       :comments,
       :impressions
-    ).last(6)
+    ).last(6).reverse
+
 
     @companies = Company.joins(:offers)
       .group('companies.id')
