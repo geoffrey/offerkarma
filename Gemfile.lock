@@ -189,6 +189,7 @@ GEM
     msgpack (1.2.6)
     multi_xml (0.6.0)
     mustermann (1.0.3)
+    newrelic_rpm (6.0.0.351)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -364,6 +365,7 @@ DEPENDENCIES
   mailcatcher
   monetize
   money
+  newrelic_rpm
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 3.11)
