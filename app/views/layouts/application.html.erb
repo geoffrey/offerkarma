@@ -3,7 +3,7 @@
   <head>
     <%= render "layouts/analytics" if Rails.env.production? %>
 
-    <title>reffo - offer feedback community</title>
+    <title>Reffo - Offer Feedback Community</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,6 +13,18 @@
     <%= favicon_link_tag asset_path('favicon.png') %>
     <%= stylesheet_pack_tag 'app', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
+
+    <meta property="og:type" content="article" />
+
+    <% if @offer %>
+      <meta property="og:title" content="Reffo - Offer from <%= @offer.display_title %>" />
+      <meta property="og:description" content="This offer needs feedback" />
+      <meta property="og:image" content="<%= @offer.company.logo_url %>" />
+    <% else %>
+      <meta property="og:title" content="Reffo - Offer Feedbak Community" />
+      <meta property="og:description" content="Receive and give feedback on recent job offer" />
+      <meta property="og:image" content="<%= Company.first.logo_url %>" />
+    <% end %>
   </head>
 
   <body>

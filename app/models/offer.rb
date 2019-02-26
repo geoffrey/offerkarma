@@ -38,6 +38,10 @@ class Offer < ApplicationRecord
     impressions.size
   end
 
+  def display_title
+    "#{company.display_name}: $#{tc} (#{[position, location, level].join(', ')})"
+  end
+
   def self.vesting_schedule_display(vesting_schedule)
     return "Backloaded (5, 15, 40, 40)" if vesting_schedule == "backloaded"
     "Standard (25, 25, 25, 25)"
