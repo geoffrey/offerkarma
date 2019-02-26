@@ -1,8 +1,8 @@
 <div class="text-center company-header p-4 bg-dark text-white">
-  <h2 class="font-weight-light"><%= @company.name.humanize %></h2>
+  <h3 class="font-weight-light"><%= @company.name.humanize %></h3>
 
   <div class="mb-2">
-    <img width="80px" class="rounded" src="//logo.clearbit.com/<%= @company.domain %>">
+    <img width="80px" class="rounded" src="<%= @company.logo_url %>">
   </div>
 
   <div>
@@ -10,11 +10,14 @@
   </div>
 
   <% if @company.public? %>
-    <hr/>
-    <div>
+    <div class="small">
       <a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank">$<%= @company.symbol.upcase %>: <%= @company.quote %></a>
     </div>
   <% end %>
+
+  <div class="text-center mt-3">
+    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.name.humanize %>">Evaluate <%= @company.name.humanize %> offer</a>
+  </div>
 </div>
 
 <div class="bg-light p-3 border-bottom">
@@ -30,10 +33,7 @@
         <div class="lead mb-3">
           We do not have any offer for <b><%= @company.name %> </b> yet
         </div>
-
-        <a href="<%= new_offer_path %>" class="btn btn-danger">Evaluate a <%= @company.name %> offer</a>
       </div>
-
     <% end %>
   </div>
 </div>

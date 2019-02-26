@@ -22,10 +22,10 @@
       <div class="col">
         <div class="form-group">
 
-          <%= label_tag "offer[company_name]" do %>
+          <%= f.label :company_name do %>
             Company name <span class="text-danger">*</span>
           <% end %>
-          <%= text_field_tag "offer[company_name]", @offer.company&.name || @offer.company_name, class: "form-control", placeholder: "Google", required: "true", autocomplete: "off" %>
+          <%= f.text_field :company_name, value: (@offer.company&.name || @offer.company_name || params[:company_name])&.humanize, class: "form-control", placeholder: "Google", required: "true", autocomplete: "off" %>
         </div>
       </div>
     </div>

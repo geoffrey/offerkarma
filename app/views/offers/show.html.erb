@@ -32,7 +32,7 @@
   </div>
 
   <div class="mb-1">
-    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="rounded" src="//logo.clearbit.com/<%= @offer.company.domain %>"></a>
+    <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="rounded" src="<%= @offer.company.logo_url %>"></a>
   </div>
 
   <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
