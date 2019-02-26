@@ -12,12 +12,13 @@ class Company < ApplicationRecord
   before_save { update_symbol }
   before_save { update_quote }
 
-  CLEARBIT_COMPANY_SEARCH_URL = "https://autocomplete.clearbit.com/v1/companies/suggest"
-  ALPHAVANTAGE_BASE_URL = "https://www.alphavantage.co/query?apikey=#{ENV.fetch('ALPHAVANTAGE_API_KEY')}"
-  YAHOO_FINANCE_BASE_URL = "https://finance.yahoo.com/quote"
+  CLEARBIT_LOGO_BASE_URL   = "https://logo.clearbit.com"
+  CLEARBIT_SEARCH_BASE_URL = "https://autocomplete.clearbit.com/v1/companies/suggest"
+  ALPHAVANTAGE_BASE_URL    = "https://www.alphavantage.co/query?apikey=#{ENV.fetch('ALPHAVANTAGE_API_KEY')}"
+  YAHOO_FINANCE_BASE_URL   = "https://finance.yahoo.com/quote"
 
   def logo_url
-    "https://logo.clearbit.com/#{domain}"
+    "#{CLEARBIT_LOGO_BASE_URL}/#{domain}"
   end
 
   def public?
@@ -44,7 +45,7 @@ class Company < ApplicationRecord
   private
 
   def self.find_on_clearbit(search)
-    response = HTTParty.get("#{CLEARBIT_COMPANY_SEARCH_URL}?query=#{search}")
+    response = HTTParty.get("#{CLEARBIT_SEARCH_BASE_URL}?query=#{search}")
     return nil unless response.success?
     companies = JSON.parse(response.body)
     companies.first&.slice("name", "domain")
