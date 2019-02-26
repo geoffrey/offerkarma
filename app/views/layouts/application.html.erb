@@ -14,6 +14,8 @@
     <%= stylesheet_pack_tag 'app', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
 
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c7578d85011cb0011347628&product=inline-share-buttons' async='async'></script>
+
     <meta property="og:type" content="article" />
 
     <% if @offer %>
@@ -22,8 +24,8 @@
       <meta property="og:image" content="<%= @offer.company.logo_url %>" />
     <% else %>
       <meta property="og:title" content="Reffo - Offer Feedbak Community" />
-      <meta property="og:description" content="Receive and give feedback on recent job offer" />
-      <meta property="og:image" content="<%= Company.first.logo_url %>" />
+      <meta property="og:description" content="Receive and give feedback on recent job offers" />
+      <meta property="og:image" content="<%= asset_url('og-image.png') %>" />
     <% end %>
   </head>
 
