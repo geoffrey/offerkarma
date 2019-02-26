@@ -67,7 +67,7 @@
     </span>
 
     <span>
-      <span class="fa fa-comments"></span> <%= @offer.comments.count %>
+      <span class="fa fa-comments"></span> <%= @comments.count %>
     </span>
   </div>
 </div>
@@ -173,12 +173,12 @@
       <div class="d-flex">
         <div class="flex-even pr-2">
           <%= link_to votes_offer_path(@offer.uuid, vote: :up), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success disabled' : 'btn-outline-success' }", method: :post do %>
-            <span class="fa fa-thumbs-up"></span> Nice!
+            <span class="fa fa-thumbs-up"></span> Nice! (<%= @offer.upvotes.count %>)
           <% end %>
         </div>
         <div class="flex-even pl-2">
           <%= link_to votes_offer_path(@offer.uuid, vote: :down), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger disabled' : 'btn-outline-danger' }", method: :post do %>
-            <span class="fa fa-thumbs-down"></span> Meh...
+            <span class="fa fa-thumbs-down"></span> Meh... (<%= @offer.downvotes.count %>)
           <% end %>
         </div>
       </div>
@@ -189,15 +189,15 @@
 <div class="p-3 border-bottom">
   <div class="center-box-max-width">
     <div class="text-center mb-3">
-      <% if @offer.comments.none? %>
+      <% if @comments.none? %>
         There are no comments yet. Be the first one:
       <% else %>
-        <%= pluralize@offer.comments.count, "Comment" %>
+        <%= pluralize@comments.count, "Comment" %>
       <% end %>
     </div>
 
     <div class="mb-4">
-      <% @offer.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <div class="bg-light p-3 border-bottom mb-2">
           <div class="small d-flex justify-content-between">
             <div>
