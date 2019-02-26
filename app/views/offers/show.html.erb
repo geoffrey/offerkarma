@@ -39,6 +39,10 @@
     </div>
 
     <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
+
+    <div class="text-white">
+      <span class="fa fa-map-marker-alt"></span> <%= @offer.location || "unknown" %>
+    </div>
   </div>
 
   <hr/>
@@ -73,8 +77,6 @@
     </span>
   </div>
 </div>
-
-
 
 <div class="border-bottom p-3 bg-light">
   <div class="center-box-max-width">
