@@ -22,6 +22,7 @@ ActiveAdmin.register Offer do
     :stock_count,
     :stock_fair_market_value,
     :stock_type,
+    :vesting_schedule,
     :stock_strike_price,
     :user_id,
     :votes_enabled,
@@ -48,6 +49,7 @@ ActiveAdmin.register Offer do
       number_to_human offer.relocation_package
     end
     column :bonus_per_year_percent
+    column :vesting_schedule
     column :stock_type
     column :stock_count
     column :stock_strike_price

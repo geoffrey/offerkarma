@@ -27,13 +27,24 @@ class Offer < ApplicationRecord
   enum scope: %i[public_scope private_scope]
   enum status: %i[accepted declined pending]
   enum stock_type: %i[options rsus]
+  enum vesting_schedule: %i[standard backloaded]
 
   default_value_for(:scope) { :public_scope }
   default_value_for(:status) { :pending }
   default_value_for(:stock_type) { :options }
+  default_value_for(:vesting_schedule) { :standard }
 
   def views
     impressions.size
+  end
+
+  def self.vesting_schedule_display(vesting_schedule)
+    return "Backloaded (5, 15, 40, 40)" if vesting_schedule == "backloaded"
+    "Standard (25, 25, 25, 25)"
+  end
+
+  def vesting_schedule_display
+    Offer.vesting_schedule_display(vesting_schedule.to_s)
   end
 
   def status_class

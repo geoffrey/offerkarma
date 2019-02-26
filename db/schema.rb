@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_010031) do
+ActiveRecord::Schema.define(version: 2019_02_26_170415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_010031) do
     t.integer "stock_count"
     t.float "stock_strike_price"
     t.float "stock_fair_market_value"
+    t.integer "vesting_schedule"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end

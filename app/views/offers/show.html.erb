@@ -113,6 +113,9 @@
         <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
           <div class="font-weight-light mb-1">Stocks (<%= @offer.stock_type.humanize %>)</div>
           <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_per_year %>">$<%= number_to_human @offer.stocks_profit_per_year %> / year</div>
+          <div class="small text-muted">
+            Vesting: <%= @offer.vesting_schedule_display %>
+          </div>
           <% if  @offer.stocks_profit_per_year.to_i.positive? %>
             <% if @offer.stocks_liquid? %>
               <small>
