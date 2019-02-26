@@ -22,26 +22,23 @@
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <% if @offers.any? %>
-      <div class="center-box-max-width mb-3">
-        <div class="form-inline justify-content-center">
-          <%= label_tag :status, "Status:", class: "mr-3" %>
-          <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
-        </div>
+    <div class="center-box-max-width mb-3">
+      <div class="form-inline justify-content-center">
+        <%= label_tag :status, "Status:", class: "mr-3" %>
+        <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
       </div>
+    </div>
 
-      <hr />
-
+    <hr />
+    <% if @offers.any? %>
       <div class="row">
         <% @offers.each do |offer| %>
           <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
         <% end %>
       </div>
     <% else %>
-      <div class="bg-white p-3 text-center">
-        <div class="lead mb-3">
-          No offers that matches your search.
-        </div>
+      <div class="bg-white p-3 text-center text-muted">
+        No offers found.
       </div>
     <% end %>
   </div>
