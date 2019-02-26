@@ -6,17 +6,17 @@
       </div>
       <div>
         <% unless @offer.pending? %>
-          <%= link_to offer_path(@offer.uuid, offer: { status: :pending }), class: "btn btn-info", method: :patch do %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :pending }), class: "btn btn-sm btn-info", method: :patch do %>
             Pending
           <% end %>
         <% end %>
         <% unless @offer.declined? %>
-          <%= link_to offer_path(@offer.uuid, offer: { status: :declined }), class: "btn btn-danger", method: :patch do %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :declined }), class: "btn btn-sm btn-danger", method: :patch do %>
             Declined
           <% end %>
         <% end %>
         <% unless @offer.accepted? %>
-          <%= link_to offer_path(@offer.uuid, offer: { status: :accepted }), class: "btn btn-success", method: :patch do %>
+          <%= link_to offer_path(@offer.uuid, offer: { status: :accepted }), class: "btn btn-sm btn-success", method: :patch do %>
             Accepted
           <% end %>
         <% end %>
