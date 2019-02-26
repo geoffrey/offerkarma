@@ -101,68 +101,74 @@
     </div>
 
     <div class="row">
-      <div class="col-12 col-md-6 mb-3 mb-md-3">
-        <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3 <%= @offer.relocation_package.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light mb-1">Relocation package</div>
-          <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package.to_i %></div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 mb-3 mb-md-3">
-        <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3 <%= @offer.signon_bonus.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light mb-1">Signon Bonus</div>
-          <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus.to_i %></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-md-6 mb-3 mb-md-3">
-        <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3 <%= @offer.stocks_profit_per_year.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light mb-1">Stocks (<%= @offer.stock_type.humanize %>)</div>
-          <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_per_year %>">$<%= number_to_human @offer.stocks_profit_per_year %> / year</div>
-          <div class="small text-muted">
-            Vesting: <%= @offer.vesting_schedule_display %>
-          </div>
-          <% if  @offer.stocks_profit_per_year.to_i.positive? %>
-            <% if @offer.stocks_liquid? %>
-              <small>
-                <span class="badge badge-success">LIQUID</span>
-                <span>
-                  <a href="<%= @offer.company.yahoo_finance_url %>" target="_blank">(<%= @offer.company.symbol.upcase %> $<%= @offer.company.quote %>)</a>
-                </span>
-              </small>
-            <% else %>
-              <small>
-                <span class="badge badge-info">MIGHT BE LIQUID</span>
-                <span>
-                  <a href="/equity#secondary" target="_blank" title="Learn about secondary market">
-                    Learn more
-                  </a>
-                </span>
-              </small>
-            <% end %>
-          <% end %>
-<!--
-          <% if @offer.stock_count %>
-            <div class="small">
-              <%= number_with_delimiter  @offer.stock_count, delimiter: ","%> units over 4 years
-            </div>
-          <% end %> -->
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 mb-3 mb-md-3">
-        <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3 <%= @offer.bonus_per_year_percent.to_i.zero? ? 'disabled' : '' %>">
-          <div class="font-weight-light">Bonus</div>
-          <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year %> / year</div>
-          <% if @offer.bonus_per_year_percent %>
+      <% if @offer.stocks_profit_per_year.to_i.positive? %>
+        <div class="col-12 col-md-6 mb-3 mb-md-3">
+          <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
+            <div class="font-weight-light mb-1">Stocks (<%= @offer.stock_type.humanize %>)</div>
+            <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_per_year %>">$<%= number_to_human @offer.stocks_profit_per_year %> / year</div>
             <div class="small text-muted">
-              <%= @offer.bonus_per_year_percent %>% of $<%= number_to_human @offer.base_salary %>
+              Vesting: <%= @offer.vesting_schedule_display %>
             </div>
-          <% end %>
+            <% if  @offer.stocks_profit_per_year.to_i.positive? %>
+              <% if @offer.stocks_liquid? %>
+                <small>
+                  <span class="badge badge-success">LIQUID</span>
+                  <span>
+                    <a href="<%= @offer.company.yahoo_finance_url %>" target="_blank">(<%= @offer.company.symbol.upcase %> $<%= @offer.company.quote %>)</a>
+                  </span>
+                </small>
+              <% else %>
+                <small>
+                  <span class="badge badge-info">MIGHT BE LIQUID</span>
+                  <span>
+                    <a href="/equity#secondary" target="_blank" title="Learn about secondary market">
+                      Learn more
+                    </a>
+                  </span>
+                </small>
+              <% end %>
+            <% end %>
+  <!--
+            <% if @offer.stock_count %>
+              <div class="small">
+                <%= number_with_delimiter  @offer.stock_count, delimiter: ","%> units over 4 years
+              </div>
+            <% end %> -->
+          </div>
         </div>
-      </div>
+      <% end %>
+
+      <% if @offer.bonus_per_year_percent.to_i.positive? %>
+        <div class="col-12 col-md-6 mb-3 mb-md-3">
+          <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
+            <div class="font-weight-light">Bonus</div>
+            <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year %> / year</div>
+            <% if @offer.bonus_per_year_percent %>
+              <div class="small text-muted">
+                <%= @offer.bonus_per_year_percent %>% of $<%= number_to_human @offer.base_salary %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @offer.relocation_package.to_i.positive? %>
+        <div class="col-12 col-md-6 mb-3 mb-md-3">
+          <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
+            <div class="font-weight-light mb-1">Relocation package</div>
+            <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package.to_i %></div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @offer.signon_bonus.to_i.positive? %>
+        <div class="col-12 col-md-6 mb-3 mb-md-3">
+          <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
+            <div class="font-weight-light mb-1">Signon Bonus</div>
+            <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus.to_i %></div>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <% if @offer.notes.present? %>
