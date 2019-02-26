@@ -224,7 +224,7 @@
       <% end %>
     </div>
 
-    <div>
+    <div id="comment">
       <%= form_for :comment, url: comments_offer_path do |f| %>
         <div class="form-group">
           <%= f.text_area :text, class: "form-control", placeholder: "Add your feedback...", required: "true", rows: "5" %>

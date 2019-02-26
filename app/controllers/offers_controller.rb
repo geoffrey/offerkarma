@@ -93,7 +93,7 @@ class OffersController < ApplicationController
     @comment = @offer.comments.new(comment_params)
     @comment.user = current_user
     @comment.save!
-    redirect_to offer_path @offer.uuid
+    redirect_to offer_path @offer.uuid, anchor: "comment"
   end
 
   private
