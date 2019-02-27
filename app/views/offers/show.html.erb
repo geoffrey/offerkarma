@@ -28,7 +28,8 @@
 <div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
   <div class="text-white font-weight-light mb-3">
     <h5><%= @offer.position %></h5>
-    <h6><%= @offer.level %> <%= @offer.yoe ? "(#{@offer.yoe.to_i} yoe)" : "" %></h6>
+    <h6><span class="fa fa-map-marker-alt"></span> <%= @offer.location %> </h6>
+    <h6><%= @offer.level %> <%= @offer.yoe ? "(#{@offer.yoe.to_i} YOE)" : "" %></h6>
   </div>
 
   <div>
@@ -37,10 +38,6 @@
     </div>
 
     <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
-
-    <div class="text-white">
-      <span class="fa fa-map-marker-alt"></span> <%= @offer.location || "unknown" %>
-    </div>
   </div>
 
   <hr/>
