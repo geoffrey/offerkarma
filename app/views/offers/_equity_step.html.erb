@@ -21,7 +21,7 @@
     <%= form_for(@offer, url: offers_path) do |f| %>
       <% if @offer.company.public? %>
         <div class="alert alert-info">
-          <div class="form-text">Perfect, <%= @offer.company.display_name %> (<a href="<%= @offer.company.yahoo_finance_url %>" target="_blank"><%= @offer.company.symbol %>: $<%= @offer.company.quote %></a>) is publicly traded.</div>
+          <div class="form-text">Great, <%= @offer.company.display_name %> (<a href="<%= @offer.company.yahoo_finance_url %>" target="_blank"><%= @offer.company.symbol %>: $<%= @offer.company.quote %></a>) is publicly traded.</div>
         </div>
 
       <% end %>
