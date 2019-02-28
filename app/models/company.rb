@@ -17,6 +17,10 @@ class Company < ApplicationRecord
   ALPHAVANTAGE_BASE_URL    = "https://www.alphavantage.co/query?apikey=#{ENV.fetch('ALPHAVANTAGE_API_KEY')}"
   YAHOO_FINANCE_BASE_URL   = "https://finance.yahoo.com/quote"
 
+  COMPANY_DOMAIN_MAP = {
+    "fb.com" => "facebook.com",
+  }
+
   def display_name
     name.humanize
   end
@@ -35,6 +39,7 @@ class Company < ApplicationRecord
 
   def self.find_or_create_from_clearbit!(search)
     search.downcase!
+    search = COMPANY_DOMAIN_MAP[search] || search
     company = self.find_by_domain(search)
     company ||= self.find_by_name(search)
     return company if company
