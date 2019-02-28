@@ -21,7 +21,7 @@ class OffersController < ApplicationController
       @offers = @offers.where(status: params[:status].downcase)
     end
 
-    @offers = @offers.last(30).reverse
+    @offers = @offers.last(100).reverse
   end
 
   def show
