@@ -18,7 +18,7 @@ class Offer < ApplicationRecord
 
   validates :signon_bonus, :relocation_package,
             inclusion: 0..10_000_000, allow_nil: true
-  validates :base_salary, inclusion: 20_000..1_000_000
+  validates :base_salary, inclusion: 20_000..1_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
   validates :stock_strike_price, inclusion: 0..1_000, allow_nil: true
   validates :stock_fair_market_value, inclusion: 0..10_000, allow_nil: true
