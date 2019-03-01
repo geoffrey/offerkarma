@@ -16,7 +16,7 @@ import 'bootstrap/dist/js/bootstrap'
 const ondomloaded = () => {
   NewOffer.setMasking()
   NewOffer.setAutocomplete()
-  if (__sharethis__ && __sharethis__.config) {
+  if (window.__sharethis__ && __sharethis__.config) {
     __sharethis__.href = document.location.href
     __sharethis__.init(__sharethis__.config);
   }
