@@ -102,6 +102,6 @@ class Offer < ApplicationRecord
   def post_on_twitter
     return unless Rails.env.production?
 
-    $twitter.update("New offer posted! #{display_title} url")
+    $twitter.update("New offer posted! #{display_title} #{url}")
   end
 end
