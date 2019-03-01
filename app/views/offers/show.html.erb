@@ -1,20 +1,12 @@
 <% if @offer.user == current_user %>
   <div class="p-2 text-center alert alert-warning mb-0">
-    <div>
-      This is an MVP 😅
-      <br/>
-      We are working on adding an edit button...
-      <br/>
-      <a href="mailto:hello@admin.com" target="_blank">
-        Please send us your feedback
-      </a>
-    </div>
-    <!-- <div class="center-box-max-width d-flex">
-        <div class="mr-auto">
-         <a class="btn btn-outline-secondary" href="<%= edit_offer_path @offer.uuid %>">Edit</a>
+    <div class="center-box-max-width d-flex">
+      <div class="mr-auto">
+      <!--    <a class="btn btn-outline-secondary" href="<%= edit_offer_path @offer.uuid %>">Edit</a> -->
       </div>
 
       <div>
+        Let us know if you accepted/declined your offer
         <% unless @offer.pending? %>
           <%= link_to offer_path(@offer.uuid, offer: { status: :pending }), class: "btn btn-sm btn-info", method: :patch do %>
             Pending
@@ -31,7 +23,7 @@
           <% end %>
         <% end %>
       </div>
-    </div> -->
+    </div>
   </div>
 <% end %>
 
@@ -44,7 +36,7 @@
 
   <div>
     <div class="mb-1">
-      <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="rounded" src="<%= @offer.company.logo_url %>"></a>
+      <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="50px" class="img-thumbnail p-0 rounded" src="<%= @offer.company.logo_url %>"></a>
     </div>
 
     <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
