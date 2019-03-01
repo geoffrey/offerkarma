@@ -15,6 +15,7 @@ class PagesController < ApplicationController
 
     @companies = Company.joins(:offers)
       .group('companies.id')
+      .where('offers.status' => :pending)
       .having('count(company_id) > 0')
       .sample(6)
   end
