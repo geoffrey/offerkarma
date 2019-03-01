@@ -40,7 +40,9 @@ class Offer < ApplicationRecord
   end
 
   def display_title
-    "#{company.display_name}: $#{tc} (#{[position, location, level].join(', ')})"
+    "#{company.display_name}: " \
+      "$#{ActionController::Base.helpers.number_to_human(tc)} " \
+      "(#{[position, location, level].reject{ |v| v.blank? }.join(', ')})"
   end
 
   def self.vesting_schedule_display(vesting_schedule)
@@ -91,5 +93,15 @@ class Offer < ApplicationRecord
     base_salary.to_i +
       stocks_profit_per_year.to_f +
       bonus_value_per_year.to_f
+  end
+
+  def url
+    Rails.application.routes.url_helpers.offer_url(uuid, host: "https://reffo.us")
+  end
+
+  def post_on_twitter
+    return unless Rails.env.production?
+
+    $twitter.update("New offer posted! #{display_title} url")
   end
 end
