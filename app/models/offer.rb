@@ -44,7 +44,7 @@ class Offer < ApplicationRecord
   def display_title
     "#{company.display_name}: " \
       "$#{ActionController::Base.helpers.number_to_human(tc)} " \
-      "(#{[position, location, level].reject{ |v| v.blank? }.join(', ')})"
+      "(#{[position, level, location].reject{ |v| v.blank? }.join(', ')})"
   end
 
   def og_title
@@ -53,9 +53,9 @@ class Offer < ApplicationRecord
   end
 
   def og_description
-    "#{[position, level, location].reject{ |v| v.blank? }.join(', ')}\n" \
+    "#{[position, level, location].reject{ |v| v.blank? }.join(' | ')}.\n" \
       "How is this offer?\n" \
-      "Give feedback on reffo.us!"
+      "Give your feedback on reffo.us!"
   end
 
   def self.vesting_schedule_display(vesting_schedule)
