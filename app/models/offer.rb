@@ -35,6 +35,8 @@ class Offer < ApplicationRecord
   default_value_for(:stock_type) { :options }
   default_value_for(:vesting_schedule) { :standard }
 
+  after_create :post_on_twitter
+
   def views
     impressions.size
   end
@@ -103,5 +105,7 @@ class Offer < ApplicationRecord
     return unless Rails.env.production?
 
     $twitter.update("New offer posted! #{display_title} #{url}")
+  rescue
+    nil
   end
 end
