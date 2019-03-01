@@ -101,6 +101,12 @@ class Offer < ApplicationRecord
       bonus_value_per_year.to_f
   end
 
+  def tc_year_1
+    tc +
+      signon_bonus.to_i +
+      relocation_package.to_i
+  end
+
   def url
     Rails.application.routes.url_helpers.offer_url(uuid, host: "https://reffo.us")
   end
