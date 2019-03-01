@@ -182,18 +182,24 @@
 <div class="p-3 border-bottom">
   <div class="center-box-max-width">
     <div>
-      <div class="d-flex">
-        <div class="flex-even pr-2">
-          <%= link_to votes_offer_path(@offer.uuid, vote: :up), class: "vote btn btn-block #{ current_user.upvoted?(@offer) ? 'btn-success disabled' : 'btn-outline-success' }", method: :post do %>
-            <span class="fa fa-thumbs-up"></span> Nice! (<%= @offer.upvotes.count %>)
-          <% end %>
+      <% if current_user %>
+        <div class="d-flex">
+          <div class="flex-even pr-2">
+            <%= link_to votes_offer_path(@offer.uuid, vote: :up), class: "vote btn btn-block #{ current_user&.upvoted?(@offer) ? 'btn-success disabled' : 'btn-outline-success' }", method: :post do %>
+              <span class="fa fa-thumbs-up"></span> Nice! (<%= @offer.upvotes.count %>)
+            <% end %>
+          </div>
+          <div class="flex-even pl-2">
+            <%= link_to votes_offer_path(@offer.uuid, vote: :down), class: "vote btn  btn-block #{ current_user&.downvoted?(@offer) ? 'btn-danger disabled' : 'btn-outline-danger' }", method: :post do %>
+              <span class="fa fa-thumbs-down"></span> Meh... (<%= @offer.downvotes.count %>)
+            <% end %>
+          </div>
         </div>
-        <div class="flex-even pl-2">
-          <%= link_to votes_offer_path(@offer.uuid, vote: :down), class: "vote btn  btn-block #{ current_user.downvoted?(@offer) ? 'btn-danger disabled' : 'btn-outline-danger' }", method: :post do %>
-            <span class="fa fa-thumbs-down"></span> Meh... (<%= @offer.downvotes.count %>)
-          <% end %>
+      <% else %>
+        <div class="text-center">
+          <a class="btn btn-outline-danger" href="<%= login_path %>">Login now to vote on this offer</a>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -236,13 +242,19 @@
       <% end %>
     </div>
 
-    <div id="comment">
-      <%= form_for :comment, url: comments_offer_path do |f| %>
-        <div class="form-group">
-          <%= f.text_area :text, class: "form-control", placeholder: "Add your feedback...", required: "true", rows: "5" %>
-        </div>
-        <%= f.submit "Post", class: "btn btn-block btn-danger" %>
-      <% end %>
-    </div>
+    <% if current_user %>
+      <div id="comment">
+        <%= form_for :comment, url: comments_offer_path do |f| %>
+          <div class="form-group">
+            <%= f.text_area :text, class: "form-control", placeholder: "Add your feedback...", required: "true", rows: "5" %>
+          </div>
+          <%= f.submit "Post", class: "btn btn-block btn-danger" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <a class="btn btn-danger" href="<%= login_path %>">Login to give feedback on this offer</a>
+      </div>
+    <% end %>
   </div>
 </div>

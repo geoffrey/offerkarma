@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OffersController < ApplicationController
-  before_action :redirect_to_login_if_needed
+  before_action :redirect_to_login_if_needed, except: %i[show]
   before_action :set_offer, only: %i[show votes comments]
   before_action :set_own_offer, only: %i[edit update destroy]
 
