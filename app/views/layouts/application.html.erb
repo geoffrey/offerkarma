@@ -3,7 +3,13 @@
   <head>
     <%= render "layouts/analytics" if Rails.env.production? %>
 
-    <title>Reffo - Offer Feedback Community</title>
+    <% if @offer&.created_at %>
+      <title><%= @offer.display_title %> </title>
+    <% elsif @offer && !@offer.created_at %>
+      <title>Reffo - Add a new offer</title>
+    <% else %>
+      <title>Reffo - Offer Feedback Community</title>
+    <% end %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
