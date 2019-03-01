@@ -47,6 +47,17 @@ class Offer < ApplicationRecord
       "(#{[position, location, level].reject{ |v| v.blank? }.join(', ')})"
   end
 
+  def og_title
+    "Offer from #{company.display_name}: " \
+      "$#{ActionController::Base.helpers.number_to_human(tc)}" \
+  end
+
+  def og_description
+    "#{[position, level, location].reject{ |v| v.blank? }.join(', ')}\n" \
+      "How is this offer?\n" \
+      "Give feedback on reffo.us!"
+  end
+
   def self.vesting_schedule_display(vesting_schedule)
     return "Backloaded (5, 15, 40, 40)" if vesting_schedule == "backloaded"
     "Standard (25, 25, 25, 25)"

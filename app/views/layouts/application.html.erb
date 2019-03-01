@@ -20,8 +20,8 @@
     <meta property="fb:app_id" content="" />
 
     <% if @offer&.created_at %>
-      <meta property="og:title" content="Reffo - Offer from <%= @offer.display_title %>" />
-      <meta property="og:description" content="This offer needs feedback" />
+      <meta property="og:title" content="<%= @offer.og_title %>" />
+      <meta property="og:description" content="<%= @offer.og_description %>" />
       <meta property="og:image" content="<%= @offer.company.logo_url %>" />
       <meta property="og:url" content="<%= offer_url @offer.uuid %>" />
     <% else %>

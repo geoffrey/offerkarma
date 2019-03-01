@@ -93,7 +93,7 @@
           <div class="font-weight-light mb-1">Total Compensation (TC)</div>
           <div class="lead font-weight-bold" title="<%= @offer.tc %>">$<%= number_to_human @offer.tc %> / year</div>
           <% if @offer.signon_bonus || @offer.relocation_package %>
-            <mark title="included signon and relocation bonuses">$<%= number_to_human @offer.tc_year_1 %> for year 1</mark>
+            <mark title="Includes signon and relocation bonuses.">$<%= number_to_human @offer.tc_year_1 %> for year 1</mark>
           <% end %>
         </div>
       </div>
