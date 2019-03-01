@@ -4,20 +4,24 @@ import autocomplete from 'jquery-ui/ui/widgets/autocomplete'
 
 export default {
   setMasking: () => {
-    if(!document.getElementById('offer_base_salary'))
-      return
-
     const cleaveCurrencyOption = {
       prefix: '$',
       delimiterLazyShow: true,
       noImmediatePrefix: true,
       numeral: true,
+      numeralDecimalScale: 0,
       numeralThousandsGroupStyle: 'thousand'
     }
 
-    new Cleave('#offer_base_salary', cleaveCurrencyOption);
-    new Cleave('#offer_relocation_package', cleaveCurrencyOption);
-    new Cleave('#offer_signon_bonus', cleaveCurrencyOption);
+    if (document.getElementById('offer_base_salary')) {
+      new Cleave('#offer_base_salary', cleaveCurrencyOption);
+      new Cleave('#offer_relocation_package', cleaveCurrencyOption);
+      new Cleave('#offer_signon_bonus', cleaveCurrencyOption);
+    }
+
+    if (document.getElementById('offer_stock_grant_value')) {
+      new Cleave('#offer_stock_grant_value', cleaveCurrencyOption);
+    }
   },
 
   setAutocomplete: () => {

@@ -16,12 +16,12 @@ class Offer < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  validates :signon_bonus, :relocation_package,
-            inclusion: 0..10_000_000, allow_nil: true
+  validates :signon_bonus, :relocation_package, :stock_grant_value,
+            inclusion: 1_000..10_000_000, allow_nil: true
   validates :base_salary, inclusion: 20_000..1_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
   validates :stock_strike_price, inclusion: 0..1_000, allow_nil: true
-  validates :stock_fair_market_value, inclusion: 0..10_000, allow_nil: true
+  validates :stock_preferred_price, inclusion: 0..10_000, allow_nil: true
   validates :stock_count, inclusion: 0..2_000_000, allow_nil: true
   validates :yoe, inclusion: 0..50, allow_nil: true
 
@@ -70,46 +70,45 @@ class Offer < ApplicationRecord
   def status_class
     return "success" if accepted?
     return "danger" if declined?
-
     "info"
   end
 
   def bonus_value_per_year
-    bonus_per_year_percent.to_f * base_salary.to_f / 100
+    bonus_per_year_percent.to_i * base_salary.to_i / 100
   end
 
   def stocks_liquid?
     company.public?
   end
 
-  def stock_fair_market_value
+  def stock_preferred_price
     if company&.public?
       company.quote
     else
-      read_attribute(:stock_fair_market_value)
+      read_attribute(:stock_preferred_price)
     end
   end
 
   def stock_profit
     if options?
-      stock_fair_market_value.to_f - stock_strike_price.to_f
+      stock_preferred_price.to_i - stock_strike_price.to_i
     else
-      stock_fair_market_value.to_f
+      stock_preferred_price.to_i
     end
   end
 
   def stocks_profit
-    stock_profit.to_f * stock_count.to_f
+    stock_grant_value || stock_profit.to_i * stock_count.to_i
   end
 
   def stocks_profit_per_year
-    stocks_profit.to_f / 4
+    stocks_profit.to_i / 4
   end
 
   def tc
     base_salary.to_i +
-      stocks_profit_per_year.to_f +
-      bonus_value_per_year.to_f
+      stocks_profit_per_year.to_i +
+      bonus_value_per_year.to_i
   end
 
   def tc_year_1

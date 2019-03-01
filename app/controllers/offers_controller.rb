@@ -136,7 +136,8 @@ class OffersController < ApplicationController
       :relocation_package,
       :signon_bonus,
       :stock_count,
-      :stock_fair_market_value,
+      :stock_preferred_price,
+      :stock_grant_value,
       :stock_strike_price,
       :stock_type,
       :status,
@@ -146,6 +147,7 @@ class OffersController < ApplicationController
     attrs[:base_salary] = Monetize.parse(attrs[:base_salary]).amount if attrs[:base_salary].present?
     attrs[:relocation_package] = Monetize.parse(attrs[:relocation_package]).amount if attrs[:relocation_package].present?
     attrs[:signon_bonus] = Monetize.parse(attrs[:signon_bonus]).amount if attrs[:signon_bonus].present?
+    attrs[:stock_grant_value] = Monetize.parse(attrs[:stock_grant_value]).amount if attrs[:stock_grant_value].present?
 
     attrs
   end

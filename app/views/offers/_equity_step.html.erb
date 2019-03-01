@@ -26,14 +26,16 @@
 
       <% end %>
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :stock_type do %>
-              Equity type
-            <% end %>
-            <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: @offer.stocks_liquid? ? "rsus" : "options", disabled: "" }, class: "form-control", disabled: @offer.stocks_liquid? %>
+        <% unless @offer.company.public? %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :stock_type do %>
+                Equity type
+              <% end %>
+              <%= f.select :stock_type, Offer.stock_types.to_a.map { |t| [t.first.humanize, t.first] }, { include_blank: "Select...", selected: "options", disabled: "" }, class: "form-control", disabled: @offer.stocks_liquid? %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
         <div class="col-md-6">
           <div class="form-group">
@@ -43,37 +45,46 @@
             <%= f.select :vesting_schedule, Offer.vesting_schedules.to_a.map { |t| [Offer.vesting_schedule_display(t.first), t.first] }, { selected: "standard" }, class: "form-control" %>
           </div>
         </div>
-      </div>
 
-      <div class="row">
         <% unless @offer.company.public? %>
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :stock_strike_price do %>
-                Strike price
+                Strike price / Fair market value
               <% end %>
               <%= f.number_field :stock_strike_price, class: "form-control", placeholder: "0.22", step: :any, value: @offer.stocks_liquid? ? '' : '', readonly: @offer.stocks_liquid? %>
             </div>
           </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :stock_preferred_price do %>
+                Preferred price
+              <% end %>
+              <%= f.number_field :stock_preferred_price, class: "form-control", placeholder: "1.92", step: :any, value: @offer.company.quote, readonly: @offer.stocks_liquid? %>
+            </div>
+          </div>
         <% end %>
 
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :stock_fair_market_value do %>
-              Fair market value
-            <% end %>
-            <%= f.number_field :stock_fair_market_value, class: "form-control", placeholder: "1.92", step: :any, value: @offer.company.quote, readonly: @offer.stocks_liquid? %>
+        <% if @offer.company.public? %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :stock_grant_value do %>
+                Total stock grant over 4 years
+              <% end %>
+              <%= f.text_field :stock_grant_value, class: "form-control", placeholder: "$100,000", autocomplete: "off" %>
+            </div>
           </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :stock_count do %>
-              Total # of units
-            <% end %>
-            <%= f.number_field :stock_count, class: "form-control", placeholder: "5,000" %>
+        <% else %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :stock_count do %>
+                Total # of units over 4 years
+              <% end %>
+              <%= f.number_field :stock_count, class: "form-control", placeholder: "5,000" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <% if @offer.stocks_liquid? %>

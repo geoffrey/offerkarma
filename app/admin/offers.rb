@@ -20,7 +20,8 @@ ActiveAdmin.register Offer do
     :scope,
     :status,
     :stock_count,
-    :stock_fair_market_value,
+    :stock_preferred_price,
+    :stock_grant_value,
     :stock_type,
     :vesting_schedule,
     :stock_strike_price,
@@ -53,7 +54,8 @@ ActiveAdmin.register Offer do
     column :stock_type
     column :stock_count
     column :stock_strike_price
-    column :stock_fair_market_value
+    column :stock_preferred_price
+    column :stock_grant_value
     column :created_at
     column :updated_at
 

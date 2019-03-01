@@ -3,8 +3,11 @@
     <div class="d-flex flex-column justify-content-between height-100">
       <div class="p-3 d-flex align-items-center">
         <div class="mr-4">
-          <div>
+          <div class="mb-1">
             <img width="60px" class="rounded border-0" src="<%= offer.company.logo_url %>">
+          </div>
+          <div class="small text-muted text-center text-truncate" style="max-width: 60px;" title="<%= offer.company.display_name %>">
+            <%= offer.company.display_name %>
           </div>
         </div>
 

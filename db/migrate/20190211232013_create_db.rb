@@ -46,7 +46,7 @@ class CreateDb < ActiveRecord::Migration[5.2]
       t.integer "stock_type"
       t.integer "stock_count"
       t.float "stock_strike_price"
-      t.float "stock_fair_market_value"
+      t.float "stock_preferred_price"
       t.index ["company_id"], name: "index_offers_on_company_id"
       t.index ["user_id"], name: "index_offers_on_user_id"
     end
