@@ -41,21 +41,17 @@ class Offer < ApplicationRecord
     impressions.size
   end
 
-  def display_title
+  def og_title
     "#{company.display_name}: " \
       "$#{ActionController::Base.helpers.number_to_human(tc)} " \
+      "#{'💰' * (tc / 100_000)} " \
       "(#{[position, level, location].reject{ |v| v.blank? }.join(', ')})"
-  end
-
-  def og_title
-    "Offer from #{company.display_name}: " \
-      "$#{ActionController::Base.helpers.number_to_human(tc)}" \
   end
 
   def og_description
     "#{[position, level, location].reject{ |v| v.blank? }.join(' | ')}.\n" \
       "How is this offer?\n" \
-      "Give your feedback on reffo.us!"
+      "Add your feedback now on reffo.us."
   end
 
   def self.vesting_schedule_display(vesting_schedule)
@@ -124,7 +120,7 @@ class Offer < ApplicationRecord
   def post_on_twitter
     return unless Rails.env.production?
 
-    $twitter.update("New offer posted! #{display_title} #{url}")
+    $twitter.update("#{og_title} #{url}")
   rescue
     nil
   end

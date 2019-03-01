@@ -4,7 +4,7 @@
     <%= render "layouts/analytics" if Rails.env.production? %>
 
     <% if @offer&.created_at %>
-      <title><%= @offer.display_title %> </title>
+      <title><%= @offer.og_title %> </title>
     <% elsif @offer && !@offer.created_at %>
       <title>Reffo - Add a new offer</title>
     <% else %>
