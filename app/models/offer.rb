@@ -72,7 +72,11 @@ class Offer < ApplicationRecord
   end
 
   def stock_fair_market_value
-    company&.quote || read_attribute(:stock_fair_market_value)
+    if company&.public?
+      company.quote
+    else
+      read_attribute(:stock_fair_market_value)
+    end
   end
 
   def stock_profit
