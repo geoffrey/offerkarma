@@ -7,6 +7,8 @@
       <title><%= @offer.og_title %> </title>
     <% elsif @offer && !@offer.created_at %>
       <title>Reffo - Add a new offer</title>
+    <% elsif @company %>
+      <title>Reffo - Offers from <%= @company.display_name %> </title>
     <% else %>
       <title>Reffo - Offer Feedback Community</title>
     <% end %>
