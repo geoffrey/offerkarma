@@ -8,7 +8,6 @@ class OffersController < ApplicationController
   NEW_OFFER_STEPS = *(1..4)
 
   def index
-    params
     @offers = Offer.includes(
       :company,
       :upvotes,
@@ -17,11 +16,24 @@ class OffersController < ApplicationController
       :impressions
     )
 
-    if Offer.statuses.keys.include?(params[:status]&.downcase)
-      @offers = @offers.where(status: params[:status].downcase)
+    if Offer.statuses.keys.to_a.include?(search_params[:status]&.downcase)
+      @offers = @offers.where(status: search_params[:status].downcase)
     end
 
-    @offers = @offers.last(100).reverse
+    if search_params[:company].present?
+      company = Company.find_or_create_from_clearbit!(search_params[:company])
+      @offers = @offers.where(company_id: company&.id)
+    end
+
+    if search_params[:position].present?
+      @offers = @offers.where(position: search_params[:position])
+    end
+
+    if search_params[:location].present?
+      @offers = @offers.where(location: search_params[:location])
+    end
+
+    @offers = @offers.reverse
   end
 
   def show
@@ -122,6 +134,10 @@ class OffersController < ApplicationController
 
   def offer_company_params
     params.require(:offer).permit(:company_name)
+  end
+
+  def search_params
+    params.permit(:company, :location, :position, :status)
   end
 
   def offer_params

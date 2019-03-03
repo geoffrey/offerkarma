@@ -26,7 +26,6 @@ export default {
 
   setAutocomplete: () => {
     const $companyNameInput = $('#offer_company_name')
-
     if ($companyNameInput.length == 0)
       return
 

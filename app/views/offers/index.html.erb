@@ -9,26 +9,9 @@
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <div class="center-box-max-width mb-3">
-      <div class="form-inline justify-content-center">
-        <%= label_tag :status, "Status:", class: "mr-3" %>
-        <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
+    <%= render "filters" %>
 
-      </div>
-    </div>
     <hr/>
-  <!--     <div class="text-center">
-    </div>
-      <form class="m-auto form-inline">
-        <div class="form-group mr-3 mb-2">
-          <input type="text" class="form-control" id="company" placeholder="Company...">
-        </div>
-        <button type="submit" class="btn btn-danger mb-2">Search</button>
-      </form>
-    </div>
-
-    <hr/> -->
-
     <% if @offers.any? %>
       <div class="row">
         <% @offers.each do |offer| %>
@@ -42,11 +25,3 @@
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#status").on('change', function() {
-      window.location = `/offers?status=${$(this).val()}`
-    });
-  });
-</script>
