@@ -50,7 +50,7 @@
     </div>
 
     <div class="small text-light font-weight-light">
-      added <%= time_ago_in_words @offer.created_at %> ago
+      added <%= time_ago_in_words @offer.created_at %> ago - updated <%= time_ago_in_words @offer.updated_at %>
     </div>
   </div>
 </div>
@@ -222,21 +222,24 @@
     <div class="mb-4">
       <% @comments.each do |comment| %>
         <div class="bg-light p-3 border-bottom mb-2">
-          <div class="small d-flex justify-content-between">
+          <div class="small d-flex justify-content-between mb-2">
             <div>
-              <% if comment.user.current_company %>
+              <% if @offer.user.id == comment.user.id %>
+                <span class="font-weight-bold text-danger">OP</span>
+              <% elsif comment.user.current_company %>
                 <a href="<%= company_path comment.user.current_company.uuid %>">
                   <%= comment.user.current_company.name %>
                 </a>
               <% else %>
-                New
+                N/A
               <% end %>
-              - <%= comment.user.username %> <sup class="font-weight-bold text-danger"><%= @offer.user.id == comment.user.id ? "OP" : "" %></sup>
+
+              - <span title="username"><%= comment.user.username %></span>
             </div>
 
             <div>
               <span class="text-muted" title="<%= comment.created_at.strftime('%m/%d/%Y - %r') %>">
-                <%= time_ago_in_words comment.created_at %> ago
+                <%= time_ago_in_words comment.created_at %>
               </span>
             </div>
           </div>

@@ -119,9 +119,14 @@ class Offer < ApplicationRecord
 
   def post_on_twitter
     return unless Rails.env.production?
-
-    $twitter.update("#{og_title} #{url}")
+    reload
+    p "Posting offer on twitter... #{twitter_update}"
+    $twitter.update(twitter_update)
   rescue
     nil
+  end
+
+  def twitter_update
+    "#{og_title} #{url}"
   end
 end

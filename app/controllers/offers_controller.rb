@@ -42,21 +42,20 @@ class OffersController < ApplicationController
   end
 
   def new
-    session[:offer_params] ||= {}
-    @offer = current_user.offers.new(session[:offer_params])
+    @offer = current_user.offers.new(read_offer_params_from_session)
     @offer.current_step = session[:offer_step]
   end
 
   def edit; end
 
   def create
-    session[:offer_params].deep_merge!(offer_params) if offer_params
-    @offer = current_user.offers.new(session[:offer_params])
+    save_offer_params_in_session(offer_params)
+    @offer = current_user.offers.new(read_offer_params_from_session)
     @offer.current_step = session[:offer_step]
 
     if @offer.first_step?
       create_company!
-      session[:offer_params].deep_merge!(company_id: @offer.company_id)
+      save_offer_params_in_session(company_id: @offer.company_id)
     end
 
     if @offer.valid?
@@ -73,7 +72,7 @@ class OffersController < ApplicationController
     if @offer.new_record?
       redirect_to new_offer_path
     else
-      session[:offer_step] = session[:offer_params] = nil
+      reset_offer_session
       redirect_to offer_path @offer.reload.uuid
     end
   end
@@ -109,6 +108,19 @@ class OffersController < ApplicationController
   end
 
   private
+
+  def save_offer_params_in_session(p)
+    session[:offer_params] ||= {}
+    session[:offer_params].deep_merge! p
+  end
+
+  def read_offer_params_from_session
+    session[:offer_params] || {}
+  end
+
+  def reset_offer_session
+    session[:offer_step] = session[:offer_params] = nil
+  end
 
   def create_company!
     @offer.company = Company.find_or_create_from_clearbit!(
