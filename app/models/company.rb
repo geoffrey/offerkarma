@@ -6,6 +6,10 @@ class Company < ApplicationRecord
   validates :name, :domain, presence: true
   validates_uniqueness_of :domain
 
+  enum vesting_schedule: %i[standard backloaded]
+
+  default_value_for(:vesting_schedule) { :standard }
+
   before_save { domain.downcase! }
   before_save { name.downcase! }
   before_save { symbol&.upcase! }
@@ -47,7 +51,7 @@ class Company < ApplicationRecord
     clearbit_company = find_on_clearbit(search)
     return nil unless clearbit_company
 
-    company = self.create!(clearbit_company)
+    company = self.create(clearbit_company)
     company
   end
 
