@@ -28,4 +28,10 @@ class PagesController < ApplicationController
 
   def negotiate
   end
+
+  def terms
+  end
+
+  def privacy
+  end
 end

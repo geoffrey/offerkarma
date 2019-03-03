@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get "negotiate", to: "pages#negotiate"
   get "referrals", to: "pages#referrals"
 
+  get "terms-of-service", to: "pages#terms"
+  get "privacy-policy",   to: "pages#privacy"
+
   get    "login",                    to: "users#login"
   post   "login",                    to: "users#post_login"
   get    "signup",                   to: "users#signup"
