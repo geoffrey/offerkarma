@@ -38,7 +38,7 @@
     <div class="row">
       <% @companies.each do |company| %>
         <div class="col-4 col-xl-2 p-3">
-          <a href="<%= company_path company.uuid %>"><img width="65px" class="rounded" src="<%= company.logo_url %>" alt="<%= company.name %>" title="<%= company.name %>"></a>
+          <a href="<%= company_path company.uuid %>"><img width="65px" class="rounded" src="<%= company.logo_url %>" alt="<%= company.display_name %> logo" title="<%= company.name %>"></a>
         </div>
       <% end %>
     </div>

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:show]
 
-  resources :offers, only: %i[index new create show edit update] do
+  resources :offers do
     member do
       post :votes
       post :comments

@@ -3,14 +3,14 @@
   <div class="small font-weight-light">Manage your offers</div>
   <% if @offers.any? %>
     <div class="text-center mt-3">
-      <a class="btn btn-danger" href="<%= new_offer_path %>">Evaluate a new offer</a>
+      <a class="btn btn-danger" href="<%= new_offer_path %>">Add a new offer</a>
     </div>
   <% end %>
 </div>
 
 <div class="bg-light p-3 border-bottom">
-  <div class="container p-0">
-    <% if @offers.none? %>
+  <div class="container p-2">
+    <% if current_user.offers.none? %>
       <div class="bg-white p-3 text-center">
         <div class="lead mb-2">
           You haven't submitted any offers yet.

@@ -6,8 +6,10 @@ class Company < ApplicationRecord
   validates :name, :domain, presence: true
   validates_uniqueness_of :domain
 
-  enum vesting_schedule: %i[standard backloaded]
-
+  enum vesting_schedule: {
+    standard:   0,
+    backloaded: 1
+  }, _suffix: true
   default_value_for(:vesting_schedule) { :standard }
 
   before_save { domain.downcase! }
