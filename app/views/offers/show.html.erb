@@ -84,29 +84,42 @@
       <div class="col-12 mb-3 mb-md-3">
         <div class="text-center card-shadow rounded bg-white p-2 p-md-3">
           <div class="font-weight-light mb-1">Total Compensation (TC)</div>
+
+          <div class="lead font-weight-bold" title="<%= @offer.total_compensation %>">
+            $<%= number_to_human @offer.total_compensation %>
+            <% if @offer.show_breakdown? %>
+              (year 1)
+            <% else %>
+              / year
+            <% end %>
+          </div>
+
           <% if @offer.show_breakdown? %>
-            <div class="table-responsive">
-              <table class="table table-sm mb-0">
-                <tbody>
-                  <tr>
-                    <% (1..4).each do |year| %>
-                      <td class="border-0">
-                        <div>
-                          <small>
-                            <span class="badge badge-info">YEAR <%= year %></span>
-                          </small>
-                        </div>
-                        <div class="lead font-weight-normal">
-                          $<%= number_to_human @offer.total_compensation(year) %>
-                        </div>
-                      </td>
-                    <% end %>
-                  </tr>
-                </tbody>
-              </table>
+            <a class="btn btn-sm btn-link" data-toggle="collapse" href="#tc-breakdown" role="button" aria-expanded="false" aria-controls="tc-breakdown">
+              show details
+            </a>
+            <div class="collapse" id="tc-breakdown">
+              <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                  <tbody>
+                    <tr>
+                      <% (1..4).each do |year| %>
+                        <td class="border-0">
+                          <div>
+                            <small>
+                              <span class="badge badge-info">YEAR <%= year %></span>
+                            </small>
+                          </div>
+                          <div class="lead font-weight-normal">
+                            $<%= number_to_human @offer.total_compensation(year) %>
+                          </div>
+                        </td>
+                      <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          <% else %>
-            <div class="lead font-weight-bold" title="<%= @offer.total_compensation %>">$<%= number_to_human @offer.total_compensation %> / year</div>
           <% end %>
         </div>
       </div>
@@ -151,29 +164,40 @@
               </div>
             </div>
 
+            <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_at_year %>">
+              $<%= number_to_human @offer.stocks_profit_at_year %>
+              <% if @offer.backloaded_vesting_schedule? %>
+                (year 1)
+              <% else %>
+                / year
+              <% end %>
+            </div>
             <% if @offer.backloaded_vesting_schedule? %>
-              <div class="table-responsive">
-                <table class="table border-0 table-sm mb-0">
-                  <tbody>
-                    <tr>
-                      <% (1..4).each do |year| %>
-                        <td class="border-0">
-                          <div>
-                            <small>
-                              <span class="badge badge-info">YEAR <%= year %></span>
-                            </small>
-                          </div>
-                          <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_at_year(year) %>">
-                            $<%= number_to_human @offer.stocks_profit_at_year(year) %>
-                          </div>
-                        </td>
-                      <% end %>
-                    </tr>
-                  </tbody>
-                </table>
+              <a class="btn btn-sm btn-link" data-toggle="collapse" href="#stocks-breakdown" role="button" aria-expanded="false" aria-controls="stocks-breakdown">
+                show details
+              </a>
+              <div class="collapse" id="stocks-breakdown">
+                <div class="table-responsive">
+                  <table class="table border-0 table-sm mb-0">
+                    <tbody>
+                      <tr>
+                        <% (1..4).each do |year| %>
+                          <td class="border-0">
+                            <div>
+                              <small>
+                                <span class="badge badge-info">YEAR <%= year %></span>
+                              </small>
+                            </div>
+                            <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_at_year(year) %>">
+                              $<%= number_to_human @offer.stocks_profit_at_year(year) %>
+                            </div>
+                          </td>
+                        <% end %>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            <% else %>
-              <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_at_year %>">$<%= number_to_human @offer.stocks_profit_at_year %> / year</div>
             <% end %>
   <!--
             <% if @offer.stock_count %>
