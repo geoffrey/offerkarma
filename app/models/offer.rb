@@ -16,26 +16,78 @@ class Offer < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  validates :signon_bonus, :relocation_package, :stock_grant_value,
-            inclusion: 1_000..10_000_000, allow_nil: true
-  validates :base_salary, inclusion: 20_000..1_000_000, allow_nil: true
+  validates :base_salary, :signon_bonus, :relocation_package, :stock_grant_value,
+            inclusion: 0..10_000_000, allow_nil: true
   validates :bonus_per_year_percent, inclusion: 0..100, allow_nil: true
   validates :stock_strike_price, inclusion: 0..1_000, allow_nil: true
   validates :stock_preferred_price, inclusion: 0..10_000, allow_nil: true
   validates :stock_count, inclusion: 0..2_000_000, allow_nil: true
   validates :yoe, inclusion: 0..50, allow_nil: true
 
-  enum scope: %i[public_scope private_scope]
-  enum status: %i[accepted declined pending]
-  enum stock_type: %i[options rsus]
-  enum vesting_schedule: %i[standard backloaded]
-
+  enum scope: {
+    private: 0,
+    public:  1
+  }, _suffix: true
   default_value_for(:scope) { :public_scope }
+
+  enum status: {
+    pending:  0,
+    accepted: 1,
+    declined: 2
+  }
   default_value_for(:status) { :pending }
+
+  enum stock_type: {
+    options: 0,
+    rsus:    1
+  }
   default_value_for(:stock_type) { :options }
+
+  enum vesting_schedule: {
+    standard:   0,
+    backloaded: 1
+  }, _suffix: true
   default_value_for(:vesting_schedule) { :standard }
 
   after_create :post_on_twitter
+
+  def self.filter(filters: {}, user: nil)
+    offers = user ? user.offers : self
+    offers = offers.includes(
+      :company,
+      :upvotes,
+      :downvotes,
+      :comments,
+      :impressions
+    )
+
+    if Offer.statuses.keys.to_a.include?(filters[:status]&.downcase)
+      offers = offers.where(status: filters[:status].downcase)
+    end
+
+    if filters[:company].present?
+      company = Company.find_or_create_from_clearbit!(filters[:company])
+      offers = offers.where(company_id: company&.id)
+    end
+
+    if filters[:yoe].present?
+      offers = offers.where(yoe: filters[:yoe])
+    end
+
+    if filters[:level].present?
+      offers = offers.where("level ILIKE ?", "%#{filters[:level]}%")
+    end
+
+    if filters[:position].present?
+      offers = offers.where("position ILIKE ?", "%#{filters[:position]}%")
+    end
+
+    if filters[:location].present?
+      offers = offers.where("location ILIKE ?", "%#{filters[:location]}%")
+    end
+
+    offers.order(updated_at: :desc)
+  end
 
   def views
     impressions.size
@@ -43,8 +95,8 @@ class Offer < ApplicationRecord
 
   def og_title
     "#{company.display_name}: " \
-      "$#{ActionController::Base.helpers.number_to_human(tc)} " \
-      "#{'💰' * (tc / 100_000)} " \
+      "$#{ActionController::Base.helpers.number_to_human(total_compensation)} " \
+      "#{'💰' * (total_compensation / 100_000)} " \
       "(#{[position, level, location].reject{ |v| v.blank? }.join(', ')})"
   end
 
@@ -55,12 +107,23 @@ class Offer < ApplicationRecord
   end
 
   def self.vesting_schedule_display(vesting_schedule)
-    return "Backloaded (5, 15, 40, 40)" if vesting_schedule == "backloaded"
-    "Standard (25, 25, 25, 25)"
+    if vesting_schedule == "backloaded"
+      "Backloaded vesting (5%, 15%, 40%, 40%)"
+    else
+      "Standard vesting (25%, 25%, 25%, 25%)"
+    end
   end
 
   def vesting_schedule_display
     Offer.vesting_schedule_display(vesting_schedule.to_s)
+  end
+
+  def vesting_breakdown
+    if backloaded_vesting_schedule?
+      [5, 15, 40, 40]
+    else
+      [25, 25, 25, 25]
+    end
   end
 
   def status_class
@@ -70,7 +133,7 @@ class Offer < ApplicationRecord
   end
 
   def bonus_value_per_year
-    bonus_per_year_percent.to_i * base_salary.to_i / 100
+    base_salary.to_i * bonus_per_year_percent.to_i / 100
   end
 
   def stocks_liquid?
@@ -97,20 +160,34 @@ class Offer < ApplicationRecord
     stock_grant_value || stock_profit.to_i * stock_count.to_i
   end
 
-  def stocks_profit_per_year
-    stocks_profit.to_i / 4
+  def stocks_profit_at_year(year = 1)
+    return 0 unless [1, 2, 3, 4].include?(year)
+
+    stocks_profit * vested_at_year(year) / 100
   end
 
-  def tc
-    base_salary.to_i +
-      stocks_profit_per_year.to_i +
+  def vested_at_year(year = 1)
+    vesting_breakdown[year-1]
+  end
+
+  def total_compensation(year = 1)
+    return 0 unless [1, 2, 3, 4].include?(year)
+
+    tc = base_salary.to_i +
+      stocks_profit_at_year(year).to_i +
       bonus_value_per_year.to_i
+
+    if year == 1
+      tc + signon_bonus.to_i + relocation_package.to_i
+    else
+      tc
+    end
   end
 
-  def tc_year_1
-    tc +
-      signon_bonus.to_i +
-      relocation_package.to_i
+  def show_breakdown?
+    backloaded_vesting_schedule? ||
+      signon_bonus.to_i.positive? ||
+      relocation_package.to_i.positive?
   end
 
   def url

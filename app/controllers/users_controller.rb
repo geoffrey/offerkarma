@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :redirect_to_offers_if_logged_in, only: %i[login post_login signup create]
 
   def account
-    @offers = current_user.offers.reverse
+    @offers = Offer.filter(user: current_user)
   end
 
   def login; end

@@ -8,32 +8,7 @@ class OffersController < ApplicationController
   NEW_OFFER_STEPS = *(1..4)
 
   def index
-    @offers = Offer.includes(
-      :company,
-      :upvotes,
-      :downvotes,
-      :comments,
-      :impressions
-    )
-
-    if Offer.statuses.keys.to_a.include?(search_params[:status]&.downcase)
-      @offers = @offers.where(status: search_params[:status].downcase)
-    end
-
-    if search_params[:company].present?
-      company = Company.find_or_create_from_clearbit!(search_params[:company])
-      @offers = @offers.where(company_id: company&.id)
-    end
-
-    if search_params[:position].present?
-      @offers = @offers.where(position: search_params[:position])
-    end
-
-    if search_params[:location].present?
-      @offers = @offers.where(location: search_params[:location])
-    end
-
-    @offers = @offers.reverse
+    @offers = Offer.filter(filters: offer_filters)
   end
 
   def show
@@ -78,13 +53,13 @@ class OffersController < ApplicationController
   end
 
   def update
-    @offer.update(offer_params)
+    @offer.update! offer_params
     redirect_to offer_path @offer.uuid
   end
 
   def destroy
-    @offer.destroy
-    edirect_to offers_url, notice: "Your offer was successfully destroyed."
+    @offer.destroy!
+    redirect_to account_path, notice: "Your offer was successfully destroyed."
   end
 
   def votes
@@ -148,8 +123,8 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:company_name)
   end
 
-  def search_params
-    params.permit(:company, :location, :position, :status)
+  def offer_filters
+    params.permit(:company, :location, :position, :status, :level, :yoe)
   end
 
   def offer_params

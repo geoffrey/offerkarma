@@ -9,19 +9,21 @@
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <%= render "filters" %>
+    <%= render "filters", search_path: "/offers"  %>
 
     <hr/>
-    <% if @offers.any? %>
-      <div class="row">
-        <% @offers.each do |offer| %>
-          <%= render partial: "offer_list_item", locals: { offer: offer } %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="bg-white p-3 text-center text-muted">
+    <h4>
+      <% if @offers.any? %>
+        <%= @offers.count %> offers found
+      <% else %>
         No offers found.
-      </div>
-    <% end %>
+      <% end %>
+    </h4>
+
+    <div class="row">
+      <% @offers.each do |offer| %>
+        <%= render partial: "offer_list_item", locals: { offer: offer } %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
       <div class="p-3 d-flex align-items-center">
         <div class="mr-4">
           <div class="mb-1">
-            <img width="60px" class="rounded border-0" src="<%= offer.company.logo_url %>">
+            <img width="60px" class="rounded border-0" src="<%= offer.company.logo_url %>" alt="<%= offer.company.display_name %> logo">
           </div>
           <div class="small text-muted text-center text-truncate" style="max-width: 60px;" title="<%= offer.company.display_name %>">
             <%= offer.company.display_name %>
@@ -25,7 +25,7 @@
 
           <div>
             <span class="font-weight-bold text-success" title="Total Compensation">
-              $<%= number_to_human offer.tc %> / year
+              $<%= number_to_human offer.total_compensation %> / year
             </span>
           </div>
         </div>
