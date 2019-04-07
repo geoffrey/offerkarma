@@ -28,7 +28,7 @@ class Offer < ApplicationRecord
     private: 0,
     public:  1
   }, _suffix: true
-  default_value_for(:scope) { :public_scope }
+  default_value_for(:scope) { :public }
 
   enum status: {
     pending:  0,
