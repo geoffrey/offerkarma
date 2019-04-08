@@ -3,7 +3,7 @@
     <div class="center-box-max-width d-flex">
       <div class="mr-auto">
         <!-- <a class="btn btn-outline-secondary" href="<%= edit_offer_path @offer.uuid %>">Edit</a> -->
-        <%= link_to "Delete", offer_path(@offer.uuid), method: :delete, data: { confirm: "Are you sure you want to delete this offer?" }, class: "btn btn-outline-danger" %>
+        <%= link_to "Delete", offer_path(@offer.uuid), method: :delete, data: { confirm: "Are you sure you want to delete this offer?" }, class: "btn btn-link text-danger" %>
       </div>
       <div>
         <% unless @offer.pending? %>
@@ -43,7 +43,7 @@
     <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.name %></a></h6>
   </div>
 
-  <hr/>
+  <hr class="m-2" />
 
   <div>
     <div class="small text-white font-weight-bold text-uppercase">
@@ -91,15 +91,22 @@
 
       <div class="col-12 mb-3 mb-md-3">
         <div class="text-center card-shadow rounded bg-white p-2 p-md-3">
-          <div class="font-weight-light text-center">Total Compensation (TC)</div>
-          <hr/>
+          <div class="font-weight-light text-center">
+            Total Compensation <span title="1 💰 every $100k"><%= @offer.money_bags %></span>
+          </div>
+
+          <hr class="m-2" />
           <div class="lead font-weight-bold" title="<%= @offer.total_compensation %>">
-            $<%= number_to_human @offer.total_compensation %>
-            <% if @offer.show_breakdown? %>
-              year 1*
-            <% else %>
-              / year
-            <% end %>
+            <div>
+              $<%= number_to_human @offer.total_compensation %>
+            </div>
+            <div class="small font-weight-light">
+              <% if @offer.show_breakdown? %>
+                for year 1*
+              <% else %>
+                per year
+              <% end %>
+            </div>
           </div>
 
           <% if @offer.show_breakdown? %>
@@ -141,9 +148,16 @@
             Base salary
           </div>
 
-          <hr/>
+          <hr class="m-2" />
 
-          <div class="lead font-weight-normal" title="<%= @offer.base_salary %>">$<%= number_to_human @offer.base_salary %> / year</div>
+          <div class="lead font-weight-normal" title="<%= @offer.base_salary %>">
+            <div>
+              $<%= number_to_human @offer.base_salary %>
+            </div>
+            <div class="small font-weight-light">
+              per year
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -155,7 +169,7 @@
 
             <div class="text-center">
               <div class="font-weight-light">
-                Stocks (<i><%= @offer.stock_type.humanize %></i>)
+                Stocks - <i class="small text-uppercase"><%= @offer.stock_type %></i>
               </div>
               <div>
                 <small>
@@ -176,20 +190,24 @@
               </div>
             </div>
 
-            <hr/>
+            <hr class="m-2" />
 
             <div class="lead font-weight-normal" title="<%= @offer.stocks_profit_at_year %>">
-              $<%= number_to_human @offer.stocks_profit_at_year %>
-              <% if @offer.backloaded_vesting_schedule? %>
-                year 1*
-              <% else %>
-                / year
-              <% end %>
+              <div>
+                $<%= number_to_human @offer.stocks_profit_at_year %>
+              </div>
+              <div class="small font-weight-light">
+                <% if @offer.backloaded_vesting_schedule? %>
+                  for year 1*
+                <% else %>
+                  per year
+                <% end %>
+              </div>
             </div>
 
             <% if @offer.backloaded_vesting_schedule? %>
               <a class="btn btn-sm btn-link" data-toggle="collapse" href="#stocks-breakdown" role="button" aria-expanded="false" aria-controls="stocks-breakdown">
-                * click to show details
+                * click to show vesting
               </a>
               <div class="collapse" id="stocks-breakdown">
                 <div class="table-responsive">
@@ -236,8 +254,13 @@
         <div class="col-12 col-md-6 mb-3 mb-md-3">
           <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
             <div class="font-weight-light">Bonus</div>
-            <hr/>
-            <div class="lead font-weight-normal">$<%= number_to_human @offer.bonus_value_per_year %> / year</div>
+            <hr class="m-2" />
+            <div class="lead font-weight-normal">
+              $<%= number_to_human @offer.bonus_value_per_year %>
+              <div class="small font-weight-light">
+                per year
+              </div>
+            </div>
             <% if @offer.bonus_per_year_percent %>
               <div class="small text-muted">
                 <%= @offer.bonus_per_year_percent %>% of $<%= number_to_human @offer.base_salary %>
@@ -251,8 +274,15 @@
         <div class="col-12 col-md-6 mb-3 mb-md-3">
           <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
             <div class="font-weight-light">Relocation package</div>
-            <hr/>
-            <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">$<%= number_to_human @offer.relocation_package.to_i %> year 1</div>
+            <hr class="m-2" />
+            <div class="lead font-weight-normal" title="<%= @offer.relocation_package %>">
+              <div>
+                $<%= number_to_human @offer.relocation_package.to_i %>
+              </div>
+              <div class="small font-weight-light">
+                year 1
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
@@ -261,8 +291,15 @@
         <div class="col-12 col-md-6 mb-3 mb-md-3">
           <div class="text-center card-shadow rounded height-100 bg-white p-2 p-md-3">
             <div class="font-weight-light">Signon Bonus</div>
-            <hr/>
-            <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">$<%= number_to_human @offer.signon_bonus.to_i %> year 1</div>
+            <hr class="m-2" />
+            <div class="lead font-weight-normal"  title="<%= @offer.signon_bonus %>">
+              <div>
+                $<%= number_to_human @offer.signon_bonus.to_i %>
+              </div>
+              <div class="small font-weight-light">
+                year 1
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
@@ -310,7 +347,7 @@
   <div class="center-box-max-width">
     <div class="text-center mb-3">
       <% if @comments.none? %>
-        There are no comments yet. Be the first one:
+        There are no comments yet... You could be the first:
       <% else %>
         <%= pluralize@comments.count, "Comment" %>
       <% end %>

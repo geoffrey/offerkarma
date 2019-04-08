@@ -33,3 +33,28 @@ input:-ms-input-placeholder {
   color: #ccc !important;
   font-weight: 300 !important;
 }
+input::placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+textarea:-moz-placeholder { /* Firefox 18- */
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+textarea::-moz-placeholder {  /* Firefox 19+ */
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+textarea:-ms-input-placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}
+textarea::placeholder {
+  color: #ccc !important;
+  font-weight: 300 !important;
+}

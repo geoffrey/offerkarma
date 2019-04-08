@@ -96,8 +96,12 @@ class Offer < ApplicationRecord
   def og_title
     "#{company.display_name}: " \
       "$#{ActionController::Base.helpers.number_to_human(total_compensation)} " \
-      "#{'💰' * (total_compensation / 100_000)} " \
+      "#{money_bags} " \
       "(#{[position, level, location].reject{ |v| v.blank? }.join(', ')})"
+  end
+
+  def money_bags
+    '💰' * (total_compensation / 100_000)
   end
 
   def og_description
