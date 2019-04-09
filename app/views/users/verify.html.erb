@@ -10,7 +10,7 @@
   <div class="container bg-white center-box-max-width p-4 rounded">
     <div class="text-center">
       <div class="mb-3">
-        <% if current_user.current_company %>
+        <% if current_user.company %>
           <div class="lead mb-3">You are all set!</div>
 
           <div class="mb-3">
@@ -18,12 +18,12 @@
           </div>
 
           <div>
-            <img width="80px" class="rounded" src="<%= current_user.current_company.logo_url %>">
+            <img width="80px" class="rounded" src="<%= current_user.company.logo_url %>">
           </div>
 
           <div class="mb-3">
-            <a href="<%= company_path current_user.current_company.uuid %>" class="btn btn-link text-danger">
-              See offers from <%= current_user.current_company.name %>
+            <a href="<%= company_path current_user.company.uuid %>" class="btn btn-link text-danger">
+              See offers from <%= current_user.company.name %>
             </a>
           </div>
         <% else %>

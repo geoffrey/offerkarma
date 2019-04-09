@@ -361,9 +361,9 @@
             <div>
               <% if @offer.user.id == comment.user.id %>
                 <span class="font-weight-bold text-danger">OP</span>
-              <% elsif comment.user.current_company %>
-                <a href="<%= company_path comment.user.current_company.uuid %>">
-                  <%= comment.user.current_company.name %>
+              <% elsif comment.user.company %>
+                <a href="<%= company_path comment.user.company.uuid %>">
+                  <%= comment.user.company.name %>
                 </a>
               <% else %>
                 N/A
