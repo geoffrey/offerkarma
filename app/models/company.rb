@@ -2,6 +2,7 @@
 
 class Company < ApplicationRecord
   has_many :offers, dependent: :destroy
+  has_many :users
 
   validates :name, :domain, presence: true
   validates_uniqueness_of :domain

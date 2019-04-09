@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  belongs_to :company, optional: true
+
   attr_accessor :verification_token
 
   validates :password, length: { minimum: 6 }, if: :setting_password?

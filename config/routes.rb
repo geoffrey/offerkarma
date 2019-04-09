@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:show]
 
+  resources :referrals
+
   resources :offers do
     member do
       post :votes

@@ -59,7 +59,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy!
-    redirect_to account_path, notice: "Your offer was successfully destroyed."
+    redirect_to account_path
   end
 
   def votes
