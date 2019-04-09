@@ -36,10 +36,6 @@ class User < ApplicationRecord
      read_attribute(:username) || uuid.first(8)
   end
 
-  def current_company
-    @current_company ||= Company.find(current_company_id) if current_company_id
-  end
-
   def upvoted?(offer)
     offer.upvotes.where(user: self).exists?
   end
@@ -49,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def uses_corporate_email?
-    !!find_current_company_id
+    !!find_company
   end
 
   def authenticated?(attribute, token)
@@ -63,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def verify!
-    self.current_company_id = find_current_company_id
+    self.company = find_company
     self.verification_digest = nil
     self.verified_at = DateTime.now
     save!
@@ -75,8 +71,8 @@ class User < ApplicationRecord
     password || password_confirmation
   end
 
-  def find_current_company_id
-    Company.find_or_create_from_clearbit!(email_domain)&.id
+  def find_company
+    Company.find_or_create_from_clearbit!(email_domain)
   end
 
   def email_domain
