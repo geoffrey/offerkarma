@@ -1,0 +1,3 @@
+<%= form_for @referral do |f| %>
+  <%= render "#{@referral.current_step}_step", f: f %>
+<% end %>

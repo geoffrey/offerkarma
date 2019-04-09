@@ -1,23 +1,54 @@
-<div class="text-center homepage-header p-4 bg-dark">
-  <div class="mb-4 lead">
-    <span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
-  </div>
-  <div>
-    <a class="btn btn-danger" href="<%= new_offer_path %>">Evaluate my job offer now</a>
+<div class="bg-white text-center border-bottom border-2 p-4">
+  <div class="container p-0">
+    <div class=" font-weight-light">
+      <p class="h3">
+        Solving salary gaps, at the offer stage.
+      </p>
+      <div class="lead">
+        <span class="font-weight-bold text-danger">reffo</span> is a community that provides candidates with anonymous feedback on any job <span class="font-weight-bold text-danger">offer</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="bg-light text-center p-4">
+<div class="p-3 text-center" style="background-color:#E33C20">
+  <a href="https://www.producthunt.com/posts/reffo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-reffo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150711&theme=light" alt="Reffo - Receive feedback on job offers | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
+</div>
+
+<div class="text-center border-bottom p-4">
   <div class="container p-0">
-    <div class="lead font-weight-light">
-      <span class="font-weight-bold text-danger">reffo</span> is a community that empowers candidates by providing anonymous feedback on any job <span class="font-weight-bold text-danger">offer</span>.
+
+    <div class="mb-2 text-center">Here is what our community provides</div>
+    <div class="row">
+      <div class="col-md-6 p-2 p-lg-3">
+        <div class="card-shadow rounded bg-white p-4 height-100">
+          <h6 class="mb-3">
+            <span class="fa fa-money-bill text-success mr-1"></span> Job offer evaluation
+          </h6>
+          <p class="text-muted font-weight-light">
+            You need to be compensated fairly and we'll help you make sure of it by reviewing carefully every parts of your compensation breakdown and letting you know where you get low-balled.
+          </p>
+          <a href="/offers/new" title="" class="btn btn-outline-success btn-sm">Evaluate my offer</a>
+        </div>
+      </div>
+      <div class="col-md-6 p-2 p-lg-3">
+        <div class="card-shadow rounded bg-white p-4 height-100">
+          <h6 class="mb-3">
+            <span class="fa fa-users text-warning mr-1"></span> Referrals
+          </h6>
+          <p class="text-muted font-weight-light">
+            Is your dream company ignoring your application? We think everybody deserves a chance to get an interview and we'll be happy to refer you whenever possible.
+          </p>
+          <a href="/referrals/new" title="" class="btn btn-outline-warning btn-sm">Get a referral</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <div class="mb-2 text-center">Recent offers waiting for feedback:</div>
+    <div class="mb-2 text-center">Recent offers waiting for feedback</div>
 
     <div class="row">
       <% @pending_offers.each do |offer| %>
@@ -26,14 +57,14 @@
     </div>
 
     <div class="mt-3 text-center">
-      <a href="<%= offers_path %>" class="btn btn-sm btn-outline-secondary">Explore more offers</a>
+      <a href="<%= offers_path %>" class="btn btn-sm btn-outline-secondary">Explore <%= Offer.count  %> more offers</a>
     </div>
   </div>
 </div>
 
 <div class="text-center p-3 border-bottom">
   <div class="container p-0">
-    <div class="mb-3 text-center">Explore more offers from these companies</div>
+    <div class="mb-2 text-center">Explore more offers from these companies</div>
 
     <div class="row">
       <% @companies.each do |company| %>
@@ -47,18 +78,10 @@
 
 <div class="bg-light text-center border-bottom p-4">
   <div class="container p-0">
-    <div class="row">
-      <div class="col-md-6 p-2 p-lg-3">
-        <div class="card-shadow rounded bg-white p-4 height-100">
-          <h6 class="mb-3">
-            <span class="fa fa-money-bill text-success mr-1"></span> Compensation evaluation
-          </h6>
-          <p class="text-muted font-weight-light">
-            You need to be compensated fairly and we'll help you make sure of it by reviewing carefully every parts of your compensation breakdown and letting you know where you get low-balled.
-          </p>
-          <a href="/offers/new" title="" class="btn btn-outline-success btn-sm">Evaluate my offer</a>
-        </div>
-      </div>
+
+    <div class="mb-2 text-center">Other services that we will provide very soon</div>
+
+    <div class="row row-eq-height">
       <div class="col-md-6 p-2 p-lg-3">
         <div class="card-shadow rounded bg-white p-4 height-100">
           <h6 class="mb-3">
@@ -70,9 +93,6 @@
           <a href="/equity" title="" class="btn btn-outline-danger btn-sm">Learn more about equity</a>
         </div>
       </div>
-    </div>
-
-    <div class="row row-eq-height">
       <div class="col-md-6 p-2 p-lg-3">
         <div class="card-shadow rounded bg-white p-4 height-100">
           <h6 class="mb-3">
@@ -85,28 +105,6 @@
         </div>
       </div>
 
-      <div class="col-md-6 p-2 p-lg-3">
-        <div class="card-shadow rounded bg-white p-4 height-100">
-          <h6 class="mb-3">
-            <span class="fa fa-users text-warning mr-1"></span> Referrals <span class="ml-2 badge badge-warning text-white">coming soon</span>
-          </h6>
-          <p class="text-muted font-weight-light">
-            Is your dream company ignoring your application? We think everybody deserves a chance to get an interview and we'll be happy to refer you whenever possible.
-          </p>
-          <a href="/referrals" title="" class="btn btn-outline-warning btn-sm">Get a referral</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="text-center homepage-header p-4 border-bottom">
-  <div>
-    <div class="mb-3 lead">
-      Are you ready to unleash feedback?
-    </div>
-    <div>
-      <a class="btn btn-lg btn-danger" href="<%= new_offer_path %>">Get started</a>
     </div>
   </div>
 </div>

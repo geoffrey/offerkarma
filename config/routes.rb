@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get "equity",    to: "pages#equity"
   get "negotiate", to: "pages#negotiate"
-  get "referrals", to: "pages#referrals"
 
   get "terms-of-service", to: "pages#terms"
   get "privacy-policy",   to: "pages#privacy"
@@ -30,9 +29,7 @@ Rails.application.routes.draw do
   patch  "unsubscribe",              to: "emails#update"
 
   resources :companies, only: [:show]
-
   resources :referrals
-
   resources :offers do
     member do
       post :votes

@@ -1,6 +1,6 @@
 <%= form_tag(search_path, method: "get", class: "form-inline d-block m-auto text-center") do %>
   <%= label_tag :company, "Company", class: "sr-only" %>
-  <%= text_field_tag :company, params[:company]&.humanize,  id: "offer_company_name", placeholder: "Google", class: "form-control mb-2 mr-2" %>
+  <%= text_field_tag :company, params[:company]&.humanize, placeholder: "Google", class: "form-control mb-2 mr-2" %>
 
   <%= label_tag :location, "Location", class: "sr-only" %>
   <%= text_field_tag :location, params[:location], placeholder: "San Francisco", class: "form-control mb-2 mr-2" %>
@@ -19,5 +19,11 @@
   <%= label_tag :status, "Status", class: "sr-only" %>
   <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control mb-2 mr-2") %>
 
-  <%= submit_tag "Filter", class: "pull-right btn btn-danger mb-2" %>
+  <%= submit_tag "Filter", class: "pull-right btn btn-secondary mb-2" %>
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    Reffo.setCompanyNameAutocomplete('#company')
+  })
+</script>

@@ -5,10 +5,8 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[show votes comments]
   before_action :set_own_offer, only: %i[edit update destroy]
 
-  NEW_OFFER_STEPS = *(1..4)
-
   def index
-    @offers = Offer.filter(filters: offer_filters)
+    @offers = Offer.filter(filters: offer_filters).page(params[:page])
   end
 
   def show

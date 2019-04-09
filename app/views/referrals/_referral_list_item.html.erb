@@ -1,0 +1,40 @@
+<div class="col-lg-4 col-md-6 col-12 p-2 d-flex">
+  <a href="<%= referral_path referral.uuid %>" class="list-group-item list-group-item-action p-0 rounded card-shadow border-0 bg-white">
+    <div class="d-flex flex-column justify-content-between height-100">
+      <div class="p-3 d-flex align-items-center">
+        <div class="mr-3">
+          <div class="mb-1">
+            <img width="60" class="rounded border-0" src="<%= referral.company.logo_url %>" alt="<%= referral.company.display_name %> logo">
+          </div>
+        </div>
+
+        <div class="">
+          <div>
+            <div class="text-truncate" style="max-width: 200px;" title="<%= referral.position %>">
+              <div>
+                <%= referral.company.display_name %>
+              </div>
+              <div>
+                <b><%= referral.position %></b> <%= referral.yoe ? "(#{referral.yoe} YOE)" : "" %>
+              </div>
+            </div>
+            <div class="small">
+              <span class="text-muted">
+                <span class="fa fa-map-marker-alt"></span> <%= referral.location %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-auto">
+          <div class="mb-2">
+            <!-- <a href="" class="btn btn-sm btn-danger">Refer</a> -->
+          </div>
+          <div>
+            <!-- <a href="" class="btn btn-sm btn-link text-danger">Share</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

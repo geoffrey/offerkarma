@@ -7,15 +7,12 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import NewOffer from 'offers/new'
 import Rails from 'rails-ujs'
 import Turbolinks from 'turbolinks'
 import 'jquery/src/jquery'
 import 'bootstrap/dist/js/bootstrap'
 
 const ondomloaded = () => {
-  NewOffer.setMasking()
-  NewOffer.setAutocomplete()
   if (window.__sharethis__ && __sharethis__.config) {
     __sharethis__.href = document.location.href
     __sharethis__.init(__sharethis__.config);
@@ -27,3 +24,13 @@ document.addEventListener("turbolinks:load", ondomloaded)
 
 Turbolinks.start()
 Rails.start()
+
+import {
+  setCompanyNameAutocomplete,
+  setCurrencyMask
+} from 'utils'
+
+window.Reffo = {
+  setCompanyNameAutocomplete,
+  setCurrencyMask
+}

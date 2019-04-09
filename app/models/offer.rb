@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Offer < ApplicationRecord
-  include OfferCreation
+  include Wizard
+  include OfferValidations
 
   is_impressionable
 
@@ -53,6 +54,10 @@ class Offer < ApplicationRecord
 
   after_create :post_on_twitter
 
+  def wizard_steps
+    %w[position cash equity misc]
+  end
+
   def self.filter(filters: {}, user: nil)
     offers = user ? user.offers : self
     offers = offers.includes(
@@ -99,17 +104,20 @@ class Offer < ApplicationRecord
     "#{company.display_name}: " \
       "$#{ActionController::Base.helpers.number_to_human(total_compensation)} " \
       "#{money_bags} " \
-      "(#{[position, level, location].reject{ |v| v.blank? }.join(', ')})"
-  end
-
-  def money_bags
-    '💰' * (total_compensation / 100_000)
+      "(#{og_elements.join(', ')})"
   end
 
   def og_description
-    "#{[position, level, location].reject{ |v| v.blank? }.join(' | ')}.\n" \
-      "How is this offer?\n" \
-      "Add your feedback now on reffo.us."
+    "#{og_elements.join(' | ')}.\n" \
+      "Go to reffo.us to give your feedback on this offer"
+  end
+
+  def og_elements
+    [position, level, location].reject{ |v| v.blank? }
+  end
+
+  def money_bags
+    '💰' * (total_compensation / 100_000).clamp(0, 3)
   end
 
   def self.vesting_schedule_display(vesting_schedule)
