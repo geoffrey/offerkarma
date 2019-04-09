@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_200448) do
+ActiveRecord::Schema.define(version: 2019_04_09_031621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -94,6 +94,22 @@ ActiveRecord::Schema.define(version: 2019_03_03_200448) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
+  create_table "referrals", force: :cascade do |t|
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }
+    t.bigint "user_id"
+    t.bigint "referrer_id"
+    t.bigint "company_id"
+    t.string "position"
+    t.string "location"
+    t.boolean "referred"
+    t.datetime "referred_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_referrals_on_company_id"
+    t.index ["referrer_id"], name: "index_referrals_on_referrer_id"
+    t.index ["user_id"], name: "index_referrals_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.uuid "uuid", default: -> { "gen_random_uuid()" }
     t.text "username"
@@ -104,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_200448) do
     t.string "password_digest"
     t.string "verification_digest"
     t.datetime "verified_at"
+    t.bigint "company_id"
     t.index ["current_company_id"], name: "index_users_on_current_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
