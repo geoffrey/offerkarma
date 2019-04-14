@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_back
     else
       flash.now[:danger] = "Invalid email/password combination"
-      render "login"
+      render :login
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     redirect_back
   rescue Users::Registration::UserCreationError
     flash.now[:danger] = "Invalid email/password combination"
-    render "signup"
+    render :signup
   end
 
   def logout

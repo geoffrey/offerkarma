@@ -3,15 +3,21 @@
   <head>
     <%= render "layouts/analytics" if Rails.env.production? %>
 
-    <% if @offer&.created_at %>
-      <title><%= @offer.og_title %> </title>
-    <% elsif @offer && !@offer.created_at %>
-      <title>Reffo - Add a new job offer</title>
-    <% elsif @company %>
-      <title>Reffo - Job offers from <%= @company.display_name %> </title>
-    <% else %>
-      <title>Reffo - Job offer feedback community</title>
-    <% end %>
+    <title>
+      <% if @offer&.created_at %>
+        <%= @offer.og_title %>
+      <% elsif @offer %>
+        Reffo - Evaluate your job offer
+      <% elsif @referral&.created_at %>
+        <%= @referral.og_title %>
+      <% elsif @referral %>
+        Reffo - Request a referral
+      <% elsif @company %>
+        Reffo - <%= @company.display_name %>
+      <% else %>
+        Reffo - Job offer feedback community
+      <% end %>
+    </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,10 +38,15 @@
       <meta property="og:description" content="<%= @offer.og_description %>" />
       <meta property="og:image" content="<%= @offer.company.logo_url %>" />
       <meta property="og:url" content="<%= offer_url @offer.uuid %>" />
+    <% elsif @referral&.created_at %>
+      <meta property="og:title" content="<%= @referral.og_title %>" />
+      <meta property="og:description" content="<%= @referral.og_description %>" />
+      <meta property="og:image" content="<%= @referral.company.logo_url %>" />
+      <meta property="og:url" content="<%= referral_url @referral.uuid %>" />
     <% else %>
       <meta property="og:url" content="https://reffo.us" />
       <meta property="og:title" content="Reffo - Job offer feedback community" />
-      <meta property="og:description" content="Receive and give feedback on recent job offers" />
+      <meta property="og:description" content="We empower candidates by providing anonymous feedback on any job offer." />
       <meta property="og:image" content="<%= asset_url('og-image.png') %>" />
     <% end %>
   </head>
@@ -52,19 +63,21 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/offers">All offers</a>
+              <li class="nav-item mr-sm-3 mb-sm-0 mb-2">
+                <a class="nav-link btn btn-sm btn-outline-light text-dark" href="/offers">💰Job offers</a>
+              </li>
+              <li class="nav-item mr-sm-3 mb-sm-0 mb-2">
+                <a class="nav-link btn btn-sm btn-outline-light text-dark" href="/referrals">🤝 Job referrals</a>
               </li>
               <% if logged_in? %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/account">My account</a>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Log out", logout_path, method: :delete, class: "nav-link text-danger" %>
+                  <%= link_to logout_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "nav-link btn btn-sm btn-link text-danger" do %>
+                      Log out  <small>(<%= current_user.email %>)</small>
+                  <% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <a class="nav-link btn btn-sm btn-danger text-white" href="/login">Sign-in</a>
+                  <a class="nav-link btn btn-sm btn-link text-danger" href="/login">Sign-in</a>
                 </li>
               <% end %>
             </ul>
@@ -75,28 +88,28 @@
 
     <%= yield %>
 
+    <div class="mb-3 p-3 text-center" style="background-color:#E33C20">
+      <a href="https://www.producthunt.com/posts/reffo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-reffo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150711&theme=light" alt="Reffo - Receive feedback on job offers | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
+    </div>
+
     <footer class="p-3 pb-5 mb-5 text-center">
       <div class="mb-3 font-weight-bold">
         <div class="h5 mb-2">
           &copy; reffo↵
         </div>
       </div>
-      <div class="mb-3">
-        <a href="https://www.producthunt.com/posts/reffo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-reffo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150711&theme=light" alt="Reffo - Receive feedback on job offers | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
+      <div class="mb-2">
+        <a href="mailto:hello@reffo.us?subject=Feedback" target="_blank" class="btn btn-sm btn-primary"><span class="far fa-paper-plane"></span> Email us suggestions</a>
       </div>
-
-      <div class="mb-4">
-        <a href="mailto:hello@reffo.us?subject=Feedback" target="_blank" class="btn btn-sm btn-outline-secondary">Email us suggestions</a>
+      <div class="text-center mb-2">
+        <a href="https://www.patreon.com/bePatron?u=19037901" target="_blank" class="btn btn-light btn-sm text-danger"><span class="fa fa-donate"></span> Support on Patreon</a>
       </div>
       <div class="mb-2 small text-muted">
         Made with <span class="text-danger fa fa-heart"></span> in San Francisco
       </div>
       <div class="small">
-        <%= link_to "Terms of Service", terms_of_service_path %> -
-        <%= link_to "Privacy Policy", privacy_policy_path %>
-      </div>
-      <div class="text-center">
-        <a href="https://www.patreon.com/bePatron?u=19037901" target="_blank" class="btn btn-link text-danger">Support on Patreon</a>
+        <%= link_to "Terms of Service", terms_of_service_path, class: "text-dark" %> -
+        <%= link_to "Privacy Policy", privacy_policy_path, class: "text-dark" %>
       </div>
       <div class="text-ghost">
         Company logos provided by <a href="https://clearbit.com" target="_blank" class="text-ghost">Clearbit</a>

@@ -1,29 +1,37 @@
 <div class="text-center homepage-header p-4 bg-dark">
-  <div class="mb-4 lead">
-    <span class="bg-white p-2 font-weight-bold">Need feedback on a job <span class="text-danger">offer</span>?</span>
+  <div class="mb-2 lead">
+    <span class="text-white">Need feedback on a job offer?</span>
   </div>
   <div>
     <a class="btn btn-danger" href="<%= new_offer_path %>">Evaluate my offer</a>
   </div>
 </div>
 
+<div class="text-center p-3 border-bottom">
+  <div class="container p-0">
+    <%= render "filters", search_path: "/offers"  %>
+  </div>
+</div>
+
+
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <%= render "filters", search_path: "/offers"  %>
-
-    <hr/>
-    <h4>
+    <h4 class="text-center">
       <% if @offers.any? %>
-        <%= @offers.count %> offers
+        <%= @offers.count %> <%= "offer".pluralize(@offers.count) %>
       <% else %>
         No offers found.
       <% end %>
     </h4>
 
-    <div class="row">
+    <%= paginate @offers %>
+
+    <div class="row mb-3">
       <% @offers.each do |offer| %>
         <%= render partial: "offer_list_item", locals: { offer: offer } %>
       <% end %>
     </div>
+
+    <%= paginate @offers if @offers.count > 9 %>
   </div>
 </div>

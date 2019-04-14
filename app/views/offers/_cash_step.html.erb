@@ -1,7 +1,7 @@
 <div class="text-center homepage-header p-4 bg-dark">
   <div class="text-white">
     <div class="mb-2 lead">
-      New Job <span class="bg-white text-danger font-weight-bold p-1">offer↵</span>
+      New job offer evaluation
     </div>
 
     <div class="font-weight-light">
@@ -64,3 +64,12 @@
     <%= f.submit "Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    Reffo.setCurrencyMask('#offer_base_salary')
+    Reffo.setCurrencyMask('#offer_relocation_package')
+    Reffo.setCurrencyMask('#offer_signon_bonus')
+  })
+</script>
+
