@@ -55,7 +55,7 @@
           <p class="small">
             If you change your mind and no longer want to be referred at <%= @referral.company.display_name %>, you can  <%= link_to "delete your request", referral_path(@referral.uuid), method: :delete, data: { confirm: "Are you sure you want to delete this referral request?" }, class: "text-danger" %>.
           </p>
-        <% elsif @referral.company == current_user.company %>
+        <% elsif @referral.company == current_user&.company %>
           <p>
             This referral request is still pending... Take it now!
           </p>
@@ -68,7 +68,14 @@
             Unfortunately, only <b><%= @referral.company.display_name %></b> employees can unlock this referral.
           </p>
           <p>
-            If you work at <b><%= @referral.company.display_name %></b> and want to refer this candidate, you will need to <a href="/signup" class="text-danger">signup with your work email</a>.
+            If you work at <b><%= @referral.company.display_name %></b> and want to refer this candidate, you will need to
+            <% if current_user %>
+              <%= link_to logout_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "text-danger" do %>
+                login/signup with your <%= @referral.company.display_name %> email
+              <% end %>
+            <% else %>
+              <a href="/login" class="text-danger">login/signup with your <%= @referral.company.display_name %> email</a>
+            <% end %>
           </p>
           <p>
             Or, if you know someone at <b><%= @referral.company.display_name %></b>, you can send them this link:

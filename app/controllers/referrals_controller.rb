@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReferralsController < ApplicationController
-  before_action :redirect_to_login_if_needed, except: %i[index]
+  before_action :redirect_to_login_if_needed, except: %i[index show]
   before_action :set_referral, only: %i[show]
   before_action :set_own_referral, only: %i[edit update destroy]
 
