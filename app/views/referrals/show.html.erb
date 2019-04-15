@@ -12,7 +12,7 @@
 
 
 <div class="text-center company-header bg-secondary p-4">
-  <div class="text-white font-weight-light  mb-3">
+  <div class="text-white font-weight-light mb-3">
     <h5><%= @referral.position %></h5>
     <h6><span class="fa fa-map-marker-alt"></span> <%= @referral.location %> </h6>
     <h6><%= @referral.yoe ? "#{@referral.yoe} YOE" : "" %></h6>
@@ -42,9 +42,8 @@
 
     <div class="mb-3 sharethis-inline-share-buttons"></div>
 
-
     <div class="col-12 mb-3 mb-md-3">
-      <div class="text-center card-shadow rounded bg-white p-2 p-md-3">
+      <div class="text-center card-shadow rounded bg-white p-3">
         <% if current_user == @referral.user %>
           <p class="text-justify">
             Your referral request is pending and

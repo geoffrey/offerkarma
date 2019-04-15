@@ -8,22 +8,20 @@
           </div>
         </div>
 
-        <div class="">
-          <div>
-            <div class="text-truncate" style="max-width: 250px;" title="<%= referral.position %>">
-              <div class="text-truncate">
-                <%= referral.company.display_name %>
-              </div>
-              <div class="text-truncate">
-                <b><%= referral.position %></b>
-              </div>
+        <div>
+          <div class="text-truncate" style="max-width: 250px;" title="<%= referral.position %>">
+            <div class="text-truncate">
+              <%= referral.company.display_name %>
             </div>
-            <div class="small">
-              <span class="text-muted">
-                <span class="fa fa-map-marker-alt"></span> <%= referral.location %>
-              </span>
-              <%= referral.yoe ? "(#{referral.yoe} YOE)" : "" %>
+            <div class="text-truncate">
+              <b><%= referral.position %></b>
             </div>
+          </div>
+          <div class="small">
+            <span class="text-muted">
+              <span class="fa fa-map-marker-alt"></span> <%= referral.location %>
+            </span>
+            <%= referral.yoe ? "(#{referral.yoe} YOE)" : "" %>
           </div>
         </div>
       </div>
