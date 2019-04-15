@@ -17,6 +17,11 @@
   flex: 1;
 }
 
+.image-thumbnail {
+  max-width: 60px;
+  max-height: 60px;
+}
+
 input::-webkit-input-placeholder {
   color: #ccc !important;
   font-weight: 300 !important;
