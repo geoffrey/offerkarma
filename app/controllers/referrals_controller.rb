@@ -17,6 +17,7 @@ class ReferralsController < ApplicationController
   end
 
   def new
+    @last_referral = current_user.referrals.last
     @referral = current_user.referrals.new(read_referral_params_from_session)
     @referral.current_step = session[:referral_step]
   end
@@ -102,9 +103,8 @@ class ReferralsController < ApplicationController
   def referral_params
     params.require(:referral).permit(
       :company_name,
-      :first_name,
+      :email,
       :job_posting_url,
-      :last_name,
       :linkedin_profile_url,
       :location,
       :position,

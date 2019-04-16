@@ -28,43 +28,23 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col">
         <div class="form-group">
-          <%= f.label :first_name do %>
-            First name <span class="text-danger">*</span>
+          <%= f.label :linkedin_profile_url do %>
+            Your linkedin profile URL <span class="text-danger">*</span>
           <% end %>
-          <%= f.text_field :first_name, class: "form-control", placeholder: "John", required: "true", autocomplete: "off" %>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :last_name do %>
-            Last name <span class="text-danger">*</span>
-          <% end %>
-          <%= f.text_field :last_name, class: "form-control", placeholder: "Smith", required: "true", autocomplete: "off" %>
+          <%= f.text_field :linkedin_profile_url, value: @referral.linkedin_profile_url || @last_referral&.linkedin_profile_url,class: "form-control", placeholder: "https://www.linkedin.com/in/johnsmith", required: "true", autocomplete: "off" %>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <div class="form-group">
-          <%= f.label :linkedin_profile_url do %>
-            Your linkedin profile URL <span class="text-danger">*</span>
-          <% end %>
-          <%= f.text_field :linkedin_profile_url, class: "form-control", placeholder: "https://www.linkedin.com/in/johnsmith", required: "true", autocomplete: "off" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
         <%= f.label :yoe do %>
           Years of experience <span class="small text-ghost">optional</span>
         <% end %>
         <div class="input-group mb-3">
-          <%= f.number_field :yoe, class: "form-control", placeholder: "4" %>
+          <%= f.number_field :yoe, value: @referral.yoe || @last_referral&.yoe, class: "form-control", placeholder: "4" %>
           <div class="input-group-append">
             <span class="input-group-text" id="offer_yoe">year(s)</span>
           </div>
@@ -74,7 +54,7 @@
 
 
     <%= f.submit "Submit this referral request", class: "btn btn-block btn-danger" %>
-    <small class="form-text text-muted">By submitting this form, you agree to disclose to the person who will refer you: <b>your email, first name and last name</b> in order for them to be able to make the referral.</small>
+    <small class="form-text text-muted">By submitting this form, you agree to disclose its information to the person who will make the referral.</small>
     <%= f.submit "Go Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
   </div>
 </div>

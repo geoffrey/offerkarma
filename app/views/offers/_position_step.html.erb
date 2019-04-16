@@ -23,7 +23,7 @@
         <div class="form-group">
 
           <%= f.label :company_name do %>
-            Company name <span class="text-danger">*</span>
+            Company <span class="text-danger">*</span>
           <% end %>
           <%= f.text_field :company_name, value: (@offer.company&.name || @offer.company_name || params[:company_name])&.humanize, class: "form-control", placeholder: "Google", required: "true", autocomplete: "off" %>
         </div>
