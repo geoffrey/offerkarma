@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company.save
-    @offers = @company.offers
+    @offers = @company.offers.page(params[:page])
 
     if Offer.statuses.keys.include?(params[:status]&.downcase)
       @offers = @offers.where(status: params[:status].downcase)

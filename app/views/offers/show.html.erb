@@ -27,26 +27,39 @@
 <% end %>
 
 
-
-<div class="text-center company-header p-4 bg-<%= @offer.status_class %>">
-  <div class="text-white font-weight-light mb-3">
-    <h5><%= @offer.position %></h5>
-    <h6><span class="fa fa-map-marker-alt"></span> <%= @offer.location %> </h6>
-    <h6><%= @offer.level %> <%= @offer.yoe ? "(#{@offer.yoe.to_i} YOE)" : "" %></h6>
-  </div>
-
-  <div>
-    <div class="mb-1">
-      <a href="<%= company_path @offer.company.uuid %>" class="text-white"><img width="60" class="image-thumbnail rounded" src="<%= @offer.company.logo_url %>"></a>
+<div class="text-white company-header p-4 bg-<%= @offer.status_class %>">
+  <div class="d-flex justify-content-center">
+    <div class="mr-3">
+      <div class="img-thumbnail img-thumbnail-outer-lg p-0 border-0 d-flex justify-content-center">
+        <a href="<%= company_path @offer.company.uuid %>" class="align-self-center">
+          <img class="img-thumbnail image-thumbnail-lg border-0" src="<%= @offer.company.logo_url %>">
+        </a>
+      </div>
     </div>
-    <h6 class="mb-3 text-white font-weight-light"><a href="<%= company_path @offer.company.uuid %>" class="text-white"><%= @offer.company.display_name %></a></h6>
+
+    <div>
+      <div class="font-weight-light">
+        <a href="<%= company_path @offer.company.uuid %>" class="text-white">
+          <%= @offer.company.display_name %>
+        </a>
+      </div>
+      <div class="lead font-weight-bold">
+        <%= @offer.position %>
+      </div>
+      <div>
+        <%= @offer.level %> <%= @offer.yoe ? "(#{@offer.yoe.to_i} YOE)" : "" %>
+      </div>
+      <div class="font-weight-light text-light">
+        <span class="fa fa-map-marker-alt"></span> <%= @offer.location %>
+      </div>
+    </div>
   </div>
 
-  <hr class="m-2" />
+  <hr class="mt-3 mb-2" />
 
-  <div>
-    <div class="small text-white font-weight-bold text-uppercase">
-      <%= @offer.status %>
+  <div class="text-center text-white">
+    <div class="small font-weight-bold text-uppercase">
+      offer <%= @offer.status %>
     </div>
 
     <div class="small text-light font-weight-light">
@@ -56,8 +69,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div class="text-center border-bottom p-2">
   <div>

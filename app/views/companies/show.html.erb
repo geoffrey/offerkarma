@@ -1,8 +1,12 @@
 <div class="text-center company-header p-4 bg-dark text-white">
   <h3 class="font-weight-light"><%= @company.display_name %></h3>
 
-  <div class="mb-2">
-    <img width="80px" class="rounded" src="<%= @company.logo_url %>">
+  <div class="mb-2 d-flex justify-content-center">
+    <div class="img-thumbnail img-thumbnail-outer-lg p-0 border-0 d-flex justify-content-center">
+      <a href="<%= company_path @company.uuid %>" class="align-self-center">
+        <img class="img-thumbnail image-thumbnail-lg border-0" src="<%= @company.logo_url %>">
+      </a>
+    </div>
   </div>
 
   <div>
@@ -16,7 +20,8 @@
   <% end %>
 
   <div class="text-center mt-3">
-    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate an offer from <%= @company.display_name %> </a>
+    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate a <%= @company.display_name %> offer</a>
+    <a class="btn btn-danger" href="<%= new_referral_path company_name: @company.display_name %>">Request a referral for <%= @company.display_name %> </a>
   </div>
 </div>
 
@@ -30,17 +35,24 @@
     </div>
 
     <hr />
-    <% if @offers.any? %>
-      <div class="row">
-        <% @offers.each do |offer| %>
-          <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="bg-white p-3 text-center text-muted">
+
+    <%= paginate @offers %>
+
+    <h4 class="text-center">
+      <% if @offers.any? %>
+        <%= @offers.total_count %> <%= "offer".pluralize(@offers.total_count) %> for <%= @company.display_name %>
+      <% else %>
         No offers found.
-      </div>
-    <% end %>
+      <% end %>
+    </h4>
+
+    <div class="row mb-3">
+      <% @offers.each do |offer| %>
+        <%= render partial: "offers/offer_list_item", locals: { offer: offer } %>
+      <% end %>
+    </div>
+
+    <%= paginate @offers if @offers.total_count > 9 %>
   </div>
 </div>
 

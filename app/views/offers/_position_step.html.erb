@@ -25,7 +25,7 @@
           <%= f.label :company_name do %>
             Company <span class="text-danger">*</span>
           <% end %>
-          <%= f.text_field :company_name, value: (@offer.company&.name || @offer.company_name || params[:company_name])&.humanize, class: "form-control", placeholder: "Google", required: "true", autocomplete: "off" %>
+          <%= f.text_field :company_name, value: (params[:company_name] || @offer.company&.name)&.humanize, class: "form-control", placeholder: "Google", required: "true", autocomplete: "off" %>
         </div>
       </div>
     </div>
