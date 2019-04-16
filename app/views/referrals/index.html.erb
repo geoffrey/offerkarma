@@ -17,7 +17,7 @@
   <div class="container p-2">
     <h4 class="text-center">
       <% if @referrals.any? %>
-        <%= @referrals.count %> referral <%= "request".pluralize(@referrals.count) %>
+        <%= @referrals.total_count %> referral <%= "request".pluralize(@referrals.total_count) %>
       <% else %>
         No referrals found.
       <% end %>
@@ -31,7 +31,7 @@
       <% end %>
     </div>
 
-    <%= paginate @referrals if @referrals.count > 9 %>
+    <%= paginate @referrals if @referrals.total_count > 9 %>
     </div>
   </div>
 </div>

@@ -18,7 +18,7 @@
   <div class="container p-2">
     <h4 class="text-center">
       <% if @offers.any? %>
-        <%= @offers.count %> <%= "offer".pluralize(@offers.count) %>
+        <%= @offers.total_count %> <%= "offer".pluralize(@offers.total_count) %>
       <% else %>
         No offers found.
       <% end %>
@@ -32,6 +32,6 @@
       <% end %>
     </div>
 
-    <%= paginate @offers if @offers.count > 9 %>
+    <%= paginate @offers if @offers.total_count > 9 %>
   </div>
 </div>
