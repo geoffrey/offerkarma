@@ -1,40 +1,42 @@
-<div class="text-center company-header p-4 bg-dark text-white">
-  <h3 class="font-weight-light"><%= @company.display_name %></h3>
+<div class="company-header p-4 bg-dark text-white">
 
-  <div class="mb-2 d-flex justify-content-center">
-    <div class="img-thumbnail img-thumbnail-outer-lg p-0 border-0 d-flex justify-content-center">
-      <a href="<%= company_path @company.uuid %>" class="align-self-center">
-        <img class="img-thumbnail image-thumbnail-lg border-0" src="<%= @company.logo_url %>">
-      </a>
+  <div class="d-flex justify-content-center">
+    <div class="mr-3 bg-white image-thumbnail-outer-lg p-0 border rounded d-flex justify-content-center">
+      <img class="align-self-center bg-white image-thumbnail-lg" src="<%= @company.logo_url %>">
+    </div>
+
+    <div>
+      <h3 class="font-weight-light"><%= @company.display_name %></h3>
+      <div>
+        <a href="//<%= @company.domain %>" target="_blank" class="text-white"><%= @company.domain %></a>
+      </div>
+
+      <div class="mt-2  ">
+        <% if @company.public? %>
+            <a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank">🔔<%= @company.symbol.upcase %> $<%= @company.quote %></a>
+        <% else %>
+          Private company
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
 
-  <div>
-    <a href="//<%= @company.domain %>" target="_blank" class="text-white"><%= @company.domain %></a>
+<div class="bg-white p-3 text-center border-bottom">
+  <div class="mb-3">
+    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.display_name %>">💰Evaluate an offer</a>
+    <a class="btn btn-danger" href="<%= new_referral_path company_name: @company.display_name %>">🤝Request a referral</a>
   </div>
 
-  <% if @company.public? %>
-    <div class="small">
-      <a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank"><%= @company.symbol.upcase %> $<%= @company.quote %></a>
+  <div class="center-box-max-width">
+    <div class="form-inline justify-content-center">
+      <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
     </div>
-  <% end %>
-
-  <div class="text-center mt-3">
-    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate a <%= @company.display_name %> offer</a>
-    <a class="btn btn-danger" href="<%= new_referral_path company_name: @company.display_name %>">Request a referral for <%= @company.display_name %> </a>
   </div>
 </div>
 
 <div class="bg-light p-3 border-bottom">
   <div class="container p-2">
-    <div class="center-box-max-width mb-3">
-      <div class="form-inline justify-content-center">
-        <%= label_tag :status, "Status:", class: "mr-3" %>
-        <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
-      </div>
-    </div>
-
-    <hr />
 
     <%= paginate @offers %>
 

@@ -62,14 +62,20 @@
   </div>
 </div>
 
-<div class="text-center p-3 border-bottom">
+<div class="p-3 border-bottom">
   <div class="container p-0">
     <div class="mb-2 text-center">Explore more offers from these companies</div>
 
     <div class="row">
       <% @companies.each do |company| %>
-        <div class="col-4 col-xl-2 p-3">
-          <a href="<%= company_path company.uuid %>"><img width="65" class="rounded" src="<%= company.logo_url %>" alt="<%= company.display_name %> logo" title="<%= company.name %>"></a>
+        <div class="col-4 col-xl-2 p-3 d-flex justify-content-center">
+          <div class="d-flex justify-content-center mb-0">
+            <a href="<%= company_path company.uuid %>">
+              <div class="image-thumbnail-outer-lg d-flex">
+                <img class="align-self-center image-thumbnail-lg p-3 p-md-2" src="<%= company.logo_url %>" alt="<%= company.display_name %> logo" title="<%= company.name %>">
+              </div>
+            </a>
+          </div>
         </div>
       <% end %>
     </div>

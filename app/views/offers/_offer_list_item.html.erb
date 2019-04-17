@@ -2,31 +2,32 @@
   <a href="<%= offer_path offer.uuid %>" class="list-group-item list-group-item-action p-0 rounded card-shadow border-0 bg-white">
     <div class="d-flex flex-column justify-content-between height-100">
       <div class="p-3 d-flex align-items-center">
-        <div class="mr-4">
-          <div class="mb-1">
-            <img width="60" class="image-thumbnail rounded" src="<%= offer.company.logo_url %>" alt="<%= offer.company.display_name %> logo">
-          </div>
-          <div class="small text-muted text-center text-truncate" style="max-width: 60px;" title="<%= offer.company.display_name %>">
-            <%= offer.company.display_name %>
+        <div class="mr-3">
+          <div class="img-thumbnail image-thumbnail-outer p-0 border-0 d-flex justify-content-center mb-0">
+            <img class="align-self-center image-thumbnail border-0" src="<%= offer.company.logo_url %>">
           </div>
         </div>
 
-        <div class="flex-grow">
-          <div class="mb-2">
-            <div class="text-truncate" style="max-width: 200px;" title="<%= offer.position %>">
-              <b><%= offer.position %></b>
+        <div class="text-truncate">
+          <div >
+            <div class="small font-weight-light text-truncate">
+              <%= offer.company.display_name %>
             </div>
-            <div class="small">
+            <div class="font-weight-bold text-truncate" title="<%= offer.position %>">
+              <%= offer.position %>
+            </div>
+            <div class="small font-weight-light">
               <span class="text-muted">
-                <span class="fa fa-map-marker-alt"></span> <%= offer.location %>
+                <%= offer.location %>
               </span> - <%= offer.level %> <%= offer.yoe ? "(#{offer.yoe.to_i} YOE)" : "" %>
             </div>
           </div>
 
-          <div>
-            <span class="font-weight-bold text-success" title="Total Compensation">
+          <div class="text-truncate">
+            <span class="font-weight-bold text-success mr-2" title="Total Compensation">
               $<%= number_to_human offer.total_compensation %> / year
             </span>
+            <span class="text-success small">$<%= number_to_human offer.base_salary.to_i %> base</span>
           </div>
         </div>
       </div>
@@ -34,7 +35,7 @@
       <div class="mt-auto rounded-bottom border-top text-muted small p-2 pr-3 pl-3 bg-light">
         <div class="small d-flex justify-content-between ">
           <div class="font-weight-bold align-self-center text-uppercase text-<%= offer.status_class %>">
-            <%= offer.status %>
+            offer <%= offer.status %>
           </div>
 
           <div class="flex-fill text-right">
@@ -55,7 +56,6 @@
             </span>
           </div>
         </div>
-
       </div>
     </div>
   </a>

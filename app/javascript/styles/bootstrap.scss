@@ -17,19 +17,24 @@
   flex: 1;
 }
 
-.image-thumbnail {
-  max-width: 60px;
-  max-height: 60px;
-}
-
 .image-thumbnail-lg {
   max-width: 100px;
   max-height: 100px;
 }
 
-.img-thumbnail-outer-lg {
+.image-thumbnail-outer-lg {
   width: 100px;
   height: 100px;
+}
+
+.image-thumbnail {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.image-thumbnail-outer {
+  width: 60px;
+  height: 60px;
 }
 
 input::-webkit-input-placeholder {
