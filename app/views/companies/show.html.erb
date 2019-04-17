@@ -1,19 +1,19 @@
 <div class="company-header p-4 bg-dark text-white">
 
   <div class="d-flex justify-content-center">
-    <div class="mr-3 bg-white image-thumbnail-outer-lg p-0 border rounded d-flex justify-content-center">
-      <img class="align-self-center bg-white image-thumbnail-lg" src="<%= @company.logo_url %>">
+    <div class="mr-3 bg-white image-thumbnail-outer-lg rounded d-flex justify-content-center">
+      <img class="align-self-center bg-white rounded image-thumbnail-lg" src="<%= @company.logo_url %>">
     </div>
 
     <div>
-      <h3 class="font-weight-light"><%= @company.display_name %></h3>
+      <h3><%= @company.display_name %></h3>
       <div>
-        <a href="//<%= @company.domain %>" target="_blank" class="text-white"><%= @company.domain %></a>
+        <a href="//<%= @company.domain %>" target="_blank" class="text-light"><%= @company.domain %></a>
       </div>
 
       <div class="mt-2  ">
         <% if @company.public? %>
-            <a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank">🔔<%= @company.symbol.upcase %> $<%= @company.quote %></a>
+            🔔<a href="<%= @company.yahoo_finance_url %>" class="text-white" target="_blank"><%= @company.symbol.upcase %> $<%= @company.quote %></a>
         <% else %>
           Private company
         <% end %>
