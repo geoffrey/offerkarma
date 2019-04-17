@@ -37,7 +37,7 @@
             <%= offer.status %>
           </div>
 
-          <div class="flex-fill text-center">
+          <div class="flex-fill text-right">
             <span class="mr-3">
               <span class="far fa-eye"></span> <%= offer.views %>
             </span>
@@ -53,10 +53,6 @@
             <span>
               <span class="fa fa-comments text-muted"></span> <%= offer.comments.length %>
             </span>
-          </div>
-
-          <div>
-            <span title="<%= offer.created_at.strftime('%m/%d/%Y - %r') %>"><%= time_ago_in_words offer.created_at %></span>
           </div>
         </div>
 
