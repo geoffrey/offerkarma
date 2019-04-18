@@ -73,12 +73,12 @@
             This referral request is still pending... Take it now!
           </p>
           <p>
-            The candidate's <b>name, email, phone number</b> and <b>linkedin</b> will be disclosed as soon as this request is unlocked.
+            The candidate's <b>name, email, phone number</b> and <b>linkedin</b> will be disclosed for you to make the referral as soon as you unlock this referral.
           </p>
           <%= link_to "Unlock this referral", referral_path(@referral.uuid), method: :get, data: { confirm: "Not yet available, but we are working on it :)" }, class: "btn btn-danger" %>
         <% else %>
           <p>
-            Unfortunately, only <b><%= @referral.company.display_name %></b> employees can unlock this referral.
+            Only <b><%= @referral.company.display_name %></b> employees can unlock this referral.
           </p>
           <p>
             If you work at <b><%= @referral.company.display_name %></b> and want to refer this candidate, you will need to
