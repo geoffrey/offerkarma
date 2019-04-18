@@ -80,7 +80,7 @@
             <%= f.label :vesting_schedule do %>
               Vesting schedule
             <% end %>
-            <%= f.select :vesting_schedule, Offer.vesting_schedules.to_a.map { |t| [Offer.vesting_schedule_display(t.first), t.first] }, { selected: @offer.company.vesting_schedule }, class: "form-control" %>
+            <%= f.select :vesting_schedule, Offer.vesting_schedules.to_a.map { |t| [Offer.vesting_schedule_display(t.first), t.first] }, { selected: @offer.vesting_schedule || @offer.company.vesting_schedule }, class: "form-control" %>
           </div>
         </div>
       </div>

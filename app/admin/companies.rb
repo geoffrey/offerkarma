@@ -4,7 +4,9 @@ ActiveAdmin.register Company do
    permit_params :domain,
     :name,
     :public,
-    :symbol
+    :quote,
+    :symbol,
+    :vesting_schedule
 
   index do
     selectable_column

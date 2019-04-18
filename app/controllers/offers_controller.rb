@@ -142,6 +142,7 @@ class OffersController < ApplicationController
       :stock_strike_price,
       :stock_type,
       :status,
+      :vesting_schedule,
       :yoe
     )
 
