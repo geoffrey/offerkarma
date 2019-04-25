@@ -1,3 +1,12 @@
+<div class="container small">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white mb-0">
+      <li class="breadcrumb-item"><a href="/offers">Offers</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @offer.og_title %></li>
+    </ol>
+  </nav>
+</div>
+
 <% if @offer.user == current_user %>
   <div class="p-2 text-center alert alert-warning mb-0">
     <div class="center-box-max-width d-flex">
@@ -32,7 +41,7 @@
     <div class="mr-3">
       <a href="<%= company_path @offer.company.uuid %>">
         <div class="bg-white image-thumbnail-outer-lg rounded d-flex justify-content-center">
-          <img class="align-self-center image-thumbnail-lg rounded" src="<%= @offer.company.logo_url %>">
+          <img class="align-self-center image-thumbnail-lg rounded" src="<%= @offer.company.logo_url %>" alt="<%= @offer.company.display_name %> logo">
         </div>
       </a>
     </div>

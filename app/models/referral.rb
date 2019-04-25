@@ -6,6 +6,9 @@ class Referral < ApplicationRecord
 
   belongs_to :user
   belongs_to :company
+  belongs_to :referrer, class_name: "User", optional: true
+
+  before_save :update_timestamps
 
   attr_accessor :company_name
 
@@ -47,5 +50,17 @@ class Referral < ApplicationRecord
     end
 
     referrals.order(updated_at: :desc)
+  end
+
+  private
+
+  def update_timestamps
+    if referrer_id_changed?
+      if referrer_id.nil?
+        self.unlocked_at = nil
+      else
+        self.unlocked_at = DateTime.now
+      end
+    end
   end
 end

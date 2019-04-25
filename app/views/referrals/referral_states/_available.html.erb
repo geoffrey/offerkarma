@@ -1,0 +1,11 @@
+<p class="lead text-center">
+  Request pending... Take it now!
+</p>
+<p class="text-center">
+  <%= link_to referral_path(@referral.uuid, referral: { referrer_id: current_user.id}), method: :put, data: { confirm: "Are you sure you will be able to make the referral?" }, class: "btn btn-danger" do %>
+      <span class="fa fa-unlock"></span> Reveal candidate
+  <% end %>
+</p>
+<p class="small">
+  The candidate's <b>email</b> and <b>linkedin</b> will be disclosed when you reveal this candidate.
+</p>

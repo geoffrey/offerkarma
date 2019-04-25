@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   def login; end
 
   def post_login
-    user = User.find_by(email: params[:user][:email].downcase)
+    user = User.find_by(email: user_params[:email].downcase)
     verify_recaptcha!(model: user, env: Rails.env)
-    if user&.authenticate(params[:user][:password])
+    if user&.authenticate(user_params[:password])
       log_in user
       redirect_back
     else
