@@ -2,7 +2,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-white mb-0">
       <li class="breadcrumb-item"><a href="/referrals">Referrals</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @referral.og_title %></li>
+      <li class="breadcrumb-item"><a href="<%= company_path @referral.company.uuid %>"><%= @referral.company.display_name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @referral.position %></li>
     </ol>
   </nav>
 </div>

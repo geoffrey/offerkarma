@@ -2,7 +2,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-white mb-0">
       <li class="breadcrumb-item"><a href="/offers">Offers</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @offer.og_title %></li>
+      <li class="breadcrumb-item"><a href="<%= company_path @offer.company.uuid %>"><%= @offer.company.display_name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @offer.position %></li>
     </ol>
   </nav>
 </div>
