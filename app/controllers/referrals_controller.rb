@@ -2,8 +2,8 @@
 
 class ReferralsController < ApplicationController
   before_action :redirect_to_login_if_needed, except: %i[index show]
-  before_action :set_referral, only: %i[show]
-  before_action :set_own_referral, only: %i[edit update destroy]
+  before_action :set_referral, only: %i[show update]
+  before_action :set_own_referral, only: %i[edit destroy]
 
   def index
     @referrals = Referral.filter(filters: referral_filters).page(params[:page])
@@ -108,6 +108,7 @@ class ReferralsController < ApplicationController
       :linkedin_profile_url,
       :location,
       :position,
+      :referrer_id,
       :yoe
     )
   end

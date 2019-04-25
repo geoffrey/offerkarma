@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_035820) do
+ActiveRecord::Schema.define(version: 2019_04_20_154419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -110,6 +110,9 @@ ActiveRecord::Schema.define(version: 2019_04_16_035820) do
     t.string "linkedin_profile_url"
     t.string "phone"
     t.string "email"
+    t.datetime "unlocked_at"
+    t.datetime "referrer_referred_at"
+    t.datetime "referee_referred_at"
     t.index ["company_id"], name: "index_referrals_on_company_id"
     t.index ["referrer_id"], name: "index_referrals_on_referrer_id"
     t.index ["user_id"], name: "index_referrals_on_user_id"
