@@ -15,6 +15,7 @@ cp .env.development.default .env
 
 Start server:
 ```sh
+brew install yarn rbenv postgresql
 rbenv install
 bundle install
 yarn install
