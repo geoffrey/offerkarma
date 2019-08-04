@@ -7,7 +7,6 @@ ruby "2.6.3"
 
 gem "activeadmin"
 gem "bcrypt"
-gem "bootsnap", require: false
 gem "default_value_for"
 gem "httparty"
 gem "kaminari"
@@ -29,8 +28,8 @@ gem "webpacker"
 
 group :development, :test do
   gem "dotenv-rails"
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "rubocop", "~> 0.0"
+  gem "byebug"
+  gem "rubocop"
 end
 
 group :development do
