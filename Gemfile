@@ -3,33 +3,33 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.3"
+ruby "2.6.3"
 
 gem "activeadmin"
 gem "bcrypt"
-gem "bootsnap", ">= 1.1.0", require: false
-gem "default_value_for", "~> 3.1"
+gem "bootsnap", require: false
+gem "default_value_for"
 gem "httparty"
-gem "kaminari", "~> 1.0"
+gem "kaminari"
 gem "monetize"
 gem "money"
 gem "newrelic_rpm"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pry-rails"
-gem "puma", "~> 3.11"
-gem "rails", "~> 5.2.2"
+gem "puma"
+gem "rails"
 gem "recaptcha"
-gem "sass-rails", "~> 5.0"
-gem "sidekiq", "~> 5.2.5"
-gem "turbolinks", "~> 5"
+gem "sass-rails"
+gem "sidekiq"
+gem "turbolinks"
 gem "twitter"
-gem "uglifier", ">= 1.3.0"
-gem "validate_url", "~> 1.0"
-gem "webpacker", "~> 3.0"
+gem "uglifier"
+gem "validate_url"
+gem "webpacker"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "dotenv-rails", "~> 2.6"
   gem "rubocop", "~> 0.0"
 end
 
