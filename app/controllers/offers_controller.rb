@@ -10,7 +10,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    impressionist @offer
     @comments = @offer.comments.includes(:user)
   end
 

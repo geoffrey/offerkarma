@@ -4,8 +4,6 @@ class Offer < ApplicationRecord
   include Wizard
   include OfferValidations
 
-  is_impressionable
-
   attr_accessor :company_name
 
   belongs_to :company
@@ -64,8 +62,7 @@ class Offer < ApplicationRecord
       :company,
       :upvotes,
       :downvotes,
-      :comments,
-      :impressions
+      :comments
     )
 
     if Offer.statuses.keys.to_a.include?(filters[:status]&.downcase)
@@ -94,10 +91,6 @@ class Offer < ApplicationRecord
     end
 
     offers.order(updated_at: :desc)
-  end
-
-  def views
-    impressions.size
   end
 
   def og_title

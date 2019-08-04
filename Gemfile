@@ -10,7 +10,6 @@ gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "default_value_for", "~> 3.1"
 gem "httparty"
-gem "impressionist"
 gem "kaminari", "~> 1.0"
 gem "monetize"
 gem "money"

@@ -8,8 +8,7 @@ class PagesController < ApplicationController
       :company,
       :upvotes,
       :downvotes,
-      :comments,
-      :impressions
+      :comments
     ).last(6).reverse
 
 
