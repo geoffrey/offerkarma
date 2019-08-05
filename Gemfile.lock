@@ -95,6 +95,10 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coderay (1.1.2)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
@@ -392,11 +396,12 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  coffee-script
   default_value_for
   dotenv-rails
   httparty
   kaminari
-  listen (>= 3.0.5, < 3.2)
+  listen
   mailcatcher
   monetize
   money
@@ -411,13 +416,13 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   spring
-  spring-watcher-listen (~> 2.0.0)
+  spring-watcher-listen
   turbolinks
   twitter
   tzinfo-data
   uglifier
   validate_url
-  web-console (>= 3.3.0)
+  web-console
   webpacker
 
 RUBY VERSION

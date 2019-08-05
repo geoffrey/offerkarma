@@ -6,7 +6,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@ibm/plex": "^1.2.3",
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "cleave.js": "^1.4.7",
     "jquery": "^3.3.1",
@@ -18,6 +18,17 @@
     "when-dom-ready": "^1.2.12"
   },
   "devDependencies": {
-    "webpack-dev-server": ">=3.1.11"
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.6.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cssnano": "^4.1.10",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "sugarss": "^2.0.0",
+    "webpack-dev-server": "^3.7.2"
   }
 }

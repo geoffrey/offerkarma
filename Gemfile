@@ -7,6 +7,8 @@ ruby "2.6.3"
 
 gem "activeadmin"
 gem "bcrypt"
+gem "bootsnap", require: false
+gem "coffee-script"
 gem "default_value_for"
 gem "httparty"
 gem "kaminari"
@@ -36,11 +38,11 @@ group :development do
   gem "awesome_print"
   gem "better_errors"
   gem "bullet"
-  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "listen"
   gem "mailcatcher"
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
-  gem "web-console", ">= 3.3.0"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end
 
 group :test do
