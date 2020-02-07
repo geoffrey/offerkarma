@@ -5,6 +5,7 @@
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@fortawesome/free-regular-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@babel/preset-react": "^7.0.0",
     "@ibm/plex": "^1.2.3",
     "@rails/ujs": "^6.0.2-1",
     "@rails/webpacker": "^4.2.2",
@@ -21,7 +22,6 @@
   "devDependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.6.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
