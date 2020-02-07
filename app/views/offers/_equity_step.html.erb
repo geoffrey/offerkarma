@@ -13,7 +13,7 @@
 <div class="bg-light p-4">
   <div class="center-box-max-width">
     <div class="progress mb-4">
-      <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <%= f.submit "Next", class: "btn btn-block btn-danger" %>
+      <%= f.submit "Next", class: "btn btn-block btn-success" %>
       <%= f.submit "Back", name: "back_button", class: "btn btn-sm btn-block btn-link" %>
 
     <% end %>
@@ -93,8 +93,10 @@
 </div>
 
 <script type="text/javascript">
-  $(function() {
-    Reffo.setCurrencyMask('#offer_stock_grant_value')
-  })
+  <% if @offer.company.public? %>
+    $(function() {
+      OfferKarma.setCurrencyMask('#offer_stock_grant_value')
+    })
+  <% end %>
 </script>
 

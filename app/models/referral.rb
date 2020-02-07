@@ -22,7 +22,7 @@ class Referral < ApplicationRecord
   end
 
   def og_description
-    "Go to reffo.us to refer this candidate"
+    "Go to offerkarma.com to refer this candidate"
   end
 
   def og_elements

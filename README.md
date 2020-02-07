@@ -1,4 +1,4 @@
-## Reffo
+## OfferKarma
 
 Get anonymous feedback on your job offers
 
@@ -8,8 +8,8 @@ Get anonymous feedback on your job offers
 Clone this repo:
 
 ```sh
-git clone https://github.com/geoffrey/reffo.git
-cd reffo
+git clone https://github.com/geoffrey/offerkarma.git
+cd offerkarma
 cp .env.development.default .env
 ```
 
@@ -36,7 +36,7 @@ Simple merge/push to master and Heroku will automatically deploy the branch mast
 
 - `brew install heroku/brew/heroku`
 - `heroku login`
-- `heroku git:remote -a reffohq`
+- `heroku git:remote -a offerkarma`
 
 #### Run command on Heroku:
 

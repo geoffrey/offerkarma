@@ -7,15 +7,15 @@
       <% if @offer&.created_at %>
         <%= @offer.og_title %>
       <% elsif @offer %>
-        Reffo - Evaluate your job offer
+        OfferKarma - Evaluate your job offer
       <% elsif @referral&.created_at %>
         <%= @referral.og_title %>
       <% elsif @referral %>
-        Reffo - Request a referral
+        OfferKarma - Request a referral
       <% elsif @company %>
-        Reffo - <%= @company.display_name %>
+        OfferKarma - <%= @company.display_name %>
       <% else %>
-        Reffo - Job offer feedback community
+        OfferKarma - Job offer feedback community
       <% end %>
     </title>
 
@@ -25,8 +25,9 @@
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag asset_path('favicon.png') %>
-    <%= stylesheet_pack_tag 'app', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script src="//platform-api.sharethis.com/js/sharethis.js#property=5c7578d85011cb0011347628&product=inline-share-buttons" async="async"></script>
 
@@ -44,8 +45,8 @@
       <meta property="og:image" content="<%= @referral.company.logo_url %>" />
       <meta property="og:url" content="<%= referral_url @referral.uuid %>" />
     <% else %>
-      <meta property="og:url" content="https://reffo.us" />
-      <meta property="og:title" content="Reffo - Job offer feedback community" />
+      <meta property="og:url" content="https://offerkarma.com" />
+      <meta property="og:title" content="OfferKarma - Job offer feedback community" />
       <meta property="og:description" content="We empower candidates by providing anonymous feedback on any job offer." />
       <meta property="og:image" content="<%= asset_url('og-image.png') %>" />
     <% end %>
@@ -55,7 +56,7 @@
     <header class="border-bottom">
       <div class="container">
         <nav class="pl-0 pr-0 navbar navbar-light <%= logged_in? ? 'navbar-expand-sm' : 'navbar-expand' %>  my-2 my-lg-0 bg-white">
-          <a class="navbar-brand" href="/"><span class="text-danger font-weight-bold">reffo↵</span></a>
+          <a class="navbar-brand" href="/">Offer<span class="text-success font-weight-bold">Karma</span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -77,7 +78,7 @@
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <a class="nav-link btn btn-sm btn-link text-danger" href="/login">Sign-in</a>
+                  <a class="nav-link btn btn-sm btn-link text-success" href="/login">Sign-in</a>
                 </li>
               <% end %>
             </ul>
@@ -88,24 +89,21 @@
 
     <%= yield %>
 
-    <div class="mb-3 p-3 text-center" style="background-color:#E33C20">
-      <a href="https://www.producthunt.com/posts/reffo?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-reffo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150711&theme=light" alt="Reffo - Receive feedback on job offers | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
+    <div class="mb-3 p-3 text-center producthunt">
+      <a href="https://www.producthunt.com/posts/offerkarma?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-offerkarma" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150711&theme=light" alt="OfferKarma - Receive feedback on job offers | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
     </div>
 
     <footer class="p-3 pb-5 mb-5 text-center">
       <div class="mb-3 font-weight-bold">
         <div class="h5 mb-2">
-          &copy; reffo↵
+          &copy; offerkarma
         </div>
       </div>
       <div class="mb-2">
-        <a href="mailto:hello@reffo.us?subject=Feedback" target="_blank" class="btn btn-sm btn-primary"><span class="far fa-paper-plane"></span> Email us suggestions</a>
-      </div>
-      <div class="text-center mb-2">
-        <a href="https://www.patreon.com/bePatron?u=19037901" target="_blank" class="btn btn-light btn-sm text-danger"><span class="fa fa-donate"></span> Support on Patreon</a>
+        <a href="mailto:hello@offerkarma.com?subject=Feedback" target="_blank" class="btn btn-sm btn-outline-primary"><span class="far fa-paper-plane"></span> Email us your suggestions</a>
       </div>
       <div class="mb-2 small text-muted">
-        Made with <span class="text-danger fa fa-heart"></span> in San Francisco
+        Made with <span class="text-success fa fa-heart"></span> in San Francisco
       </div>
       <div class="small">
         <%= link_to "Terms of Service", terms_of_service_path, class: "text-dark" %> -

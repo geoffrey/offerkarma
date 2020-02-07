@@ -3,7 +3,7 @@
     <span class="text-white">Need feedback on a job offer?</span>
   </div>
   <div>
-    <a class="btn btn-danger" href="<%= new_offer_path %>">💰Evaluate my offer</a>
+    <a class="btn btn-success" href="<%= new_offer_path %>">💰Evaluate my offer</a>
   </div>
 </div>
 
@@ -33,5 +33,14 @@
     </div>
 
     <%= paginate @offers if @offers.total_count > 9 %>
+  </div>
+</div>
+
+<div class="text-center homepage-header p-4">
+  <div class="mb-2 lead">
+    <span>Get feedback on your job offer today!</span>
+  </div>
+  <div>
+    <a class="btn btn-success" href="<%= new_offer_path %>">Evaluate my offer</a>
   </div>
 </div>

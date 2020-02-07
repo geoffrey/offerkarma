@@ -102,7 +102,7 @@ class Offer < ApplicationRecord
 
   def og_description
     "#{og_elements.join(' | ')}.\n" \
-      "Go to reffo.us to give your feedback on this offer"
+      "Go to offerkarma.com to give your feedback on this offer"
   end
 
   def og_elements
@@ -198,7 +198,7 @@ class Offer < ApplicationRecord
   end
 
   def url
-    Rails.application.routes.url_helpers.offer_url(uuid, host: "https://reffo.us")
+    Rails.application.routes.url_helpers.offer_url(uuid, host: "https://offerkarma.com")
   end
 
   def post_on_twitter
