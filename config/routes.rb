@@ -1,10 +1,9 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
-  get "(*any)", to: redirect(ENV.fetch("REFFO_BASE_URL")),
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "(*any)", to: redirect(ENV.fetch("OFFERKARMA_BASE_URL")),
                 constraints: ->(request) { request.subdomain == "www" }
 
-  get "(*any)", to: redirect(ENV.fetch("REFFO_BASE_URL")),
+  get "(*any)", to: redirect(ENV.fetch("OFFERKARMA_BASE_URL")),
                 constraints: ->(request) { request.domain == ENV.fetch("SECOND_DOMAIN") }
 
   ActiveAdmin.routes(self)

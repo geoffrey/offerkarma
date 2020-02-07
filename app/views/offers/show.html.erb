@@ -353,7 +353,7 @@
         </div>
       <% else %>
         <div class="text-center">
-          <a class="btn btn-outline-danger" href="<%= login_path %>">Login now to vote on this offer</a>
+          <a class="btn btn-outline-success" href="<%= login_path %>">Login now to vote on this offer</a>
         </div>
       <% end %>
     </div>
@@ -407,7 +407,7 @@
           <div class="form-group">
             <%= f.text_area :text, class: "form-control", placeholder: "Add your feedback...", required: "true", rows: "5" %>
           </div>
-          <%= f.submit "Post", class: "btn btn-block btn-danger" %>
+          <%= f.submit "Post", class: "btn btn-block btn-secondary" %>
         <% end %>
       </div>
     <% else %>

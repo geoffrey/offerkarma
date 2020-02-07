@@ -1,5 +1,9 @@
-@import '../styles/bootstrap';
-@import '../styles/fontawesome';
+@import "./bootstrap";
+@import "./fontawesome";
+
+.producthunt {
+  background-color: #E33C20;
+}
 
 @-ms-viewport{
   width: device-width;

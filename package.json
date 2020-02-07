@@ -1,23 +1,26 @@
 {
-  "name": "reffo",
+  "name": "offerkarma",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@fortawesome/free-regular-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@ibm/plex": "^1.2.3",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/ujs": "^6.0.2-1",
+    "@rails/webpacker": "^4.2.2",
     "bootstrap": "^4.3.1",
-    "cleave.js": "^1.4.7",
-    "jquery": "^3.3.1",
+    "cleave.js": "^1.5.3",
+    "jquery": "^3.4.1",
     "jquery-autocomplete": "^1.2.8",
     "jquery-ui": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1",
     "popper.js": "^1.14.7",
-    "rails-ujs": "^5.2.2",
     "turbolinks": "^5.2.0",
     "when-dom-ready": "^1.2.12"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.6.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -29,6 +32,6 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "sugarss": "^2.0.0",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.10.3"
   }
 }

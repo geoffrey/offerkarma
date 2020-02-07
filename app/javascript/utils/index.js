@@ -11,11 +11,11 @@ const cleaveCurrencyOption = {
   numeralThousandsGroupStyle: 'thousand'
 }
 
-const setCurrencyMask = function(selector) {
+const setCurrencyMask = (selector) => {
   new Cleave(selector, cleaveCurrencyOption)
 }
 
-const setCompanyNameAutocomplete = function(selector) {
+const setCompanyNameAutocomplete = (selector) => {
   const $input = $(selector)
   if (!$input || $input.length == 0)
     return
@@ -45,6 +45,7 @@ const setCompanyNameAutocomplete = function(selector) {
       .appendTo(ul);
   };
 }
+
 
 export {
   setCompanyNameAutocomplete,

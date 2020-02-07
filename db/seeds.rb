@@ -1,5 +1,5 @@
-user = User.create!(email: "admin@reffo.us", password: "password", password_confirmation: "password")
-user2 = User.create!(email: "hello@reffo.us", password: "password", password_confirmation: "password")
+user = User.create!(email: "admin@offerkarma.com", password: "password", password_confirmation: "password")
+user2 = User.create!(email: "hello@offerkarma.com", password: "password", password_confirmation: "password")
 
 eaze = Company.create!(name: "eaze", domain: "eaze.com")
 sharespost = Company.create!(name: "sharespost", domain: "sharespost.com")
