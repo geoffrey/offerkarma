@@ -24,6 +24,7 @@ class Offer < ApplicationRecord
   validates :stock_preferred_price, inclusion: 0..10_000, allow_nil: true
   validates :stock_count, inclusion: 0..5_000_000, allow_nil: true
   validates :yoe, inclusion: 0..50, allow_nil: true
+  validates :fairness_score, :competitiveness_score, inclusion: 0..100, allow_nil: true
 
   enum scope: {
     private: 0,
@@ -137,6 +138,24 @@ class Offer < ApplicationRecord
     return "success" if accepted?
     return "danger" if declined?
     "info"
+  end
+
+  def karma
+    return nil unless competitiveness_score || fairness_score
+    (competitiveness_score.to_i + fairness_score.to_i) / 2
+  end
+
+  def karma_class
+    case karma
+    when 0..50
+      "danger"
+    when 51..80
+      "warning"
+    when 80..100
+      "success"
+    else
+      "secondary"
+    end
   end
 
   def bonus_value_per_year

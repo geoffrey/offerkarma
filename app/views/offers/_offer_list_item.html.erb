@@ -1,6 +1,13 @@
 <div class="col-lg-4 col-md-6 col-12 p-2 d-flex">
   <a href="<%= offer_path offer.uuid %>" class="list-group-item list-group-item-action p-0 rounded card-shadow border-0 bg-white">
     <div class="d-flex flex-column justify-content-between height-100">
+
+      <div class="mb-auto rounded-top border-bottom text-muted p-1 pr-3 pl-3 bg-light">
+        <div class="text-right">
+          <small class="small">KARMA</small> <span class="font-weight-bold badge badge-<%= offer.karma_class %>"><%= offer.karma || "?" %></span>
+        </div>
+      </div>
+
       <div class="p-3 d-flex align-items-center">
         <div class="mr-3">
           <div class="img-thumbnail image-thumbnail-outer p-0 border-0 d-flex justify-content-center mb-0">
