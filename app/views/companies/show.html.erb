@@ -1,5 +1,5 @@
 <div class="company-header p-4 bg-dark text-white">
-  <div class="d-flex justify-content-center">
+  <div class="d-flex mb-2 justify-content-center">
     <div class="mr-3 bg-white image-thumbnail-outer-lg rounded d-flex justify-content-center">
       <img class="align-self-center bg-white rounded image-thumbnail-lg" src="<%= @company.logo_url %>">
     </div>
@@ -19,14 +19,18 @@
       </div>
     </div>
   </div>
+  <hr/>
+  <div class="d-flex justify-content-between">
+    <div class="flex-fill p-1">
+      <a class="btn btn-success btn-block" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate an offer</a>
+    </div>
+    <div class="flex-fill p-1">
+      <a class="btn btn-success btn-block" href="<%= new_referral_path company_name: @company.display_name %>">Request a referral</a>
+    </div>
+  </div>
 </div>
 
 <div class="bg-white p-3 text-center border-bottom">
-  <div class="mb-3">
-    <a class="btn btn-danger" href="<%= new_offer_path company_name: @company.display_name %>">💰Evaluate an offer</a>
-    <a class="btn btn-danger" href="<%= new_referral_path company_name: @company.display_name %>">🤝Request a referral</a>
-  </div>
-
   <div class="center-box-max-width">
     <div class="form-inline justify-content-center">
       <%= select_tag(:status, options_for_select(["All", *Offer.statuses.keys.map(&:humanize)], params[:status] || "All"), class: "form-control") %>
