@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   get    "unsubscribe",              to: "emails#show"
   patch  "unsubscribe",              to: "emails#update"
 
+  get    "enterprise",               to: "pages#enterprise"
+
   resources :companies, only: [:show]
-  resources :referrals
   resources :offers do
     member do
       post :votes

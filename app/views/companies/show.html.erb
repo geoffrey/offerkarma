@@ -20,13 +20,9 @@
     </div>
   </div>
   <hr/>
-  <div class="d-flex justify-content-between">
-    <div class="flex-fill p-1">
-      <a class="btn btn-success btn-block" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate an offer</a>
-    </div>
-    <div class="flex-fill p-1">
-      <a class="btn btn-success btn-block" href="<%= new_referral_path company_name: @company.display_name %>">Request a referral</a>
-    </div>
+  <div class="p-1 text-center">
+    <a class="btn btn-success" href="<%= new_offer_path company_name: @company.display_name %>">Evaluate an offer from <%= @company.display_name %></a>
+  </div>
   </div>
 </div>
 

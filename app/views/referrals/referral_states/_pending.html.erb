@@ -1,9 +1,0 @@
-<p class="lead text-center">Your referral request is pending</p>
-<p class="text-justify">
-  Verified <b><%= @referral.company.display_name %></b> employees will refer you very soon.
-  We will disclose your <b>email</b> and <b>linkedin</b> to the person making the referral.
-</p>
-
-<p class="small">
-  If you change your mind and no longer want to be referred at <%= @referral.company.display_name %>, you can  <%= link_to "delete your request", referral_path(@referral.uuid), method: :delete, data: { confirm: "Are you sure you want to delete this referral request?" }, class: "text-danger" %>.
-</p>

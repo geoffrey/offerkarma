@@ -19,15 +19,6 @@ class PagesController < ApplicationController
       .sample(6)
   end
 
-  def equity
-  end
-
-  def referrals
-  end
-
-  def negotiate
-  end
-
   def terms
   end
 
